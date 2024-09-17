@@ -1,0 +1,13 @@
+{
+  "name": "tinpark",
+  "version": "1.0.0",
+  "description": "TINPark es una aplicación diseñada para gestionar el acceso vehicular a urbanizaciones, controlando la entrada y salida de coches mediante cámaras de vigilancia y tecnología de reconocimiento de matrículas. Ofrece una solución segura, eficiente y personalizable para mejorar la seguridad y el control en comunidades residenciales.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
