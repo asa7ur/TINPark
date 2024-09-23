@@ -25,7 +25,12 @@ const Register = () => {
     <Wrapper>
       <Form method='post' className='form'>
         <h3>Registrarse</h3>
-        <FormRow type='text' name='nombre' defaultValue='Garik' />
+        <FormRow
+          type='text'
+          name='name'
+          labelText='nombre'
+          defaultValue='Garik'
+        />
         <FormRow
           type='text'
           name='lastName'

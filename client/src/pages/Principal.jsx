@@ -14,7 +14,7 @@ const Principal = () => {
             matrículas
           </h4>
           <div className='buttons'>
-            <Link to='/registrarse'>
+            <Link to='/register'>
               <button className='button'>Registrarse</button>
             </Link>
             <Link to='/login'>

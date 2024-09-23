@@ -25,7 +25,6 @@ export const updateVehicle = async (req, res) => {
       new: true,
     }
   )
-
   res
     .status(StatusCodes.OK)
     .json({ msg: 'vehicle modified', vehicle: updatedVehicle })
@@ -33,7 +32,6 @@ export const updateVehicle = async (req, res) => {
 
 export const deleteVehicle = async (req, res) => {
   const removedVehicle = await Vehicle.findByIdAndDelete(req.params.id)
-
   res
     .status(StatusCodes.OK)
     .json({ msg: 'vehicle deleted', vehicle: removedVehicle })
