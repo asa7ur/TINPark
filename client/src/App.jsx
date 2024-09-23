@@ -1,5 +1,17 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { HomeLayout, Principal, MisVehiculos, Zonas, Vehiculo, Error, Login, Registrarse } from './pages'
+import {
+  HomeLayout,
+  Principal,
+  MisVehiculos,
+  Zonas,
+  Vehiculo,
+  Error,
+  Login,
+  Register,
+} from './pages'
+
+import { action as registerAction } from './pages/Register'
+import { action as loginAction } from './pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -26,10 +38,12 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+        action: loginAction
       },
       {
-        path: 'registrarse',
-        element: <Registrarse />,
+        path: 'register',
+        element: <Register />,
+        action: registerAction
       },
     ],
   },
