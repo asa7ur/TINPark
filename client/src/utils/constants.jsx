@@ -58,14 +58,14 @@ export const vehicles = [
     icon: icon_3,
     alt_name: 'Peugeot',
   },
-  {
-    id: 4,
-    name: 'Coche 4',
-    plate: '4567JKL',
-    parked: 'Viapol',
-    icon: icon_4,
-    alt_name: 'Audi',
-  },
+  // {
+  //   id: 4,
+  //   name: 'Coche 4',
+  //   plate: '4567JKL',
+  //   parked: 'Viapol',
+  //   icon: icon_4,
+  //   alt_name: 'Audi',
+  // },
 ]
 
 export const zones = [

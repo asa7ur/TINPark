@@ -24,8 +24,9 @@ const Wrapper = styled.main`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  
+
   h2 {
     padding-top: 1rem;
+    align-self: flex-start;
   }
 `

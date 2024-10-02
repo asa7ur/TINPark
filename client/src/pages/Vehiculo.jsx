@@ -97,6 +97,7 @@ const Wrapper = styled.main`
     cursor: pointer;
     display: flex;
     align-items: center;
+    align-self: flex-start;
     gap: 0.5rem;
     margin-top: 2rem;
     font-size: 1.5rem;

@@ -4,7 +4,7 @@ import {
   NotFoundError,
   UnauthorizedError,
 } from '../errors/customErrors.js'
-import { VEHICLE_STATUS, VEHICLE_TYPE } from '../utils/constants.js'
+import { VEHICLE_BRAND} from '../utils/constants.js'
 import mongoose from 'mongoose'
 import Vehicle from '../models/VehicleModel.js'
 import User from '../models/UserModel.js'
@@ -33,15 +33,11 @@ const withValidationErrors = (validateValues) => {
 }
 
 export const validateVehicleInput = withValidationErrors([
-  body('company').notEmpty().withMessage('company is required'),
-  body('position').notEmpty().withMessage('position is required'),
-  body('vehicleLocation').notEmpty().withMessage('vehicle location is required'),
-  body('vehicleStatus')
-    .isIn(Object.values(VEHICLE_STATUS))
-    .withMessage('invalid status value'),
-  body('vehicleType')
-    .isIn(Object.values(VEHICLE_TYPE))
-    .withMessage('invalid type value'),
+  body('name').notEmpty().withMessage('se requiere el nombre'),
+  body('plate').notEmpty().withMessage('se requiere la matricula'),
+  body('brand')
+    .isIn(Object.values(VEHICLE_BRAND))
+    .withMessage('se requiere la marca del vehiculo'),
 ])
 
 export const validateIdParam = withValidationErrors([

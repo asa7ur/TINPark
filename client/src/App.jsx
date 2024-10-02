@@ -12,6 +12,8 @@ import {
 
 import { action as registerAction } from './pages/Register'
 import { action as loginAction } from './pages/Login'
+import { action as addVehicleAction } from './components/AddVehicle'
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: 'misvehiculos',
         element: <MisVehiculos />,
+        action: addVehicleAction,
       },
       {
         path: 'zonas',
@@ -38,12 +41,12 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
-        action: loginAction
+        action: loginAction,
       },
       {
         path: 'register',
         element: <Register />,
-        action: registerAction
+        action: registerAction,
       },
     ],
   },

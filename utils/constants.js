@@ -1,18 +1,24 @@
-export const VEHICLE_STATUS = {
-  PENDING: 'pending',
-  INTERVIEW: 'interview',
-  DECLINED: 'declined',
-}
-
-export const VEHICLE_TYPE = {
-  FULL_TIME: 'full-time',
-  PART_TIME: 'part-time',
-  INTERNSHIP: 'internship',
-}
-
-export const VEHICLE_SORT_BY = {
-  NEWEST_FIRST: 'newest',
-  OLDEST_FIRST: 'oldest',
-  ASCENDING: 'a-z',
-  DESCENDING: 'z-a',
+export const VEHICLE_BRAND = {
+  AUDI: 'Audi',
+  BMW: 'BMW',
+  CITROEN: 'Citroën',
+  FORD: 'Ford',
+  HONDA: 'Honda',
+  HYUNDAI: 'Hyundai',
+  JAGUAR: 'Jaguar',
+  JEEP: 'Jeep',
+  KIA: 'Kia',
+  LAND_ROVER: 'Land Rover',
+  LEXUS: 'Lexus',
+  MERCEDES_BENZ: 'Mercedes-Benz',
+  MINI: 'Mini',
+  NISSAN: 'Nissan',
+  OPEL: 'Opel',
+  PEUGEOT: 'Peugeot',
+  RENAULT: 'Renault',
+  SEAT: 'Seat',
+  SKODA: 'Skoda',
+  TESLA: 'Tesla',
+  TOYOTA: 'Toyota',
+  VOLKSWAGEN: 'Volkswagen',
 }

@@ -1,4 +1,10 @@
-import { useReducer, useContext, createContext, useEffect, useCallback } from 'react'
+import {
+  useReducer,
+  useContext,
+  createContext,
+  useEffect,
+  useCallback,
+} from 'react'
 import globalReducer from './reducer'
 import {
   SELECT_ZONE,

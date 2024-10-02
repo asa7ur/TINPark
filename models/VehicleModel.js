@@ -1,23 +1,14 @@
 import mongoose from 'mongoose'
-import { VEHICLE_STATUS, VEHICLE_TYPE } from '../utils/constants.js'
+import { VEHICLE_BRAND } from '../utils/constants.js'
 
 const VehicleSchema = new mongoose.Schema(
   {
-    company: String,
-    position: String,
-    vehicleStatus: {
+    name: String,
+    plate: String,
+    brand: {
       type: String,
-      enum: Object.values(VEHICLE_STATUS),
-      default: VEHICLE_STATUS.PENDING,
-    },
-    vehicleType: {
-      type: String,
-      enum: Object.values(VEHICLE_TYPE),
-      default: VEHICLE_TYPE.INTERNSHIP,
-    },
-    vehicleLocation: {
-      type: String,
-      default: 'Earth',
+      enum: Object.values(VEHICLE_BRAND),
+      default: VEHICLE_BRAND.AUDI,
     },
     createdBy: {
       type: mongoose.Types.ObjectId,

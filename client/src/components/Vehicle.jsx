@@ -36,7 +36,9 @@ export default Vehicle
 
 const Wrapper = styled.div`
   .info {
-    margin-top: 2rem;
+    width: 90vw;
+    max-width: var(--max-width);
+    margin-top: 1.5rem;
     padding: 1.25rem;
     display: flex;
     align-items: center;

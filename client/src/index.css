@@ -119,6 +119,7 @@ button {
     color: var(--textColor);
     background: var(--backgroundColorAlt);
     border: var(--border);
+    cursor: pointer;
 }
 
 .button {
@@ -140,16 +141,16 @@ button {
     object-fit: cover;
 }
 
-.section {
-    padding: 1rem 0;
-}
-
 .section-center {
     width: 90vw;
     margin: 0 auto;
     max-width: var(--max-width);
     flex-grow: 1;
-    padding-bottom: 2rem;
+    padding: 0 0 2rem 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .highlighted,
@@ -158,7 +159,7 @@ button {
 }
 
 .form {
-    width: 90vw;
+    width: 100%;
     background: var(--backgroundColorAlt);
     border-radius: var(--radius);
     box-shadow: var(--shadow-2);
