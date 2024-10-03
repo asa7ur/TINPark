@@ -20,7 +20,6 @@ const DashboardLayout = () => {
 
   return (
     <DashboardContext.Provider value={{ user }}>
-
         <main className='dashboard'>
           <div className='dashboard-page'>
             <Outlet context={{ user }} />

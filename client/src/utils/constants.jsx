@@ -11,25 +11,25 @@ export const links = [
     id: 1,
     icon: FaUserCircle,
     label: 'Usuario',
-    url: '/user',
+    url: '/dashboard/user',
   },
   {
     id: 2,
     icon: FaCar,
     label: 'Vehículos',
-    url: '/vehicles',
+    url: '/dashboard/vehicles',
   },
   {
     id: 3,
     icon: FaRegMap,
     label: 'Zonas',
-    url: '/zones',
+    url: '/dashboard/zones',
   },
   {
     id: 4,
     icon: FaBars,
     label: 'Ajustes',
-    url: '/settings',
+    url: '/dashboard/settings',
   },
 ]
 
@@ -58,14 +58,14 @@ export const vehicles = [
     icon: icon_3,
     alt_name: 'Peugeot',
   },
-  // {
-  //   id: 4,
-  //   name: 'Coche 4',
-  //   plate: '4567JKL',
-  //   parked: 'Viapol',
-  //   icon: icon_4,
-  //   alt_name: 'Audi',
-  // },
+  {
+    id: 4,
+    name: 'Coche 4',
+    plate: '4567JKL',
+    parked: 'Viapol',
+    icon: icon_4,
+    alt_name: 'Audi',
+  },
 ]
 
 export const zones = [

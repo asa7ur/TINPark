@@ -1,44 +1,58 @@
-import { useEffect, useCallback } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { NavbarBottom, CarState } from '../components'
-import { vehicles, inside, outside } from '../utils/constants'
+import styled from 'styled-components'
+import { useEffect } from 'react'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useGlobalContext } from '../context'
-import styled from 'styled-components'
+import { CarState } from '../components'
+import { inside, outside } from '../utils/constants'
+import customFetch from '../utils/customFetch'
+
+export const loader = async ({ params }) => {
+  const { id } = params
+  try {
+    const { data } = await customFetch.get(`/vehicles/${id}`)
+    return data
+  } catch (error) {
+    console.error('Error fetching vehicle:', error)
+    return error
+  }
+}
 
 const Vehicle = () => {
-  const { id } = useParams()
   const navigate = useNavigate()
   const {
     viewportHeight,
-    vehicle,
     modalType,
     changeState,
     setVehicle,
     selectZone,
+    vehicle: currentVehicle,
   } = useGlobalContext()
 
-  const handleClick = useCallback(() => {
-    navigate('/vehicles')
-  }, [navigate])
+  const vehicle = useLoaderData()
+  
+  useEffect(() => {
+    console.log('Vehicle Loaded:', vehicle)
+  }, [vehicle])
 
   useEffect(() => {
-    const selectedVehicle = vehicles.find(
-      (vehicle) => vehicle.id === parseInt(id, 10)
-    )
-    if (selectedVehicle !== vehicle) {
-      setVehicle(selectedVehicle)
-      selectZone(selectedVehicle.parked || 'Fuera')
+    if (vehicle && vehicle !== currentVehicle) {
+      setVehicle(vehicle)
+      selectZone(vehicle.parked || 'Fuera')
     }
-  }, [id, vehicle, setVehicle, selectZone])
+  }, [vehicle]) 
 
+  const handleClick = () => {
+    navigate('/dashboard/vehicles')
+  }
+  
   if (!vehicle) {
     return <div>Loading...</div>
   }
-
-  const { name, plate, parked, icon, alt_name } = vehicle
+  
+  const { name, plate, parked } = vehicle
   const options = parked ? inside : outside
-
+  
   return (
     <Wrapper style={{ height: `${viewportHeight}px` }}>
       <div className='section-center'>
@@ -47,10 +61,14 @@ const Vehicle = () => {
           <p>Volver</p>
         </div>
         <div className='vehicle-info'>
-          <div className='icon'>
-            <img src={icon} alt={alt_name} className='img' />
-          </div>
-          <h1>{name}</h1>
+          {/* <div className='icon'>
+            <img
+              src={vehicle.icon || 'default-icon-url'}
+              alt={name}
+              className='img'
+            />
+          </div> */}
+          <h1>{name}</h1>         
           <h3>Matrícula: {plate}</h3>
           <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
         </div>
@@ -74,7 +92,6 @@ const Vehicle = () => {
       {modalType === 'carState' && (
         <CarState onClose={() => changeState(null)} />
       )}
-      <NavbarBottom />
     </Wrapper>
   )
 }

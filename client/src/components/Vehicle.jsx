@@ -1,20 +1,26 @@
 import styled from 'styled-components'
-import { vehicles } from '../utils/constants'
 import { useNavigate } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
 const Vehicle = () => {
   const navigate = useNavigate()
 
+  const { vehicles } = useGlobalContext()
+
   const handleClick = (id) => {
-    navigate(`/vehicles/${id}`)
+    navigate(`/dashboard/vehicles/${id}`)
+  }
+
+  if (vehicles.length === 0) {
+    return <p>No tienes vehículos registrados</p>
   }
 
   return (
     <Wrapper>
       {vehicles.map((vehicle) => {
-        const { id, name, plate, parked, icon, alt_name } = vehicle
+        const { _id, name, plate, parked, icon, alt_name } = vehicle
         return (
-          <div key={id} className='info' onClick={()=> handleClick(id)}>
+          <div key={_id} className='info' onClick={() => handleClick(_id)}>
             <div className='text'>
               <h4>{name}</h4>
               <h5>Matrícula: {plate}</h5>
@@ -32,6 +38,7 @@ const Vehicle = () => {
     </Wrapper>
   )
 }
+
 export default Vehicle
 
 const Wrapper = styled.div`

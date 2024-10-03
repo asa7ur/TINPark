@@ -10,6 +10,10 @@ const VehicleSchema = new mongoose.Schema(
       enum: Object.values(VEHICLE_BRAND),
       default: VEHICLE_BRAND.AUDI,
     },
+    parked: {
+      type: String,
+      default: '',
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: 'User',

@@ -17,7 +17,7 @@ export const action = async ({ request }) => {
     const response = await customFetch.post('/vehicles', data)
     console.log('API Response:', response)
     toast.success('Vehiculo Añadido')
-    return redirect('/vehicles')
+    return redirect('/dashboard/vehicles')
   } catch (error) {
     console.error('Error:', error)
     toast.error(error?.response?.data?.msg)

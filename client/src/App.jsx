@@ -15,6 +15,7 @@ import { action as registerAction } from './pages/Register'
 import { action as loginAction } from './pages/Login'
 import { action as addVehicleAction } from './components/AddVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
+import { loader as vehicleLoader } from './pages/Vehicle'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
         action: registerAction,
       },
       {
-        pash: 'dashboard',
+        path: 'dashboard',
         element: <DashboardLayout />,
         loader: dashboardLoader,
         children: [
@@ -47,12 +48,13 @@ const router = createBrowserRouter([
             action: addVehicleAction,
           },
           {
-            path: 'zones',
-            element: <Zones />,
-          },
-          {
             path: 'vehicles/:id',
             element: <Vehicle />,
+            loader: vehicleLoader,
+          },
+          {
+            path: 'zones',
+            element: <Zones />,
           },
         ],
       },

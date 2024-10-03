@@ -3,14 +3,21 @@ import { NavbarTop, Vehicle, AddVehicle } from '../components'
 import { useGlobalContext } from '../context'
 
 const Vehicles = () => {
-  const { viewportHeight, modalType, changeState } = useGlobalContext()
+  const { viewportHeight, modalType, changeState, vehicles } =
+    useGlobalContext()
 
   return (
     <Wrapper style={{ height: `${viewportHeight}px` }}>
       <NavbarTop />
       <div className='section-center'>
         <h2>Tus Vehículos</h2>
-        <Vehicle />
+        {vehicles.length === 0 ? (
+          <p>No tiene vehículos registrados</p>
+        ) : (
+          vehicles.map((vehicle) => (
+            <Vehicle key={vehicle._id} {...vehicle} />
+          ))
+        )}
         <button onClick={() => changeState('addVehicle')}>
           Añadir Vehiculo
         </button>
