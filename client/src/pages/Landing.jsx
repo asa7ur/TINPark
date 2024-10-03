@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import logo from '../assets/Logo.png'
 
-const Principal = () => {
+const Landing = () => {
   return (
     <Wrapper>
       <div className='content'>
@@ -27,7 +27,7 @@ const Principal = () => {
   )
 }
 
-export default Principal
+export default Landing
 
 const Wrapper = styled.div`
   min-height: 100vh;

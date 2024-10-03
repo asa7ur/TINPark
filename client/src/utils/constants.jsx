@@ -11,25 +11,25 @@ export const links = [
     id: 1,
     icon: FaUserCircle,
     label: 'Usuario',
-    url: '/usuario',
+    url: '/user',
   },
   {
     id: 2,
     icon: FaCar,
     label: 'Vehículos',
-    url: '/misvehiculos',
+    url: '/vehicles',
   },
   {
     id: 3,
     icon: FaRegMap,
     label: 'Zonas',
-    url: '/zonas',
+    url: '/zones',
   },
   {
     id: 4,
     icon: FaBars,
     label: 'Ajustes',
-    url: '/ajustes',
+    url: '/settings',
   },
 ]
 

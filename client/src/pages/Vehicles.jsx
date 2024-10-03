@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { NavbarTop, Vehicle, NavbarBottom, AddVehicle } from '../components'
+import { NavbarTop, Vehicle, AddVehicle } from '../components'
 import { useGlobalContext } from '../context'
 
-const MisVehiculos = () => {
+const Vehicles = () => {
   const { viewportHeight, modalType, changeState } = useGlobalContext()
 
   return (
@@ -15,7 +15,6 @@ const MisVehiculos = () => {
           Añadir Vehiculo
         </button>
       </div>
-      <NavbarBottom />
       {modalType === 'addVehicle' && (
         <AddVehicle onClose={() => changeState(null)} />
       )}
@@ -23,7 +22,7 @@ const MisVehiculos = () => {
   )
 }
 
-export default MisVehiculos
+export default Vehicles
 
 const Wrapper = styled.main`
   height: 100vh;

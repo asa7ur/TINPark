@@ -12,7 +12,7 @@ const Error = () => {
     <Wrapper style={{ height: `${viewportHeight}px` }}>
       <div className='section-center'>
         <h2>Página no encontrada</h2>
-        <Link to='/misvehiculos'>
+        <Link to='/vehicles'>
           <button className='button'>Volver</button>
         </Link>
       </div>

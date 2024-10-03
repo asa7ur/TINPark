@@ -6,7 +6,7 @@ const Vehicle = () => {
   const navigate = useNavigate()
 
   const handleClick = (id) => {
-    navigate(`/misvehiculos/${id}`)
+    navigate(`/vehicles/${id}`)
   }
 
   return (

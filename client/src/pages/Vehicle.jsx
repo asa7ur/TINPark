@@ -6,7 +6,7 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useGlobalContext } from '../context'
 import styled from 'styled-components'
 
-const Vehiculo = () => {
+const Vehicle = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const {
@@ -19,7 +19,7 @@ const Vehiculo = () => {
   } = useGlobalContext()
 
   const handleClick = useCallback(() => {
-    navigate('/misvehiculos')
+    navigate('/vehicles')
   }, [navigate])
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const Vehiculo = () => {
   )
 }
 
-export default Vehiculo
+export default Vehicle
 
 const Wrapper = styled.main`
   background: linear-gradient(

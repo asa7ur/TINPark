@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { NavbarTop, Zone, NavbarBottom } from '../components'
 import { useGlobalContext } from '../context'
 
-const Zonas = () => {
+const Zones = () => {
   const { viewportHeight } = useGlobalContext()
 
   return (
@@ -12,12 +12,11 @@ const Zonas = () => {
         <h2>Zonas disponibles</h2>
         <Zone />
       </div>
-      <NavbarBottom />
     </Wrapper>
   )
 }
 
-export default Zonas
+export default Zones
 
 const Wrapper = styled.main`
   height: 100vh;

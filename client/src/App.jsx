@@ -1,19 +1,20 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {
   HomeLayout,
-  Principal,
-  MisVehiculos,
-  Zonas,
-  Vehiculo,
+  Landing,
+  Vehicles,
+  Zones,
+  Vehicle,
   Error,
   Login,
   Register,
+  DashboardLayout,
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
 import { action as loginAction } from './pages/Login'
 import { action as addVehicleAction } from './components/AddVehicle'
-
+import { loader as dashboardLoader } from './pages/DashboardLayout'
 
 const router = createBrowserRouter([
   {
@@ -23,20 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Principal />,
-      },
-      {
-        path: 'misvehiculos',
-        element: <MisVehiculos />,
-        action: addVehicleAction,
-      },
-      {
-        path: 'zonas',
-        element: <Zonas />,
-      },
-      {
-        path: 'misvehiculos/:id',
-        element: <Vehiculo />,
+        element: <Landing />,
       },
       {
         path: 'login',
@@ -47,6 +35,26 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register />,
         action: registerAction,
+      },
+      {
+        pash: 'dashboard',
+        element: <DashboardLayout />,
+        loader: dashboardLoader,
+        children: [
+          {
+            path: 'vehicles',
+            element: <Vehicles />,
+            action: addVehicleAction,
+          },
+          {
+            path: 'zones',
+            element: <Zones />,
+          },
+          {
+            path: 'vehicles/:id',
+            element: <Vehicle />,
+          },
+        ],
       },
     ],
   },
