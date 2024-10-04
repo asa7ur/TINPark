@@ -1,9 +1,7 @@
 import {
   SELECT_ZONE,
   CHANGE_STATE,
-  SET_VEHICLE,
   SET_VIEWPORT_HEIGHT,
-  SET_VEHICLES,
 } from './actions'
 
 const globalReducer = (state, action) => {
@@ -21,20 +19,10 @@ const globalReducer = (state, action) => {
         isModalOpen: !state.isModalOpen,
         modalType: action.payload,
       }
-    case SET_VEHICLE:
-      return {
-        ...state,
-        vehicle: action.payload,
-      }
     case SET_VIEWPORT_HEIGHT:
       return {
         ...state,
         viewportHeight: action.payload,
-      }
-    case SET_VEHICLES:
-      return {
-        ...state,
-        vehicles: action.payload,
       }
     default:
       throw new Error(`No matching "${action.type}" - action type`)

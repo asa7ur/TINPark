@@ -2,9 +2,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {
   HomeLayout,
   Landing,
-  Vehicles,
+  AllVehicles,
   Zones,
-  Vehicle,
+  EditVehicle,
   Error,
   Login,
   Register,
@@ -15,7 +15,8 @@ import { action as registerAction } from './pages/Register'
 import { action as loginAction } from './pages/Login'
 import { action as addVehicleAction } from './components/AddVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
-import { loader as vehicleLoader } from './pages/Vehicle'
+import { loader as editVehicleLoader } from './pages/EditVehicle'
+import { loader as allVehiclesLoader } from './pages/AllVehicles'
 
 const router = createBrowserRouter([
   {
@@ -44,13 +45,14 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'vehicles',
-            element: <Vehicles />,
+            element: <AllVehicles />,
+            loader: allVehiclesLoader,
             action: addVehicleAction,
           },
           {
             path: 'vehicles/:id',
-            element: <Vehicle />,
-            loader: vehicleLoader,
+            element: <EditVehicle />,
+            loader: editVehicleLoader,
           },
           {
             path: 'zones',

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useEffect } from 'react'
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import { useLoaderData, useNavigate, redirect } from 'react-router-dom'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useGlobalContext } from '../context'
 import { CarState } from '../components'
@@ -8,51 +8,38 @@ import { inside, outside } from '../utils/constants'
 import customFetch from '../utils/customFetch'
 
 export const loader = async ({ params }) => {
-  const { id } = params
   try {
-    const { data } = await customFetch.get(`/vehicles/${id}`)
+    const { data } = await customFetch.get(`/vehicles/${params.id}`)
     return data
   } catch (error) {
     console.error('Error fetching vehicle:', error)
-    return error
+    return redirect('/dashboard/vehicles')
   }
 }
 
-const Vehicle = () => {
+const EditVehicle = () => {
+  const {vehicle} = useLoaderData() 
   const navigate = useNavigate()
-  const {
-    viewportHeight,
-    modalType,
-    changeState,
-    setVehicle,
-    selectZone,
-    vehicle: currentVehicle,
-  } = useGlobalContext()
-
-  const vehicle = useLoaderData()
-  
-  useEffect(() => {
-    console.log('Vehicle Loaded:', vehicle)
-  }, [vehicle])
+  const { viewportHeight, modalType, changeState, selectZone } =
+    useGlobalContext()
 
   useEffect(() => {
-    if (vehicle && vehicle !== currentVehicle) {
-      setVehicle(vehicle)
-      selectZone(vehicle.parked || 'Fuera')
+    if (vehicle && vehicle.parked) {
+      selectZone(vehicle.parked)
     }
-  }, [vehicle]) 
+  }, [vehicle, selectZone])
 
   const handleClick = () => {
     navigate('/dashboard/vehicles')
   }
-  
+
   if (!vehicle) {
     return <div>Loading...</div>
   }
-  
+
   const { name, plate, parked } = vehicle
   const options = parked ? inside : outside
-  
+
   return (
     <Wrapper style={{ height: `${viewportHeight}px` }}>
       <div className='section-center'>
@@ -61,18 +48,19 @@ const Vehicle = () => {
           <p>Volver</p>
         </div>
         <div className='vehicle-info'>
-          {/* <div className='icon'>
+          <div className='icon'>
             <img
               src={vehicle.icon || 'default-icon-url'}
               alt={name}
               className='img'
             />
-          </div> */}
-          <h1>{name}</h1>         
+          </div>
+          <h1>{name}</h1>
           <h3>Matrícula: {plate}</h3>
           <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
         </div>
       </div>
+
       <div className='options'>
         {options.map((option) => (
           <button
@@ -89,6 +77,7 @@ const Vehicle = () => {
           </button>
         ))}
       </div>
+
       {modalType === 'carState' && (
         <CarState onClose={() => changeState(null)} />
       )}
@@ -96,7 +85,7 @@ const Vehicle = () => {
   )
 }
 
-export default Vehicle
+export default EditVehicle
 
 const Wrapper = styled.main`
   background: linear-gradient(
