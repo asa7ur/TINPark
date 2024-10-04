@@ -65,6 +65,7 @@ const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;
   align-items: center;
+  padding: 1rem;
 
   h3 {
     text-align: center;
