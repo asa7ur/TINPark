@@ -4,7 +4,7 @@ import { useLoaderData, useNavigate, redirect } from 'react-router-dom'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useGlobalContext } from '../context'
 import { CarState } from '../components'
-import { inside, outside } from '../utils/constants'
+import { inside, outside, VEHICLE_BRAND } from '../utils/constants'
 import customFetch from '../utils/customFetch'
 
 export const loader = async ({ params }) => {
@@ -37,8 +37,12 @@ const EditVehicle = () => {
     return <div>Loading...</div>
   }
 
-  const { name, plate, parked } = vehicle
+  const { name, plate, brand, parked } = vehicle
   const options = parked ? inside : outside
+
+  const vehicleLogo =
+    VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
+    VEHICLE_BRAND.POR_DEFECTO.icon
 
   return (
     <Wrapper style={{ height: `${viewportHeight}px` }}>
@@ -50,7 +54,7 @@ const EditVehicle = () => {
         <div className='vehicle-info'>
           <div className='icon'>
             <img
-              src={vehicle.icon || 'default-icon-url'}
+              src={vehicleLogo}
               alt={name}
               className='img'
             />

@@ -6,28 +6,28 @@ import { useGlobalContext } from '../context'
 const VehiclesContainer = () => {
   const { data } = useAllVehiclesContext()
   const { vehicles } = data
-  
+
   const { viewportHeight, modalType, changeState } = useGlobalContext()
-  
+
   return (
-      <Wrapper style={{ height: `${viewportHeight}px` }}>
-        <div className='section-center'>
-          <h2>Tus Vehículos</h2>
-          {vehicles.length === 0 ? (
-            <p>No tiene vehículos registrados</p>
-          ) : (
-            vehicles.map((vehicle) => (
-              <Vehicle key={vehicle._id} {...vehicle} />
-            ))
-          )}
-          <button onClick={() => changeState('addVehicle')}>
-            Añadir Vehiculo
-          </button>
-        </div>
-        {modalType === 'addVehicle' && (
-          <AddVehicle onClose={() => changeState(null)} />
+    <Wrapper style={{ height: `${viewportHeight}px` }}>
+      <div className='section-center'>
+        <h2>Tus Vehículos</h2>
+        {vehicles.length === 0 ? (
+          <p>No tiene vehículos registrados</p>
+        ) : (
+          vehicles.map((vehicle) => (
+            <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
+          ))
         )}
-      </Wrapper>
+        <button onClick={() => changeState('addVehicle')}>
+          Añadir Vehiculo
+        </button>
+      </div>
+      {modalType === 'addVehicle' && (
+        <AddVehicle onClose={() => changeState(null)} />
+      )}
+    </Wrapper>
   )
 }
 

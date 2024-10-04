@@ -1,12 +1,17 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import { VEHICLE_BRAND } from '../utils/constants'
 
-const Vehicle = ({ _id, name, plate, parked, icon, alt_name }) => {
+const Vehicle = ({ _id, name, plate, parked, brand, alt_name }) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
     navigate(`/dashboard/vehicles/${_id}`)
   }
+
+  const vehicleLogo =
+    VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
+    VEHICLE_BRAND.POR_DEFECTO.icon
 
   return (
     <Wrapper>
@@ -20,7 +25,7 @@ const Vehicle = ({ _id, name, plate, parked, icon, alt_name }) => {
           </p>
         </div>
         <div className='icon'>
-          <img src={icon} alt={alt_name} className='img' />
+          <img src={vehicleLogo} alt={alt_name} className='img' />
         </div>
       </div>
     </Wrapper>

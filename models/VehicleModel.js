@@ -7,8 +7,8 @@ const VehicleSchema = new mongoose.Schema(
     plate: String,
     brand: {
       type: String,
-      enum: Object.values(VEHICLE_BRAND),
-      default: VEHICLE_BRAND.AUDI,
+      enum: Object.values(VEHICLE_BRAND).map((brand) => brand.name),
+      default: VEHICLE_BRAND.POR_DEFECTO.name,
     },
     parked: {
       type: String,
