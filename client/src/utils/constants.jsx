@@ -4,7 +4,7 @@ import { IoMdKey } from 'react-icons/io'
 import Audi from '../assets/Audi.png'
 import BMW from '../assets/BMW.png'
 import Citroen from '../assets/Citroen.png'
-import Default_2 from '../assets/Default_2.png'
+import Default from '../assets/Default.png'
 import Fiat from '../assets/Fiat.png'
 import Ford from '../assets/Ford.png'
 import Honda from '../assets/Honda.png'
@@ -28,10 +28,10 @@ import Toyota from '../assets/Toyota.png'
 import Volkswagen from '../assets/Volkswagen.png'
 
 export const VEHICLE_BRAND = {
-  POR_DEFECTO: {name: 'Por Defecto', icon: Default_2},
+  POR_DEFECTO: {name: 'Por Defecto', icon: Default},
   AUDI: { name: 'Audi', icon: Audi },
   BMW: { name: 'BMW', icon: BMW },
-  CITROEN: { name: 'Citroën', icon: Citroen },
+  CITROEN: { name: 'Citroen', icon: Citroen },
   FIAT: {name: 'Fiat', icon: Fiat},
   FORD: {name: 'Ford', icon: Ford},
   HONDA: {name: 'Honda', icon: Honda},

@@ -50,14 +50,24 @@ const AddVehicle = ({ onClose }) => {
     <Wrapper>
       <div className='content' ref={modalRef}>
         <Form method='post' className='form'>
-          <h4 className='form-title'>Añadir Vehículo</h4>
+          <h3 className='form-title'>Añadir Vehículo</h3>
           <div className='form-center'>
-            <FormRow type='text' labelText='Nombre' name='name' />
-            <FormRow type='text' labelText='Matrícula' name='plate' />
+            <FormRow
+              type='text'
+              labelText='Nombre'
+              name='name'
+              className='form-row'
+            />
+            <FormRow
+              type='text'
+              labelText='Matrícula'
+              name='plate'
+              className='form-row'
+            />
             <FormRowSelect
               name='brand'
               labelText='Marca'
-              defaultValue={VEHICLE_BRAND.AUDI}
+              defaultValue={VEHICLE_BRAND.POR_DEFECTO}
               list={Object.values(VEHICLE_BRAND)}
             />
             <button
@@ -101,24 +111,51 @@ const Wrapper = styled.div`
   .form-title {
     margin-bottom: 2rem;
   }
+
   .form {
+    background: none;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
     padding: 0;
     max-width: 100%;
   }
+
   .form-row {
     margin-bottom: 0;
   }
+
   .form-center {
     display: grid;
     row-gap: 1rem;
   }
+
   .form-btn {
     align-self: end;
     margin-top: 1rem;
     display: grid;
     place-items: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  input {
+    border: var(--border);
+    border-radius: 5px;
+  }
+
+  select {
+    color: var(--textColor);
+    border: var(--border);
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  option {
+    background: var(--grey-900);
+    color: var(--textColor);
+    border: var(--border);
   }
 `

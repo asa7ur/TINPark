@@ -2,7 +2,7 @@ export const VEHICLE_BRAND = {
   POR_DEFECTO: 'Por Defecto',
   AUDI: 'Audi',
   BMW: 'BMW',
-  CITROEN: 'Citroën',
+  CITROEN: 'Citroen',
   FIAT: 'Fiat',
   FORD: 'Ford',
   HONDA: 'Honda',
