@@ -1,13 +1,40 @@
 {
   "name": "tinpark",
   "version": "1.0.0",
-  "description": "TINPark es una aplicación diseñada para gestionar el acceso vehicular a urbanizaciones, controlando la entrada y salida de coches mediante cámaras de vigilancia y tecnología de reconocimiento de matrículas. Ofrece una solución segura, eficiente y personalizable para mejorar la seguridad y el control en comunidades residenciales.",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup-project": "npm i && cd client && npm i",
+    "server": "nodemon server",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.41.3",
+    "concurrently": "^9.0.1",
+    "cookie-parser": "^1.4.6",
+    "datauri": "^4.1.0",
+    "dayjs": "^1.11.9",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-async-errors": "^3.1.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.8.0",
+    "express-validator": "^7.2.0",
+    "helmet": "^7.0.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nanoid": "^5.0.7",
+    "nodemon": "^3.1.4",
+    "react-toastify": "^10.0.5",
+    "styled-components": "^6.1.13"
+  }
 }

@@ -1,23 +1,53 @@
-import { Link } from 'react-router-dom'
+import { Form, redirect, useNavigation, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { FormRow } from '../components'
+import customFetch from '../utils/customFetch'
+
+export const action = async ({ request }) => {
+  const formData = await request.formData()
+  const data = Object.fromEntries(formData)
+  try {
+    await customFetch.post('/auth/register', data)
+    return redirect('/login')
+  } catch (error) {
+    return error
+  }
+}
 
 const Register = () => {
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'Registrando'
+
   return (
     <Wrapper>
-      <form className='form'>
+      <Form method='post' className='form'>
         <h3>Registrarse</h3>
-        <FormRow type='text' name='nombre' defaultValue='Garik' />
+        <FormRow
+          type='text'
+          name='name'
+          labelText='nombre'
+          defaultValue='Garik'
+        />
         <FormRow
           type='text'
           name='lastName'
           labelText='Apellidos'
           defaultValue='Asatryan'
         />
-        <FormRow type='email' name='correo electrónico' defaultValue='asa7ur@proton.me' />
-        <FormRow type='password' name='contraseña' defaultValue='secret123' />
-        <button type='submit' className='btn btn-block'>
-          enviar
+        <FormRow
+          type='email'
+          name='email'
+          labelText='correo electrónico'
+          defaultValue='asa7ur@proton.me'
+        />
+        <FormRow
+          type='password'
+          name='password'
+          labelText='contraseña'
+          defaultValue='secret123'
+        />
+        <button type='submit' className='btn btn-block' disabled={isSubmitting}>
+          {isSubmitting ? 'Registrando' : 'registrarse'}
         </button>
         <p>
           ¿Ya eres miembro?
@@ -25,7 +55,7 @@ const Register = () => {
             Entrar
           </Link>
         </p>
-      </form>
+      </Form>
     </Wrapper>
   )
 }
@@ -35,6 +65,7 @@ const Wrapper = styled.section`
   min-height: 100vh;
   display: grid;
   align-items: center;
+  padding: 1rem;
 
   h3 {
     text-align: center;

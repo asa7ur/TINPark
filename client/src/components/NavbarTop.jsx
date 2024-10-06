@@ -8,21 +8,19 @@ const NavbarTop = () => {
 
   return (
     <Wrapper>
-      <div className='section'>
-        <div className='section-center'>
-          <h1>Hola, Garik!</h1>
-          {userLink && (
-            <Link to={userLink.url}>
-              <Button
-                className='btn'
-                icon={userLink.icon}
-                url={userLink.url}
-                isUserButton={true}
-                showLabel={false}
-              />
-            </Link>
-          )}
-        </div>
+      <div className='navbar-top'>
+        <h1>Hola, Garik!</h1>
+        {userLink && (
+          <Link to={userLink.url}>
+            <Button
+              className='btn'
+              icon={userLink.icon}
+              url={userLink.url}
+              isUserButton={true}
+              showLabel={false}
+            />
+          </Link>
+        )}
       </div>
     </Wrapper>
   )
@@ -36,15 +34,15 @@ const Wrapper = styled.div`
   z-index: 1000;
   background-color: #1f2937;
 
-  .section {
-    padding-bottom: 0.5rem;
-  }
-
-  .section-center {
+  .navbar-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 0;
+    width: 90vw;
+    margin: 0 auto;
+    max-width: var(--max-width);
+    flex-grow: 1;
+    padding: 1rem 0;
   }
 
   .icon {

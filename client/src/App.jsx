@@ -1,5 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { HomeLayout, Principal, MisVehiculos, Zonas, Vehiculo, Error, Login, Registrarse } from './pages'
+import {
+  HomeLayout,
+  Landing,
+  AllVehicles,
+  Zones,
+  EditVehicle,
+  Error,
+  Login,
+  Register,
+  DashboardLayout,
+} from './pages'
+
+import { action as registerAction } from './pages/Register'
+import { action as loginAction } from './pages/Login'
+import { action as addVehicleAction } from './components/AddVehicle'
+import { loader as dashboardLoader } from './pages/DashboardLayout'
+import { loader as editVehicleLoader } from './pages/EditVehicle'
+import { loader as allVehiclesLoader } from './pages/AllVehicles'
 
 const router = createBrowserRouter([
   {
@@ -9,27 +26,39 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Principal />,
-      },
-      {
-        path: 'misvehiculos',
-        element: <MisVehiculos />,
-      },
-      {
-        path: 'zonas',
-        element: <Zonas />,
-      },
-      {
-        path: 'misvehiculos/:id',
-        element: <Vehiculo />,
+        element: <Landing />,
       },
       {
         path: 'login',
         element: <Login />,
+        action: loginAction,
       },
       {
-        path: 'registrarse',
-        element: <Registrarse />,
+        path: 'register',
+        element: <Register />,
+        action: registerAction,
+      },
+      {
+        path: 'dashboard',
+        element: <DashboardLayout />,
+        loader: dashboardLoader,
+        children: [
+          {
+            path: 'vehicles',
+            element: <AllVehicles />,
+            loader: allVehiclesLoader,
+            action: addVehicleAction,
+          },
+          {
+            path: 'vehicles/:id',
+            element: <EditVehicle />,
+            loader: editVehicleLoader,
+          },
+          {
+            path: 'zones',
+            element: <Zones />,
+          },
+        ],
       },
     ],
   },

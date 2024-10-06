@@ -1,70 +1,85 @@
 import { FaUserCircle, FaCar, FaRegMap, FaBars } from 'react-icons/fa'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
 import { IoMdKey } from 'react-icons/io'
-import icon_1 from '../assets/MercedesBenz.png'
-import icon_2 from '../assets/BMW.png'
-import icon_3 from '../assets/Peugeot.png'
-import icon_4 from '../assets/Audi.png'
+import Audi from '../assets/Audi.png'
+import BMW from '../assets/BMW.png'
+import Citroen from '../assets/Citroen.png'
+import Default from '../assets/Default.png'
+import Fiat from '../assets/Fiat.png'
+import Ford from '../assets/Ford.png'
+import Honda from '../assets/Honda.png'
+import Hyundai from '../assets/Hyundai.png'
+import Jaguar from '../assets/Jaguar.png'
+import Jeep from '../assets/Jeep.png'
+import KIA from '../assets/KIA.png'
+import Land_Rover from '../assets/Land_Rover.png'
+import Lexus from '../assets/Lexus.png'
+import Mazda from '../assets/Mazda.png'
+import Mercedes_Benz from '../assets/Mercedes_Benz.png'
+import Mini from '../assets/Mini.png'
+import Nissan from '../assets/Nissan.png'
+import Opel from '../assets/Opel.png'
+import Peugeot from '../assets/Peugeot.png'
+import Renault from '../assets/Renault.png'
+import Seat from '../assets/Seat.png'
+import Skoda from '../assets/Skoda.png'
+import Tesla from '../assets/Tesla.png'
+import Toyota from '../assets/Toyota.png'
+import Volkswagen from '../assets/Volkswagen.png'
+
+export const VEHICLE_BRAND = {
+  POR_DEFECTO: {name: 'Por Defecto', icon: Default},
+  AUDI: { name: 'Audi', icon: Audi },
+  BMW: { name: 'BMW', icon: BMW },
+  CITROEN: { name: 'Citroen', icon: Citroen },
+  FIAT: {name: 'Fiat', icon: Fiat},
+  FORD: {name: 'Ford', icon: Ford},
+  HONDA: {name: 'Honda', icon: Honda},
+  HYUNDAI: {name: 'Hyundai', icon: Hyundai},
+  JAGUAR: {name: 'Jaguar', icon: Jaguar},
+  JEEP: {name: 'Jeep', icon: Jeep},
+  KIA: {name: 'Kia', icon:KIA},
+  LAND_ROVER: {name: 'Land Rover', icon: Land_Rover},
+  LEXUS: {name: 'Lexus', icon: Lexus},
+  MAZDA: {name: 'Mazda', icon: Mazda},
+  MERCEDES_BENZ: {name: 'Mercedes Benz', icon: Mercedes_Benz},
+  MINI: {name: 'Mini', icon: Mini},
+  NISSAN: {name: 'Nissan', icon: Nissan},
+  OPEL: {name: 'Opel', icon: Opel},
+  PEUGEOT: {name: 'Peugeot', icon: Peugeot},
+  RANGE_ROVER: {name: 'Range Rover', icon: Land_Rover},
+  RENAULT: {name: 'Renault', icon: Renault},
+  SEAT: {name: 'Seat', icon: Seat},
+  SKODA: {name: 'Skoda', icon:Skoda},
+  TESLA: {name: 'Tesla', icon: Tesla},
+  TOYOTA: {name: 'Toyota', icon: Toyota},
+  VOLKSWAGEN: {name: 'Volkswagen', icon: Volkswagen},
+}
 
 export const links = [
   {
     id: 1,
     icon: FaUserCircle,
     label: 'Usuario',
-    url: '/usuario',
+    url: '/dashboard/user',
   },
   {
     id: 2,
     icon: FaCar,
     label: 'Vehículos',
-    url: '/misvehiculos',
+    url: '/dashboard/vehicles',
   },
   {
     id: 3,
     icon: FaRegMap,
     label: 'Zonas',
-    url: '/zonas',
+    url: '/dashboard/zones',
   },
   {
     id: 4,
     icon: FaBars,
     label: 'Ajustes',
-    url: '/ajustes',
-  },
-]
-
-export const vehicles = [
-  {
-    id: 1,
-    name: 'Coche 1',
-    plate: '1234ABC',
-    parked: 'Plaza Virgen de la Amargura',
-    icon: icon_1,
-    alt_name: 'Mercedes Benz',
-  },
-  {
-    id: 2,
-    name: 'Coche 2',
-    plate: '5678DEF',
-    parked: '',
-    icon: icon_2,
-    alt_name: 'BMW',
-  },
-  {
-    id: 3,
-    name: 'Coche 3',
-    plate: '9123GHI',
-    parked: 'Plaza de Armas',
-    icon: icon_3,
-    alt_name: 'Peugeot',
-  },
-  {
-    id: 4,
-    name: 'Coche 4',
-    plate: '4567JKL',
-    parked: 'Viapol',
-    icon: icon_4,
-    alt_name: 'Audi',
+    url: '/dashboard/settings',
   },
 ]
 

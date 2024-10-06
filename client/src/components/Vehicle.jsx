@@ -1,42 +1,44 @@
 import styled from 'styled-components'
-import { vehicles } from '../utils/constants'
 import { useNavigate } from 'react-router-dom'
+import { VEHICLE_BRAND } from '../utils/constants'
 
-const Vehicle = () => {
+const Vehicle = ({ _id, name, plate, parked, brand, alt_name }) => {
   const navigate = useNavigate()
 
-  const handleClick = (id) => {
-    navigate(`/misvehiculos/${id}`)
+  const handleClick = () => {
+    navigate(`/dashboard/vehicles/${_id}`)
   }
+
+  const vehicleLogo =
+    VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
+    VEHICLE_BRAND.POR_DEFECTO.icon
 
   return (
     <Wrapper>
-      {vehicles.map((vehicle) => {
-        const { id, name, plate, parked, icon, alt_name } = vehicle
-        return (
-          <div key={id} className='info' onClick={()=> handleClick(id)}>
-            <div className='text'>
-              <h4>{name}</h4>
-              <h5>Matrícula: {plate}</h5>
-              <p>
-                {parked ? 'En ' : 'Fuera'}
-                {parked && <span className='highlighted'>{parked}</span>}
-              </p>
-            </div>
-            <div className='icon'>
-              <img src={icon} alt={alt_name} className='img' />
-            </div>
-          </div>
-        )
-      })}
+      <div key={_id} className='info' onClick={handleClick}>
+        <div className='text'>
+          <h4>{name}</h4>
+          <h5>Matrícula: {plate}</h5>
+          <p>
+            {parked ? 'En ' : 'Fuera'}
+            {parked && <span className='highlighted'>{parked}</span>}
+          </p>
+        </div>
+        <div className='icon'>
+          <img src={vehicleLogo} alt={alt_name} className='img' />
+        </div>
+      </div>
     </Wrapper>
   )
 }
+
 export default Vehicle
 
 const Wrapper = styled.div`
   .info {
-    margin-top: 2rem;
+    width: 90vw;
+    max-width: var(--max-width);
+    margin-top: 1.5rem;
     padding: 1.25rem;
     display: flex;
     align-items: center;
@@ -67,5 +69,13 @@ const Wrapper = styled.div`
   .icon {
     width: 75px;
     height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img {
+    max-width: 100%; 
+    max-height: 100%;
   }
 `

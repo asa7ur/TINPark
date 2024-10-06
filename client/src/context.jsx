@@ -1,17 +1,17 @@
-import { useReducer, useContext, createContext, useEffect, useCallback } from 'react'
-import globalReducer from './reducer'
 import {
-  SELECT_ZONE,
-  CHANGE_STATE,
-  SET_VEHICLE,
-  SET_VIEWPORT_HEIGHT,
-} from './actions'
+  useReducer,
+  useContext,
+  createContext,
+  useEffect,
+  useCallback,
+} from 'react'
+import globalReducer from './reducer'
+import { SELECT_ZONE, CHANGE_STATE, SET_VIEWPORT_HEIGHT } from './actions'
 
 const initialState = {
   selectedZone: null,
   isModalOpen: false,
   viewportHeight: window.innerHeight,
-  vehicle: null,
   modalType: null,
 }
 
@@ -32,10 +32,6 @@ export const GlobalProvider = ({ children }) => {
     dispatch({ type: SET_VIEWPORT_HEIGHT, payload: window.innerHeight })
   }, [])
 
-  const setVehicle = (vehicle) => {
-    dispatch({ type: SET_VEHICLE, payload: vehicle })
-  }
-
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     return () => {
@@ -51,7 +47,6 @@ export const GlobalProvider = ({ children }) => {
         changeState,
         setViewportHeight: (height) =>
           dispatch({ type: SET_VIEWPORT_HEIGHT, payload: height }),
-        setVehicle,
       }}
     >
       {children}

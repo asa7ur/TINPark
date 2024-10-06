@@ -1,7 +1,6 @@
 import {
   SELECT_ZONE,
   CHANGE_STATE,
-  SET_VEHICLE,
   SET_VIEWPORT_HEIGHT,
 } from './actions'
 
@@ -19,11 +18,6 @@ const globalReducer = (state, action) => {
         ...state,
         isModalOpen: !state.isModalOpen,
         modalType: action.payload,
-      }
-    case SET_VEHICLE:
-      return {
-        ...state,
-        vehicle: action.payload,
       }
     case SET_VIEWPORT_HEIGHT:
       return {
