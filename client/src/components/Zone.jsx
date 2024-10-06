@@ -52,6 +52,7 @@ const Wrapper = styled.div`
     border-radius: 25px;
     border: var(--border);
     background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
     box-shadow: var(--shadow-4);
   }
 

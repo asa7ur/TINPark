@@ -92,11 +92,8 @@ const EditVehicle = () => {
 export default EditVehicle
 
 const Wrapper = styled.main`
-  background: linear-gradient(
-    180deg,
-    var(--primary-500) 0%,
-    var(--primary-950) 100%
-  );
+  background: var(--backgroundColorAlt);
+  color: var(--textColorAlt);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -160,7 +157,7 @@ const Wrapper = styled.main`
     align-items: center;
     gap: 0.5rem;
     width: 90vw;
-    background: var(--backgroundColorAlt);
+    background: var(--backgroundColor);
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem;
     border-radius: 5px;
