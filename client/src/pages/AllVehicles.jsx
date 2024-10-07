@@ -1,4 +1,4 @@
-import { VehiclesContainer, NavbarTop} from '../components'
+import { VehiclesContainer, NavbarTop, NavbarBottom} from '../components'
 import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
 import { useContext, createContext } from 'react'
@@ -20,6 +20,7 @@ const AllVehicles = () => {
     <AllVehiclesContext.Provider value={{ data }}>
       <NavbarTop/>
       <VehiclesContainer />
+      <NavbarBottom/>
     </AllVehiclesContext.Provider>
   )
 }

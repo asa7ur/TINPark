@@ -34,7 +34,7 @@ const VehiclesContainer = () => {
 export default VehiclesContainer
 
 const Wrapper = styled.main`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;

@@ -1,4 +1,5 @@
-import { FaUserCircle, FaCar, FaRegMap, FaBars } from 'react-icons/fa'
+import { FaUserCircle, FaCar, FaMapMarkedAlt, FaBars } from 'react-icons/fa'
+import { FaGear } from 'react-icons/fa6'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
 import { IoMdKey } from 'react-icons/io'
 import Audi from '../assets/Audi.png'
@@ -65,20 +66,26 @@ export const links = [
   },
   {
     id: 2,
+    icon: FaBars,
+    label: 'Ajustes',
+    url: '/dashboard/settings',
+  },
+  {
+    id: 3,
     icon: FaCar,
     label: 'Vehículos',
     url: '/dashboard/vehicles',
   },
   {
-    id: 3,
-    icon: FaRegMap,
+    id: 4,
+    icon: FaMapMarkedAlt,
     label: 'Zonas',
     url: '/dashboard/zones',
   },
   {
-    id: 4,
-    icon: FaBars,
-    label: 'Ajustes',
+    id: 5,
+    icon: FaGear,
+    label: 'Settings',
     url: '/dashboard/settings',
   },
 ]

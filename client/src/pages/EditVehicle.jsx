@@ -119,8 +119,12 @@ const Wrapper = styled.main`
     flex: 1;
 
     .icon {
-      width: 125px;
-      height: 125px;
+      width: 150px;
+      min-height: 125px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      text-align: center;
     }
 
     h1 {
@@ -140,8 +144,8 @@ const Wrapper = styled.main`
 
   .options {
     position: fixed;
-    bottom: 3rem;
-    height: 35vh;
+    bottom: 0;
+    height: 40vh;
     width: 100%;
     background: var(--backgroundColor);
     border-radius: 25px 25px 0 0;

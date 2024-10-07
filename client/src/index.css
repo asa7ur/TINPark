@@ -10,7 +10,8 @@
     --primary-700: #0369a1;
     --primary-800: #075985;
     --primary-900: #0c4a6e;
-    --primary-950: #082f49;
+    --primary-950: #01121b;
+    
     /* grey */
     --grey-50: #f9fafb;
     --grey-100: #f3f4f6;
@@ -24,11 +25,11 @@
     --grey-900: #111827;
     --grey-950: #030712;
     /* rest of vars */
-    --backgroundColor: linear-gradient(180deg, #1f2937 0%, #030712 100%);
-    /* --backgroundColorAlt: linear-gradient(180deg, #e0f2fe 0%, #7dd3fc 100%); */
+    --backgroundColor: linear-gradient(180deg, var(--primary-900) 0%, var(--primary-950) 100%);
     --backgroundColorAlt: var(--primary-100);
     --textColor: var(--grey-100);
     --textColorAlt: var(--grey-900);
+    --textColorHighlighted: var(--primary-400);
     --radius: 0.5rem;
     --spacing: 1px;
     --transition: all 0.3s linear;
@@ -65,7 +66,7 @@ body {
     font-size: 0.875rem;
     height: 100%;
     margin: 0;
-    background: linear-gradient(180deg, #1f2937 0%, #030712 100%);
+    background: var(--backgroundColor);
     background-attachment: fixed;
 }
 
@@ -131,10 +132,16 @@ button {
     cursor: pointer;
 }
 
+
 .button {
     font-size: 1.5rem;
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
+}
+
+.button:hover {
+    background: var(--primary-400);
+    box-shadow: var(--shadow-2);
 }
 
 .btn {
@@ -142,6 +149,10 @@ button {
     margin-top: 0.25rem;
     text-align: center;
     color: var(--textColor);
+}
+
+.user-btn {
+    color: var(--grey-900);
 }
 
 .img {
@@ -164,7 +175,8 @@ button {
 
 .highlighted,
 .active {
-    color: var(--primary-500);
+    color: var(--textColorHighlighted);
+    font-weight: bold;
 }
 
 .form {
@@ -178,10 +190,11 @@ button {
 
 .form-label {
     display: block;
-    font-size: var(--small-text);
-    margin-bottom: 0.75rem;
+    color: var(--textColorAlt);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
-    letter-spacing: var(--letter-spacing);
+    letter-spacing: var(--spacing);
     line-height: 1.5;
 }
 
@@ -193,7 +206,7 @@ button {
     border-radius: var(--border-radius);
     background: var(--backgroundColor);
     border: 1px solid var(--grey-300);
-    color: var(--text-color);
+    color: var(--textColor);
 }
 
 .form-input,
@@ -217,6 +230,6 @@ button {
 
 .form-alert {
     color: var(--red-dark);
-    letter-spacing: var(--letter-spacing);
+    letter-spacing: var(--spacing);
     text-transform: capitalize;
 }

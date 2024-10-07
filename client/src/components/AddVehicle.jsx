@@ -131,12 +131,22 @@ const Wrapper = styled.div`
   }
 
   .form-btn {
-    align-self: end;
     margin-top: 1rem;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    text-align: center;
+  }
+
+  .form-label {
+    color: var(--textColor);
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
   }
 
   input {

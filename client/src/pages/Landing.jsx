@@ -59,13 +59,13 @@ const Wrapper = styled.div`
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-500);
+    color: var(--textColorAlt);
   }
 
   h4 {
     font-size: 1rem;
     margin-bottom: 2rem;
-    color: var(--grey-300);
+    color: var(--textColorAlt);
   }
 
   .buttons {

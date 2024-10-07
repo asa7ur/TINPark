@@ -70,12 +70,14 @@ const Wrapper = styled.section`
   h3 {
     text-align: center;
     margin-bottom: 1.38rem;
+    color: var(--textColorAlt);
   }
 
   p {
     margin-top: 1rem;
     text-align: center;
     line-height: 1.5;
+    color: var(--textColorAlt);
   }
 
   .btn {

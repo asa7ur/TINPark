@@ -50,11 +50,13 @@ const Wrapper = styled.section`
   padding: 1rem;
 
   h3 {
+    color: var(--textColorAlt);
     text-align: center;
     margin-bottom: 1.38rem;
   }
 
   p {
+    color: var(--textColorAlt);
     margin-top: 1rem;
     text-align: center;
     line-height: 1.5;

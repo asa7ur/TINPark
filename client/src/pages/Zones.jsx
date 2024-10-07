@@ -12,6 +12,7 @@ const Zones = () => {
         <h2>Zonas disponibles</h2>
         <Zone />
       </div>
+      <NavbarBottom/>
     </Wrapper>
   )
 }
