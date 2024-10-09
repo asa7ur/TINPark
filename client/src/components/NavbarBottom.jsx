@@ -8,14 +8,17 @@ const NavbarBottom = () => {
 
   return (
     <Wrapper>
-      {navbarLinks.map((link) => {
-        const { id, icon, url } = link
-        return (
-          <NavLink to={url} className='nav-button' key={id} end>
-            <Button url={url} icon={icon} />
-          </NavLink>
-        )
-      })}
+      <div className='navbar'>
+        {navbarLinks.map((link) => {
+          const { id, icon, url } = link
+          return (
+            <NavLink to={url} className='nav-button' key={id} end>
+              <Button url={url} icon={icon} />
+            </NavLink>
+          )
+        })}
+      </div>
+      <div className='overlay' />
     </Wrapper>
   )
 }
@@ -23,18 +26,40 @@ const NavbarBottom = () => {
 export default NavbarBottom
 
 const Wrapper = styled.div`
-  position: sticky;
-  margin: 0 auto;
+  position: fixed;
   bottom: 1rem;
-  z-index: 99;
-  width: 150px;
-  background: var(--backgroundColor);
-  color: var(--textColor);
-  padding: 0.75rem 1.5rem;
-  border: var(--border);
-  border-radius: 25px;
+  left: 0;
+  right: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  
+  .navbar {
+    position: sticky;
+    width: 150px; 
+    background: var(--backgroundColor);
+    color: var(--textColor);
+    padding: 0.75rem 1.5rem;
+    border: var(--border);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 99;
+  }
+
+  .overlay {
+    position: fixed; 
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    height: 5rem;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    z-index: 98; 
+  }
 `
