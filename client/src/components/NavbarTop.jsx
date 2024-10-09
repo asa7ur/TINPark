@@ -58,7 +58,7 @@ const Wrapper = styled.nav`
     margin: 0 auto;
     max-width: var(--max-width);
     flex-grow: 1;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
   }
 
   .icon {
