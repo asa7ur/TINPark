@@ -66,6 +66,8 @@ body {
     font-size: 0.875rem;
     height: 100%;
     margin: 0;
+    background: var(--backgroundColor);
+    background-attachment: fixed;
 }
 
 h1 {
@@ -125,7 +127,7 @@ hr {
 button {
     font-family: inherit;
     color: var(--textColor);
-    background: var(--backgroundColorAlt);
+    background: var(--backgroundColor);
     border: var(--border);
     cursor: pointer;
 }
