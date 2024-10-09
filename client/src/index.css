@@ -185,7 +185,7 @@ button:hover{
 
 .form {
     width: 100%;
-    background: var(--backgroundColorAlt);
+    background: var(--backgroundColor);
     border-radius: var(--radius);
     box-shadow: var(--shadow-2);
     padding: 2rem 2.5rem;
@@ -194,7 +194,7 @@ button:hover{
 
 .form-label {
     display: block;
-    color: var(--textColorAlt);
+    color: var(--textColor);
     font-size: 1rem;
     margin-bottom: 0.5rem;
     text-transform: capitalize;
@@ -210,7 +210,7 @@ button:hover{
     border-radius: var(--border-radius);
     background: var(--grey-200);
     border: 1px solid var(--grey-300);
-    color: var(--textColor);
+    color: var(--textColorAlt);
 }
 
 .form-input,

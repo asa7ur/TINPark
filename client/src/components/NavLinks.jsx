@@ -19,7 +19,7 @@ const NavLinks = ({ isSidebar }) => {
             <span className='icon'>
               <Icon />
             </span>
-            {label}
+            <span className='label'>{label}</span>
           </NavLink>
         )
       })}

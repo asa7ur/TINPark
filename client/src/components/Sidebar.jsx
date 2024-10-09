@@ -88,15 +88,19 @@ const Wrapper = styled.aside`
     align-items: center;
     color: var(--textColorAlt);
     padding: 1rem 0;
-    padding-left: 2rem;
+    padding-left: 1.5rem;
     text-transform: capitalize;
     transition: padding-left 0.3s ease-in-out;
   }
 
   .nav-link:hover {
-    padding-left: 2.5rem;
+    padding-left: 2rem;
     color: var(--primary-500);
     transition: var(--transition);
+  }
+
+  .label{
+    font-size: 1.2rem;
   }
 
   .icon {

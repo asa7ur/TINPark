@@ -43,20 +43,19 @@ const Login = () => {
 }
 export default Login
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   align-items: center;
   padding: 1rem;
+  background: var(--backgroundColorAlt);
 
   h3 {
-    color: var(--textColorAlt);
     text-align: center;
     margin-bottom: 1.38rem;
   }
 
   p {
-    color: var(--textColorAlt);
     margin-top: 1rem;
     text-align: center;
     line-height: 1.5;
