@@ -105,7 +105,5 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    background: var(--backgroundColorAlt);
-    color: var(--textColorAlt);
   }
 `

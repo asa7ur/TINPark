@@ -48,6 +48,5 @@ const Wrapper = styled.main`
     border-radius: 25px;
     font-size: 1rem;
     margin-top: 1rem;
-    background: var(--primary-500);
   }
 `

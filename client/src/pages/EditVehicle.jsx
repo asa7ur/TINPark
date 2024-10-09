@@ -166,7 +166,8 @@ const Wrapper = styled.main`
     align-items: center;
     gap: 0.5rem;
     width: 90vw;
-    background: var(--backgroundColor);
+    background: var(--grey-200);
+    color: var(--grey-900);
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem;
     border-radius: 5px;
