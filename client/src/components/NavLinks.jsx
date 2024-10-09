@@ -2,8 +2,9 @@ import { useDashboardContext } from '../pages/DashboardLayout'
 import { links } from '../utils/constants'
 import { NavLink } from 'react-router-dom'
 
-const NavLinks = ({ isSidebar }) => {
+const NavLinks = ({ isSidebar, onLinkClick }) => {
   const { toggleSidebar } = useDashboardContext()
+
   return (
     <div className='nav-links'>
       {links.map((link) => {
@@ -13,7 +14,14 @@ const NavLinks = ({ isSidebar }) => {
             to={url}
             key={label}
             className='nav-link'
-            onClick={isSidebar ? null : toggleSidebar}
+            onClick={() => {
+              if (isSidebar) {
+                toggleSidebar()
+              }
+              if (onLinkClick) {
+                onLinkClick()
+              }
+            }}
             end
           >
             <span className='icon'>

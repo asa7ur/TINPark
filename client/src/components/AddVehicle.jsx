@@ -1,12 +1,8 @@
 import styled from 'styled-components'
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import { FormRow, FormRowSelect } from '../components'
 import { VEHICLE_BRAND } from '../../../utils/constants'
-import {
-  Form,
-  useNavigation,
-  redirect,
-} from 'react-router-dom'
+import { Form, useNavigation, redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import customFetch from '../utils/customFetch'
 
@@ -17,7 +13,7 @@ export const action = async ({ request }) => {
     const response = await customFetch.post('/vehicles', data)
     console.log('API Response:', response)
     toast.success('Vehiculo Añadido')
-    return redirect('/dashboard/vehicles')
+    return redirect('/dashboard/vehicles') // This will trigger the form submission success.
   } catch (error) {
     console.error('Error:', error)
     toast.error(error?.response?.data?.msg)
@@ -27,7 +23,10 @@ export const action = async ({ request }) => {
 
 const AddVehicle = ({ onClose }) => {
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === 'Añadiendo'
+  const isSubmitting = navigation.state === 'submitting'
+
+  const [isSubmitted, setIsSubmitted] = useState(false) // Track form submission success.
+  
   const modalRef = useRef(null)
 
   const handleClickOutside = useCallback(
@@ -46,10 +45,22 @@ const AddVehicle = ({ onClose }) => {
     }
   }, [handleClickOutside])
 
+  // Close modal when the form is successfully submitted
+  useEffect(() => {
+    if (!isSubmitting && isSubmitted) {
+      onClose()
+    }
+  }, [isSubmitting, isSubmitted, onClose])
+
+  // Form submit handler to set submitted state
+  const handleSubmit = (e) => {
+    setIsSubmitted(true) // Set submitted state when form is submitted.
+  }
+
   return (
     <Wrapper>
       <div className='content' ref={modalRef}>
-        <Form method='post' className='form'>
+        <Form method='post' className='form' onSubmit={handleSubmit}>
           <h3 className='form-title'>Añadir Vehículo</h3>
           <div className='form-center'>
             <FormRow
@@ -148,7 +159,7 @@ const Wrapper = styled.div`
   }
 
   select {
-    color: var(--textColor);
+    color: var(--textColorAlt);
     border: var(--border);
     border-radius: 5px;
     padding: 0.5rem;
@@ -157,7 +168,7 @@ const Wrapper = styled.div`
   }
 
   option {
-    background: var(--grey-900);
+    background: var(--grey-100);
     color: var(--textColor);
     border: var(--border);
   }

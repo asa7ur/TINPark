@@ -2,20 +2,39 @@ import styled from 'styled-components'
 import NavLinks from './NavLinks'
 import Logo from './Logo'
 import { useDashboardContext } from '../pages/DashboardLayout'
+import { useEffect, useRef } from 'react'
 
 const Sidebar = () => {
-  const { showSidebar } = useDashboardContext()
+  const { showSidebar, toggleSidebar } = useDashboardContext()
+  const sidebarRef = useRef(null)
+
+  const handleClickOutside = (event) => {
+    if(sidebarRef.current && !sidebarRef.current.contains(event.target)){
+      toggleSidebar()
+    }
+  }
+
+  useEffect(() => {
+    if(showSidebar) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else{
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showSidebar])
 
   return (
     <Wrapper>
       <div
         className={
           showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
-        }
+        } ref= {sidebarRef}
       >
         <div className='content'>
           <header>{/* <Logo /> */}</header>
-          <NavLinks isSidebar />
+          <NavLinks isSidebar onLinkClick={toggleSidebar} />
         </div>
       </div>
       {showSidebar && (
