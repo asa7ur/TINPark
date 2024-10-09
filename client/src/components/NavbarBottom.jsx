@@ -4,7 +4,7 @@ import Button from './Button'
 import { NavLink } from 'react-router-dom'
 
 const NavbarBottom = () => {
-  const navbarLinks = links.filter((link) => link.id > 2)
+  const navbarLinks = links.filter((link) => link.id > 1)
 
   return (
     <Wrapper>
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   position: sticky;
   margin: 0 auto;
   bottom: 1rem;
-  z-index: 1000;
+  z-index: 99;
   width: 150px;
   background: var(--backgroundColor);
   color: var(--textColor);

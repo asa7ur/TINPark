@@ -71,7 +71,8 @@ const Wrapper = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--textColor);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,5 +105,7 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+    background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
   }
 `

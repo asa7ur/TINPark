@@ -6,6 +6,7 @@ import { useGlobalContext } from '../context'
 import { CarState } from '../components'
 import { inside, outside, VEHICLE_BRAND } from '../utils/constants'
 import customFetch from '../utils/customFetch'
+import background from '../assets/Background_3.jpg'
 
 export const loader = async ({ params }) => {
   try {
@@ -92,8 +93,12 @@ const EditVehicle = () => {
 export default EditVehicle
 
 const Wrapper = styled.main`
-  background: var(--backgroundColorAlt);
-  color: var(--textColorAlt);
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--textColor);
   height: 100vh;
   display: flex;
   flex-direction: column;

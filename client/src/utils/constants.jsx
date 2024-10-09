@@ -60,33 +60,27 @@ export const VEHICLE_BRAND = {
 export const links = [
   {
     id: 1,
-    icon: FaUserCircle,
     label: 'Usuario',
     url: '/dashboard/user',
+    icon: FaUserCircle,
   },
   {
     id: 2,
-    icon: FaBars,
-    label: 'Ajustes',
-    url: '/dashboard/settings',
+    label: 'Vehículos',
+    url: '/dashboard/vehicles',
+    icon: FaCar,
   },
   {
     id: 3,
-    icon: FaCar,
-    label: 'Vehículos',
-    url: '/dashboard/vehicles',
+    label: 'Zonas',
+    url: '/dashboard/zones',
+    icon: FaMapMarkedAlt,
   },
   {
     id: 4,
-    icon: FaMapMarkedAlt,
-    label: 'Zonas',
-    url: '/dashboard/zones',
-  },
-  {
-    id: 5,
-    icon: FaGear,
-    label: 'Settings',
+    label: 'Ajustes',
     url: '/dashboard/settings',
+    icon: FaGear,
   },
 ]
 

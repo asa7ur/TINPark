@@ -2,25 +2,19 @@ import styled from 'styled-components'
 import { links } from '../utils/constants'
 import Button from './Button'
 import { NavLink } from 'react-router-dom'
+import { FaBars } from 'react-icons/fa'
+import { useDashboardContext } from '../pages/DashboardLayout'
 
 const NavbarTop = () => {
   const userLink = links.find((link) => link.id === 1)
-  const sidebarLink = links.find((link) => link.id === 2)
+  const { toggleSidebar } = useDashboardContext()
 
   return (
     <Wrapper>
-      
       <div className='navbar-top'>
-        {sidebarLink && (
-          <NavLink
-            to={sidebarLink.url}
-            className='nav-button'
-            key={sidebarLink.id}
-            end
-          >
-            <Button url={sidebarLink.url} icon={sidebarLink.icon} />
-          </NavLink>
-        )}
+        <button type='button' className='toggle-btn' onClick={toggleSidebar}>
+          <FaBars />
+        </button>
         <div className='user'>
           <div className='image'>
             {userLink && (
@@ -44,11 +38,16 @@ const NavbarTop = () => {
 }
 export default NavbarTop
 
-const Wrapper = styled.div`
+const Wrapper = styled.nav`
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(180deg, var(--primary-900) 0%, #0b4567 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0) 100%
+  );
   color: var(--textColor);
 
   .navbar-top {
@@ -85,5 +84,13 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+  }
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: var(--textColor);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
   }
 `
