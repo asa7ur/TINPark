@@ -26,7 +26,7 @@ const NavbarBottom = () => {
 export default NavbarBottom
 
 const Wrapper = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 1rem;
   left: 0;
   right: 0;
