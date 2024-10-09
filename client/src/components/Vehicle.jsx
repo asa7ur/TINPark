@@ -17,7 +17,7 @@ const Vehicle = ({ _id, name, plate, parked, brand, alt_name }) => {
     <Wrapper>
       <div key={_id} className='info' onClick={handleClick}>
         <div className='text'>
-          <h4>{name}</h4>
+          <h3>{name}</h3>
           <h5>Matrícula: {plate}</h5>
           <p>
             {parked ? 'En ' : 'Fuera'}
@@ -46,11 +46,12 @@ const Wrapper = styled.div`
     border-radius: 25px;
     border: var(--border);
     background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
     box-shadow: var(--shadow-4);
     cursor: pointer;
   }
 
-  h4 {
+  h3 {
     margin-bottom: 0.5rem;
   }
 
@@ -68,7 +69,7 @@ const Wrapper = styled.div`
 
   .icon {
     width: 75px;
-    height: 75px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;

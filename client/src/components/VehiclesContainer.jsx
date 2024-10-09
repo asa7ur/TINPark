@@ -7,10 +7,10 @@ const VehiclesContainer = () => {
   const { data } = useAllVehiclesContext()
   const { vehicles } = data
 
-  const { viewportHeight, modalType, changeState } = useGlobalContext()
+  const { modalType, changeState } = useGlobalContext()
 
   return (
-    <Wrapper style={{ height: `${viewportHeight}px` }}>
+    <Wrapper>
       <div className='section-center'>
         <h2>Tus Vehículos</h2>
         {vehicles.length === 0 ? (
@@ -34,10 +34,9 @@ const VehiclesContainer = () => {
 export default VehiclesContainer
 
 const Wrapper = styled.main`
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  flex-grow: 1;
 
   h2 {
     padding-top: 1rem;
@@ -49,6 +48,5 @@ const Wrapper = styled.main`
     border-radius: 25px;
     font-size: 1rem;
     margin-top: 1rem;
-    background: var(--primary-500);
   }
 `

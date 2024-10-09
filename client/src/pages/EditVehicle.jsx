@@ -6,6 +6,7 @@ import { useGlobalContext } from '../context'
 import { CarState } from '../components'
 import { inside, outside, VEHICLE_BRAND } from '../utils/constants'
 import customFetch from '../utils/customFetch'
+import background from '../assets/Background_3.jpg'
 
 export const loader = async ({ params }) => {
   try {
@@ -92,11 +93,12 @@ const EditVehicle = () => {
 export default EditVehicle
 
 const Wrapper = styled.main`
-  background: linear-gradient(
-    180deg,
-    var(--primary-500) 0%,
-    var(--primary-950) 100%
-  );
+  background-image: url(${background});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--textColor);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -122,8 +124,12 @@ const Wrapper = styled.main`
     flex: 1;
 
     .icon {
-      width: 125px;
-      height: 125px;
+      width: 150px;
+      min-height: 125px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      text-align: center;
     }
 
     h1 {
@@ -143,8 +149,8 @@ const Wrapper = styled.main`
 
   .options {
     position: fixed;
-    bottom: 3rem;
-    height: 35vh;
+    bottom: 0;
+    height: 40vh;
     width: 100%;
     background: var(--backgroundColor);
     border-radius: 25px 25px 0 0;
@@ -160,7 +166,8 @@ const Wrapper = styled.main`
     align-items: center;
     gap: 0.5rem;
     width: 90vw;
-    background: var(--backgroundColorAlt);
+    background: var(--grey-200);
+    color: var(--grey-900);
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem;
     border-radius: 5px;

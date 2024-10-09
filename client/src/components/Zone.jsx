@@ -28,7 +28,6 @@ const Zone = () => {
                 height='150'
                 style={{ border: 0 }}
                 allowFullScreen
-                loading='lazy'
                 referrerPolicy='no-referrer-when-downgrade'
               ></iframe>
             </div>
@@ -52,11 +51,13 @@ const Wrapper = styled.div`
     border-radius: 25px;
     border: var(--border);
     background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
     box-shadow: var(--shadow-4);
   }
 
   h4 {
     margin-bottom: 0.5rem;
+    line-height: normal;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -27,7 +27,7 @@ export const action = async ({ request }) => {
 
 const AddVehicle = ({ onClose }) => {
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === 'añadiendo'
+  const isSubmitting = navigation.state === 'Añadiendo'
   const modalRef = useRef(null)
 
   const handleClickOutside = useCallback(
@@ -75,7 +75,7 @@ const AddVehicle = ({ onClose }) => {
               className='btn btn-block form-btn'
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'añadiendo' : 'añadir'}
+              {isSubmitting ? 'Añadiendo' : 'Añadir'}
             </button>
           </div>
         </Form>
@@ -109,7 +109,7 @@ const Wrapper = styled.div`
   }
 
   .form-title {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .form {
@@ -131,12 +131,15 @@ const Wrapper = styled.div`
   }
 
   .form-btn {
-    align-self: end;
     margin-top: 1rem;
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    text-align: center;
+  }
+
+  .form-label {
+    color: var(--textColor);
   }
 
   input {

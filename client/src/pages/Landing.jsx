@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--backgroundColor);
+  background: var(--backgroundColorAlt);
   color: var(--textColor);
   padding: 1rem;
 
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--backgroundColorAlt);
+    background: var(--backgroundColor);
     padding: 1.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow-4);
@@ -59,13 +59,11 @@ const Wrapper = styled.div`
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--primary-500);
   }
 
   h4 {
     font-size: 1rem;
     margin-bottom: 2rem;
-    color: var(--grey-300);
   }
 
   .buttons {

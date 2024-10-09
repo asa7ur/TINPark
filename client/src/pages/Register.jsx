@@ -61,11 +61,12 @@ const Register = () => {
 }
 export default Register
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   align-items: center;
   padding: 1rem;
+  background: var(--backgroundColorAlt);
 
   h3 {
     text-align: center;
