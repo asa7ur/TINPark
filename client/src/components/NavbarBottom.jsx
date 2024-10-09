@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   
   .navbar {
     position: sticky;
-    width: 150px; 
+    width: auto; 
     background: var(--backgroundColor);
     color: var(--textColor);
     padding: 0.75rem 1.5rem;

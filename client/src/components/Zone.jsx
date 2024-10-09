@@ -58,6 +58,7 @@ const Wrapper = styled.div`
 
   h4 {
     margin-bottom: 0.5rem;
+    line-height: normal;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
