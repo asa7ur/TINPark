@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser'
 
 // routers
 import vehicleRouter from './routes/vehicleRouter.js'
+import zoneRouter from './routes/zoneRouter.js'
 import authRouter from './routes/authRouter.js'
 import userRouter from './routes/userRouter.js'
 
@@ -34,6 +35,7 @@ app.get('/api/v1/test', (req, res) => {
 // checking for errors
 
 app.use('/api/v1/vehicles', authenticateUser, vehicleRouter)
+app.use('/api/v1/zones', authenticateUser, zoneRouter)
 app.use('/api/v1/users', authenticateUser, userRouter)
 app.use('/api/v1/auth', authRouter)
 

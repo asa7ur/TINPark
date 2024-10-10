@@ -8,6 +8,7 @@ import { VEHICLE_BRAND} from '../utils/constants.js'
 import mongoose from 'mongoose'
 import Vehicle from '../models/VehicleModel.js'
 import User from '../models/UserModel.js'
+import Zone from '../models/ZoneModel.js'
 
 const withValidationErrors = (validateValues) => {
   return [
@@ -19,7 +20,7 @@ const withValidationErrors = (validateValues) => {
 
         const firstMessage = errorMessages[0]
         console.log(Object.getPrototypeOf(firstMessage))
-        if (errorMessages[0].startsWith('no vehicle')) {
+        if (errorMessages[0].startsWith('no vehicle' || 'no zone')) {
           throw new NotFoundError(errorMessages)
         }
         if (errorMessages[0].startsWith('not authorized')) {
@@ -40,7 +41,13 @@ export const validateVehicleInput = withValidationErrors([
     .withMessage('se requiere la marca del vehiculo'),
 ])
 
-export const validateIdParam = withValidationErrors([
+export const validateZoneInput = withValidationErrors([
+  body('name').notEmpty().withMessage('se requiere el nombre'),
+  body('totalSpaces').notEmpty().withMessage('se requiere el numero de espacios disponibles'),
+  body('map').notEmpty().withMessage('se requiere el enlace del mapa'),
+])
+
+export const validateVehicleIdParam = withValidationErrors([
   param('id').custom(async (value, { req }) => {
     const isValidMongoId = mongoose.Types.ObjectId.isValid(value)
     if (!isValidMongoId) throw new BadRequestError('invalid MongoDB id')
@@ -50,6 +57,19 @@ export const validateIdParam = withValidationErrors([
     const isAdmin = req.user.role === 'admin'
     const isOwner = req.user.userId === vehicle.createdBy.toString()
     if (!isAdmin && !isOwner)
+      throw new UnauthorizedError('not authorized ot access this route')
+  }),
+])
+
+export const validateZoneIdParam = withValidationErrors([
+  param('id').custom(async (value, { req }) => {
+    const isValidMongoId = mongoose.Types.ObjectId.isValid(value)
+    if (!isValidMongoId) throw new BadRequestError('invalid MongoDB id')
+
+    const zone = await Zone.findById(value)
+    if (!zone) throw new NotFoundError(`no zone with id ${value}`)
+    const isAdmin = req.user.role === 'admin'
+    if (!isAdmin)
       throw new UnauthorizedError('not authorized ot access this route')
   }),
 ])

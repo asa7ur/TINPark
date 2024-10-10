@@ -11,7 +11,7 @@ import {
 
 import {
   validateVehicleInput,
-  validateIdParam,
+  validateVehicleIdParam,
 } from '../middleware/validationMiddleware.js'
 
 // router.get('/', getAllVehicles)
@@ -21,8 +21,8 @@ router.route('/').get(getAllVehicles).post(validateVehicleInput, createVehicle)
 
 router
   .route('/:id')
-  .get(validateIdParam, getVehicle)
-  .patch(validateVehicleInput, validateIdParam, updateVehicle)
-  .delete(validateIdParam, deleteVehicle)
+  .get(validateVehicleIdParam, getVehicle)
+  .patch(validateVehicleInput, validateVehicleIdParam, updateVehicle)
+  .delete(validateVehicleIdParam, deleteVehicle)
 
 export default router

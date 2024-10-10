@@ -1,4 +1,4 @@
-import { FaUserCircle, FaCar, FaMapMarkedAlt, FaBars } from 'react-icons/fa'
+import { FaUserCircle, FaCar, FaMapMarkedAlt } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
 import { IoMdKey } from 'react-icons/io'
@@ -29,32 +29,32 @@ import Toyota from '../assets/Toyota.png'
 import Volkswagen from '../assets/Volkswagen.png'
 
 export const VEHICLE_BRAND = {
-  POR_DEFECTO: {name: 'Por Defecto', icon: Default},
+  POR_DEFECTO: { name: 'Por Defecto', icon: Default },
   AUDI: { name: 'Audi', icon: Audi },
   BMW: { name: 'BMW', icon: BMW },
   CITROEN: { name: 'Citroen', icon: Citroen },
-  FIAT: {name: 'Fiat', icon: Fiat},
-  FORD: {name: 'Ford', icon: Ford},
-  HONDA: {name: 'Honda', icon: Honda},
-  HYUNDAI: {name: 'Hyundai', icon: Hyundai},
-  JAGUAR: {name: 'Jaguar', icon: Jaguar},
-  JEEP: {name: 'Jeep', icon: Jeep},
-  KIA: {name: 'Kia', icon:KIA},
-  LAND_ROVER: {name: 'Land Rover', icon: Land_Rover},
-  LEXUS: {name: 'Lexus', icon: Lexus},
-  MAZDA: {name: 'Mazda', icon: Mazda},
-  MERCEDES_BENZ: {name: 'Mercedes Benz', icon: Mercedes_Benz},
-  MINI: {name: 'Mini', icon: Mini},
-  NISSAN: {name: 'Nissan', icon: Nissan},
-  OPEL: {name: 'Opel', icon: Opel},
-  PEUGEOT: {name: 'Peugeot', icon: Peugeot},
-  RANGE_ROVER: {name: 'Range Rover', icon: Land_Rover},
-  RENAULT: {name: 'Renault', icon: Renault},
-  SEAT: {name: 'Seat', icon: Seat},
-  SKODA: {name: 'Skoda', icon:Skoda},
-  TESLA: {name: 'Tesla', icon: Tesla},
-  TOYOTA: {name: 'Toyota', icon: Toyota},
-  VOLKSWAGEN: {name: 'Volkswagen', icon: Volkswagen},
+  FIAT: { name: 'Fiat', icon: Fiat },
+  FORD: { name: 'Ford', icon: Ford },
+  HONDA: { name: 'Honda', icon: Honda },
+  HYUNDAI: { name: 'Hyundai', icon: Hyundai },
+  JAGUAR: { name: 'Jaguar', icon: Jaguar },
+  JEEP: { name: 'Jeep', icon: Jeep },
+  KIA: { name: 'Kia', icon: KIA },
+  LAND_ROVER: { name: 'Land Rover', icon: Land_Rover },
+  LEXUS: { name: 'Lexus', icon: Lexus },
+  MAZDA: { name: 'Mazda', icon: Mazda },
+  MERCEDES_BENZ: { name: 'Mercedes Benz', icon: Mercedes_Benz },
+  MINI: { name: 'Mini', icon: Mini },
+  NISSAN: { name: 'Nissan', icon: Nissan },
+  OPEL: { name: 'Opel', icon: Opel },
+  PEUGEOT: { name: 'Peugeot', icon: Peugeot },
+  RANGE_ROVER: { name: 'Range Rover', icon: Land_Rover },
+  RENAULT: { name: 'Renault', icon: Renault },
+  SEAT: { name: 'Seat', icon: Seat },
+  SKODA: { name: 'Skoda', icon: Skoda },
+  TESLA: { name: 'Tesla', icon: Tesla },
+  TOYOTA: { name: 'Toyota', icon: Toyota },
+  VOLKSWAGEN: { name: 'Volkswagen', icon: Volkswagen },
 }
 
 export const links = [
