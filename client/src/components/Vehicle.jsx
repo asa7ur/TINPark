@@ -45,8 +45,8 @@ const Wrapper = styled.div`
     justify-content: space-between;
     border-radius: 25px;
     border: var(--border);
-    background: var(--backgroundColor);
-    color: var(--textColor);
+    background: var(--backgroundColorAlt);
+    color: var(--textColorAlt);
     box-shadow: var(--shadow-4);
     cursor: pointer;
   }
