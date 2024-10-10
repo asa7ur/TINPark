@@ -50,8 +50,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     border-radius: 25px;
     border: var(--border);
-    background: var(--backgroundColorAlt);
-    color: var(--textColorAlt);
+    background: var(--backgroundColor);
+    color: var(--textColor);
     box-shadow: var(--shadow-4);
   }
 
