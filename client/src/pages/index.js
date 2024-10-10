@@ -1,7 +1,7 @@
 export { default as HomeLayout } from './HomeLayout'
 export { default as Landing } from './Landing'
 export { default as AllVehicles } from './AllVehicles'
-export { default as Zones } from './Zones'
+export { default as AllZones } from './AllZones'
 export { default as EditVehicle } from './EditVehicle'
 export { default as User } from './User'
 export { default as Error } from './Error'

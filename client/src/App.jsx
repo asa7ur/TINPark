@@ -3,7 +3,7 @@ import {
   HomeLayout,
   Landing,
   AllVehicles,
-  Zones,
+  AllZones,
   EditVehicle,
   Error,
   Login,
@@ -17,6 +17,7 @@ import { action as addVehicleAction } from './components/AddVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
 import { loader as editVehicleLoader } from './pages/EditVehicle'
 import { loader as allVehiclesLoader } from './pages/AllVehicles'
+import { loader as allZonesLoader } from './pages/AllZones'
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'zones',
-            element: <Zones />,
+            element: <AllZones />,
+            loader: allZonesLoader,
           },
         ],
       },

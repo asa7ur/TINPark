@@ -1,39 +1,32 @@
 import styled from 'styled-components'
-import { zones } from '../utils/constants'
 
-const Zone = () => {
+const Zone = ({ _id, name, freeSpaces, map }) => {
   return (
     <Wrapper>
-      {zones.map((zone) => {
-        const { name, car, free_space, map } = zone
-        return (
-          <div className='info' key={name}>
-            <div className='text'>
-              <h4>{name}</h4>
-              <h5>
-                <span className={car ? 'highlighted' : ''}>
-                  {car ? car : 'Ningún vehículo'}
-                </span>{' '}
-                está aparcado aquí
-              </h5>
-              <p>
-                Hay <span className='highlighted'>{free_space}</span> sitios
-                libres
-              </p>
-            </div>
-            <div className='map'>
-              <iframe
-                src={map}
-                width='100%'
-                height='150'
-                style={{ border: 0 }}
-                allowFullScreen
-                referrerPolicy='no-referrer-when-downgrade'
-              ></iframe>
-            </div>
-          </div>
-        )
-      })}
+      <div className='info' key={_id}>
+        <div className='text'>
+          <h4>{name}</h4>
+          {/* <h5>
+            <span className={car ? 'highlighted' : ''}>
+              {car ? car : 'Ningún vehículo'}
+            </span>{' '}
+            está aparcado aquí
+          </h5> */}
+          <p>
+            Hay <span className='highlighted'>{freeSpaces}</span> sitios libres
+          </p>
+        </div>
+        <div className='map'>
+          <iframe
+            src={map}
+            width='100%'
+            height='150'
+            style={{ border: 0 }}
+            allowFullScreen
+            referrerPolicy='no-referrer-when-downgrade'
+          ></iframe>
+        </div>
+      </div>
     </Wrapper>
   )
 }
