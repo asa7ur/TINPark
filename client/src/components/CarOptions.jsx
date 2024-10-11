@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { useGlobalContext } from '../context'
+import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const CarOptions = ({ options }) => {
-  const { changeState } = useGlobalContext()
+  const { handleModalChange } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -12,7 +12,7 @@ const CarOptions = ({ options }) => {
           className='option'
           onClick={
             option.text === 'Corregir el estado'
-              ? () => changeState('carState')
+              ? () => handleModalChange('carState')
               : undefined
           }
         >

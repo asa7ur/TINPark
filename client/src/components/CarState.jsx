@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { useEffect, useRef, useCallback } from 'react'
 import { zones } from '../utils/constants'
-import { useGlobalContext } from '../context'
+import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const CarState = ({ onClose }) => {
-  const { selectedZone, selectZone } = useGlobalContext()
+  const { selectedZone, setSelectedZone } = useEditVehicleContext()
   const modalRef = useRef(null)
 
   const handleRadioChange = (e) => {
-    selectZone(e.target.value)
+    setSelectedZone(e.target.value)
   }
 
   const handleClickOutside = useCallback(

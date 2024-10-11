@@ -2,18 +2,15 @@ import styled from 'styled-components'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useEditVehicleContext } from '../pages/EditVehicle'
+import { VEHICLE_BRAND } from '../utils/constants'
 import { CarState } from '../components'
-import { VEHICLE_BRAND, inside, outside } from '../utils/constants'
-import { useGlobalContext } from '../context'
 
 const EditVehicleContainer = () => {
-  const { vehicle } = useEditVehicleContext()
-  const { modalType, changeState, viewportHeight } = useGlobalContext()
+  const { vehicle, modalType, handleModalChange, viewportHeight } =
+    useEditVehicleContext()
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
-  const options = parked ? inside : outside
-
   const vehicleLogo =
     VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
     VEHICLE_BRAND.POR_DEFECTO.icon
@@ -35,7 +32,7 @@ const EditVehicleContainer = () => {
         </div>
       </div>
       {modalType === 'carState' && (
-        <CarState onClose={() => changeState(null)} />
+        <CarState onClose={() => handleModalChange(null)} />
       )}
     </Wrapper>
   )

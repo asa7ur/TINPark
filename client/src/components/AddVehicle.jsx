@@ -3,7 +3,6 @@ import { useEffect, useRef, useCallback, useState } from 'react'
 import { FormRow, FormRowSelect } from '../components'
 import { VEHICLE_BRAND } from '../../../utils/constants'
 import { Form, useNavigation, redirect } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import customFetch from '../utils/customFetch'
 
 export const action = async ({ request }) => {
@@ -12,11 +11,9 @@ export const action = async ({ request }) => {
   try {
     const response = await customFetch.post('/vehicles', data)
     console.log('API Response:', response)
-    toast.success('Vehiculo Añadido')
     return redirect('/dashboard/vehicles') // This will trigger the form submission success.
   } catch (error) {
     console.error('Error:', error)
-    toast.error(error?.response?.data?.msg)
     return error
   }
 }
