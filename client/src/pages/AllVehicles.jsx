@@ -14,24 +14,24 @@ export const loader = async () => {
   }
 }
 
-const AllVehiclesContext = createContext()
+const VehiclesContext = createContext()
 
 const AllVehicles = () => {
   const { data } = useLoaderData()
 
   return (
-    <AllVehiclesContext.Provider value={{ data }}>
+    <VehiclesContext.Provider value={{ data }}>
       <Wrapper>
         <Background />
         <NavbarTop />
         <VehiclesContainer />
         <NavbarBottom />
       </Wrapper>
-    </AllVehiclesContext.Provider>
+    </VehiclesContext.Provider>
   )
 }
 
-export const useAllVehiclesContext = () => useContext(AllVehiclesContext)
+export const useVehiclesContext = () => useContext(VehiclesContext)
 
 export default AllVehicles
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Vehicle, AddVehicle } from '../components'
-import { useAllVehiclesContext } from '../pages/AllVehicles'
+import { useVehiclesContext } from '../pages/AllVehicles'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const VehiclesContainer = () => {
-  const { data } = useAllVehiclesContext()
+  const { data } = useVehiclesContext()
   const {vehicles} = data
 
   // const { modalType, handleModalChange } = useEditVehicleContext()
