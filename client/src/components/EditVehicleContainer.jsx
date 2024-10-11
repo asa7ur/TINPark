@@ -6,7 +6,7 @@ import { VEHICLE_BRAND } from '../utils/constants'
 import { CarState } from '../components'
 
 const EditVehicleContainer = () => {
-  const { vehicle, modalType, handleModalChange } = useEditVehicleContext()
+  const { vehicle, windowType, handleWindowChange } = useEditVehicleContext()
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
@@ -30,8 +30,8 @@ const EditVehicleContainer = () => {
           <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
         </div>
       </div>
-      {/* {modalType === 'carState' && (
-        <CarState onClose={() => handleModalChange(null)} />
+      {/* {windowType === 'carState' && (
+        <CarState onClose={() => handleWindowChange(null)} />
       )} */}
     </Wrapper>
   )

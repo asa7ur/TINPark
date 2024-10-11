@@ -24,11 +24,11 @@ const AddVehicle = ({ onClose }) => {
 
   const [isSubmitted, setIsSubmitted] = useState(false) // Track form submission success.
   
-  const modalRef = useRef(null)
+  const windowRef = useRef(null)
 
   const handleClickOutside = useCallback(
     (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+      if (windowRef.current && !windowRef.current.contains(e.target)) {
         onClose()
       }
     },
@@ -42,7 +42,7 @@ const AddVehicle = ({ onClose }) => {
     }
   }, [handleClickOutside])
 
-  // Close modal when the form is successfully submitted
+  // Close window when the form is successfully submitted
   useEffect(() => {
     if (!isSubmitting && isSubmitted) {
       onClose()
@@ -56,7 +56,7 @@ const AddVehicle = ({ onClose }) => {
 
   return (
     <Wrapper>
-      <div className='content' ref={modalRef}>
+      <div className='content' ref={windowRef}>
         <Form method='post' className='form' onSubmit={handleSubmit}>
           <h3 className='form-title'>Añadir Vehículo</h3>
           <div className='form-center'>

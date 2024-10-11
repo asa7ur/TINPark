@@ -5,7 +5,7 @@ import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const CarState = ({ onClose }) => {
   const { selectedZone, setSelectedZone } = useEditVehicleContext()
-  const modalRef = useRef(null)
+  const windowRef = useRef(null)
 
   const handleRadioChange = (e) => {
     setSelectedZone(e.target.value)
@@ -13,7 +13,7 @@ const CarState = ({ onClose }) => {
 
   const handleClickOutside = useCallback(
     (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+      if (windowRef.current && !windowRef.current.contains(e.target)) {
         onClose()
       }
     },
@@ -29,7 +29,7 @@ const CarState = ({ onClose }) => {
 
   return (
     <Wrapper>
-      <div className='content' ref={modalRef}>
+      <div className='content' ref={windowRef}>
         <h4>Corregir el Estado</h4>
         <ul className='zones'>
           <li className='zone'>

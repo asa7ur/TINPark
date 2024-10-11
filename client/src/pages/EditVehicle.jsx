@@ -24,11 +24,11 @@ const EditVehicle = () => {
   const { vehicle } = useLoaderData()
 
   // const [selectedZone, setSelectedZone] = useState(vehicle?.parked || null)
-  // const [modalType, setModalType] = useState(null)
+  // const [windowType, setWindowType] = useState(null)
 
-  // // Function to handle modal change
-  // const handleModalChange = (type = null) => {
-  //   setModalType(type)
+  // // Function to handle window change
+  // const handleWindowChange = (type = null) => {
+  //   setWindowType(type)
   // }
 
   const options = vehicle.parked ? inside : outside
@@ -39,8 +39,8 @@ const EditVehicle = () => {
         vehicle,
         // selectedZone,
         // setSelectedZone,
-        // modalType,
-        // handleModalChange
+        // windowType,
+        // handleWindowChange
       }}
     >
       <Wrapper>

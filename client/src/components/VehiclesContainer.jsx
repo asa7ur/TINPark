@@ -7,9 +7,9 @@ const VehiclesContainer = () => {
   const { data } = useAllVehiclesContext()
 
   // Add a fallback for data and vehicles
-  const vehicles = data?.vehicles || [] 
+  const {vehicles} = data
 
-  // const { modalType, handleModalChange } = useEditVehicleContext()
+  // const { windowType, handleWindowChange } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -22,12 +22,12 @@ const VehiclesContainer = () => {
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        {/* <button onClick={() => handleModalChange('addVehicle')}>
+        <button>
           Añadir Vehiculo
-        </button> */}
+        </button>
       </div>
-      {/* {modalType === 'addVehicle' && (
-        <AddVehicle onClose={() => handleModalChange(null)} />
+      {/* {windowType === 'addVehicle' && (
+        <AddVehicle onClose={() => handleWindowChange(null)} />
       )} */}
     </Wrapper>
   )
