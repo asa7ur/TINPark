@@ -34,7 +34,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--backgroundColorAlt);
+  background: var(--backgroundColorAltAlt);
   color: var(--textColor);
   padding: 1rem;
 

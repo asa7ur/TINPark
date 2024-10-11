@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   display: grid;
   align-items: center;
   padding: 1rem;
-  background: var(--backgroundColorAlt);
+  background: var(--backgroundColorAltAlt);
 
   h3 {
     text-align: center;
