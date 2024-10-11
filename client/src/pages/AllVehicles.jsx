@@ -3,7 +3,6 @@ import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
 import { useContext, createContext } from 'react'
 import styled from 'styled-components'
-import { useGlobalContext } from '../context'
 import background from '../assets/Background_1.jpg'
 
 export const loader = async () => {
@@ -19,11 +18,10 @@ const AllVehiclesContext = createContext()
 
 const AllVehicles = () => {
   const { data } = useLoaderData()
-  const { viewportHeight } = useGlobalContext()
 
   return (
     <AllVehiclesContext.Provider value={{ data }}>
-      <Wrapper style={{ height: `${viewportHeight}px` }}>
+      <Wrapper>
         <Background />
         <NavbarTop />
         <VehiclesContainer />

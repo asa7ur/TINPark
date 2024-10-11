@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 import { Link, useRouteError } from 'react-router-dom'
-import { useGlobalContext } from '../context'
 import { NavbarBottom } from '../components'
 
 const Error = () => {
-  const { viewportHeight } = useGlobalContext()
   const error = useRouteError()
   console.log(error)
 
   return (
-    <Wrapper style={{ height: `${viewportHeight}px` }}>
+    <Wrapper>
       <div className='section-center'>
         <h2>Página no encontrada</h2>
         <Link to='/dashboard/vehicles'>

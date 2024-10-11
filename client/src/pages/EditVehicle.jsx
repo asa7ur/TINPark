@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useLoaderData, redirect } from 'react-router-dom'
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, createContext, useContext } from 'react'
 import { CarOptions, EditVehicleContainer } from '../components'
 import { inside, outside } from '../utils/constants'
 import customFetch from '../utils/customFetch'
@@ -23,26 +23,13 @@ const EditVehicleContext = createContext()
 const EditVehicle = () => {
   const { vehicle } = useLoaderData()
 
-  const [selectedZone, setSelectedZone] = useState(vehicle?.parked || null)
-  const [modalType, setModalType] = useState(null)
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
+  // const [selectedZone, setSelectedZone] = useState(vehicle?.parked || null)
+  // const [modalType, setModalType] = useState(null)
 
-  // Handle resizing of viewport
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportHeight(window.innerHeight)
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  // Function to handle modal change
-  const handleModalChange = (type = null) => {
-    setModalType(type)
-  }
+  // // Function to handle modal change
+  // const handleModalChange = (type = null) => {
+  //   setModalType(type)
+  // }
 
   const options = vehicle.parked ? inside : outside
 
@@ -50,11 +37,10 @@ const EditVehicle = () => {
     <EditVehicleContext.Provider
       value={{
         vehicle,
-        selectedZone,
-        setSelectedZone,
-        modalType,
-        handleModalChange,
-        viewportHeight,
+        // selectedZone,
+        // setSelectedZone,
+        // modalType,
+        // handleModalChange
       }}
     >
       <Wrapper>

@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import { Vehicle, AddVehicle } from '../components'
 import { useAllVehiclesContext } from '../pages/AllVehicles'
-import { useGlobalContext } from '../context'
+import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const VehiclesContainer = () => {
   const { data } = useAllVehiclesContext()
-  const { vehicles } = data
 
-  const { modalType, changeState } = useGlobalContext()
+  // Add a fallback for data and vehicles
+  const vehicles = data?.vehicles || [] 
+
+  // const { modalType, handleModalChange } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -20,13 +22,13 @@ const VehiclesContainer = () => {
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        <button onClick={() => changeState('addVehicle')}>
+        {/* <button onClick={() => handleModalChange('addVehicle')}>
           Añadir Vehiculo
-        </button>
+        </button> */}
       </div>
-      {modalType === 'addVehicle' && (
-        <AddVehicle onClose={() => changeState(null)} />
-      )}
+      {/* {modalType === 'addVehicle' && (
+        <AddVehicle onClose={() => handleModalChange(null)} />
+      )} */}
     </Wrapper>
   )
 }

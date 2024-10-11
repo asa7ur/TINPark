@@ -6,8 +6,7 @@ import { VEHICLE_BRAND } from '../utils/constants'
 import { CarState } from '../components'
 
 const EditVehicleContainer = () => {
-  const { vehicle, modalType, handleModalChange, viewportHeight } =
-    useEditVehicleContext()
+  const { vehicle, modalType, handleModalChange } = useEditVehicleContext()
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
@@ -16,7 +15,7 @@ const EditVehicleContainer = () => {
     VEHICLE_BRAND.POR_DEFECTO.icon
 
   return (
-    <Wrapper style={{ height: `${viewportHeight}px` }}>
+    <Wrapper>
       <div className='section-center'>
         <div className='return' onClick={() => navigate('/dashboard/vehicles')}>
           <FaLongArrowAltLeft />
@@ -31,9 +30,9 @@ const EditVehicleContainer = () => {
           <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
         </div>
       </div>
-      {modalType === 'carState' && (
+      {/* {modalType === 'carState' && (
         <CarState onClose={() => handleModalChange(null)} />
-      )}
+      )} */}
     </Wrapper>
   )
 }
