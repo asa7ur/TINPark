@@ -169,7 +169,7 @@ const Wrapper = styled.div`
 
   option {
     background: var(--grey-100);
-    color: var(--textColor);
+    color: var(--textColorAlt);
     border: var(--border);
   }
 `
