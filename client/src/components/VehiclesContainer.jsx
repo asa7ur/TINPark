@@ -5,11 +5,9 @@ import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const VehiclesContainer = () => {
   const { data } = useAllVehiclesContext()
-
-  // Add a fallback for data and vehicles
   const {vehicles} = data
 
-  // const { windowType, handleWindowChange } = useEditVehicleContext()
+  // const { modalType, handleModalChange } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -26,8 +24,8 @@ const VehiclesContainer = () => {
           Añadir Vehiculo
         </button>
       </div>
-      {/* {windowType === 'addVehicle' && (
-        <AddVehicle onClose={() => handleWindowChange(null)} />
+      {/* {modalType === 'addVehicle' && (
+        <AddVehicle onClose={() => handleModalChange(null)} />
       )} */}
     </Wrapper>
   )
