@@ -54,9 +54,9 @@ const VehicleState = () => {
               <label>
                 <input
                   type='radio'
-                  value='Fuera'
+                  value=''
                   name='vehicleState'
-                  checked={selectZone === 'Fuera'}
+                  checked={selectZone === ''}
                   onChange={handleZoneChange}
                 />
                 Fuera
