@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 import { useEffect, useRef, useCallback } from 'react'
 import { zones } from '../utils/constants'
-import { useEditVehicleContext } from '../pages/EditVehicle'
+// import { useEditVehicleContext } from '../pages/EditVehicle'
 
-const CarState = ({ onClose }) => {
-  const { selectedZone, setSelectedZone } = useEditVehicleContext()
-  const windowRef = useRef(null)
+const VehicleState = ({ onClose }) => {
+  // const { selectedZone, setSelectedZone } = useEditVehicleContext()
+  const modalRef = useRef(null)
 
-  const handleRadioChange = (e) => {
-    setSelectedZone(e.target.value)
-  }
+  // const handleRadioChange = (e) => {
+  //   setSelectedZone(e.target.value)
+  // }
 
   const handleClickOutside = useCallback(
     (e) => {
-      if (windowRef.current && !windowRef.current.contains(e.target)) {
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
         onClose()
       }
     },
@@ -29,7 +29,7 @@ const CarState = ({ onClose }) => {
 
   return (
     <Wrapper>
-      <div className='content' ref={windowRef}>
+      <div className='content' ref={modalRef}>
         <h4>Corregir el Estado</h4>
         <ul className='zones'>
           <li className='zone'>
@@ -37,8 +37,8 @@ const CarState = ({ onClose }) => {
               <input
                 type='radio'
                 value='Fuera'
-                checked={selectedZone === 'Fuera'}
-                onChange={handleRadioChange}
+                // checked={selectedZone === 'Fuera'}
+                // onChange={handleRadioChange}
               />
               Fuera
             </label>
@@ -49,8 +49,8 @@ const CarState = ({ onClose }) => {
                 <input
                   type='radio'
                   value={zone.name}
-                  checked={selectedZone === zone.name}
-                  onChange={handleRadioChange}
+                  // checked={selectedZone === zone.name}
+                  // onChange={handleRadioChange}
                 />
                 {zone.name}
               </label>
@@ -63,7 +63,7 @@ const CarState = ({ onClose }) => {
   )
 }
 
-export default CarState
+export default VehicleState
 
 const Wrapper = styled.div`
   position: fixed;

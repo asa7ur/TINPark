@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
-const CarOptions = ({ options }) => {
-  const { handleWindowChange } = useEditVehicleContext()
+const EditOptions = ({ options }) => {
+  const { handleModalChange } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -12,7 +12,7 @@ const CarOptions = ({ options }) => {
           className='option'
           onClick={
             option.text === 'Corregir el estado'
-              ? () => handleWindowChange('carState')
+              ? () => handleModalChange(true)
               : undefined
           }
         >
@@ -24,7 +24,7 @@ const CarOptions = ({ options }) => {
   )
 }
 
-export default CarOptions
+export default EditOptions
 
 const Wrapper = styled.div`
   position: fixed;

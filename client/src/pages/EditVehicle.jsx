@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { useLoaderData, redirect } from 'react-router-dom'
 import { useState, createContext, useContext } from 'react'
-import { CarOptions, EditVehicleContainer } from '../components'
+import { EditOptions, EditVehicleContainer } from '../components'
 import { inside, outside } from '../utils/constants'
+import { VehicleState } from '../components'
 import customFetch from '../utils/customFetch'
 import background from '../assets/Background_3.jpg'
 
@@ -23,30 +24,25 @@ const EditVehicleContext = createContext()
 const EditVehicle = () => {
   const { vehicle } = useLoaderData()
 
-  // const [selectedZone, setSelectedZone] = useState(vehicle?.parked || null)
-  // const [windowType, setWindowType] = useState(null)
+  // Add state for managing modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // // Function to handle window change
-  // const handleWindowChange = (type = null) => {
-  //   setWindowType(type)
-  // }
+  // Function to control modal state
+  const handleModalChange = (value) => {
+    setIsModalOpen(value)
+  }
 
   const options = vehicle.parked ? inside : outside
 
   return (
-    <EditVehicleContext.Provider
-      value={{
-        vehicle,
-        // selectedZone,
-        // setSelectedZone,
-        // windowType,
-        // handleWindowChange
-      }}
-    >
+    <EditVehicleContext.Provider value={{ vehicle, handleModalChange }}>
       <Wrapper>
         <Background />
         <EditVehicleContainer />
-        <CarOptions options={options} />
+        <EditOptions options={options} />
+        {isModalOpen && (
+          <VehicleState onClose={() => handleModalChange(false)} />
+        )}
       </Wrapper>
     </EditVehicleContext.Provider>
   )

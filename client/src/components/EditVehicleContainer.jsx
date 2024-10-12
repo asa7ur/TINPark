@@ -3,10 +3,9 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 import { VEHICLE_BRAND } from '../utils/constants'
-import { CarState } from '../components'
 
 const EditVehicleContainer = () => {
-  const { vehicle, windowType, handleWindowChange } = useEditVehicleContext()
+  const { vehicle } = useEditVehicleContext()
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
@@ -30,9 +29,6 @@ const EditVehicleContainer = () => {
           <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
         </div>
       </div>
-      {/* {windowType === 'carState' && (
-        <CarState onClose={() => handleWindowChange(null)} />
-      )} */}
     </Wrapper>
   )
 }
