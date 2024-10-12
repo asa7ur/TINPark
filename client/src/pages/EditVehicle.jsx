@@ -34,12 +34,14 @@ const EditVehicle = () => {
   const options = vehicle.parked ? inside : outside
 
   return (
-    <EditVehicleContext.Provider value={{ vehicle, showVehicleState, toggleVehicleState }}>
+    <EditVehicleContext.Provider
+      value={{ vehicle, showVehicleState, toggleVehicleState }}
+    >
       <Wrapper>
         <Background />
         <EditVehicleContainer />
         <EditOptions options={options} />
-        <VehicleState/>
+        <VehicleState />
       </Wrapper>
     </EditVehicleContext.Provider>
   )

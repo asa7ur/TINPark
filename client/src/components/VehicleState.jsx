@@ -70,13 +70,13 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: -1;
+  transition: opacity 0.3s ease, z-index 0s linear 0.3s;
 
   &.show {
-    visibility: visible;
     opacity: 1;
     z-index: 1000;
+    transition: opacity 0.3s ease, z-index 0s linear;
   }
 
   .content {
