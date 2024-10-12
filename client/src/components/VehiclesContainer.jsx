@@ -1,37 +1,25 @@
 import styled from 'styled-components'
 import { Vehicle, AddVehicle } from '../components'
 import { useVehiclesContext } from '../pages/AllVehicles'
-import { useState } from 'react'
 
 const VehiclesContainer = () => {
-  const { data } = useVehiclesContext()
+  const { data, toggleAddVehicle } = useVehiclesContext()
   const { vehicles } = data
-
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const handleModalChange = (value) => {
-    setIsModalOpen(value)
-  }
 
   return (
     <Wrapper>
       <div className='section-center'>
         <h2>Tus Vehículos</h2>
         {vehicles.length === 0 ? (
-          <p>No tiene vehículos registrados</p>
+          <h3 className='empty'>No tiene vehículos registrados</h3>
         ) : (
           vehicles.map((vehicle) => (
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        <button onClick={() => handleModalChange(true)}>Añadir Vehiculo</button>
+        <button onClick={toggleAddVehicle}>Añadir Vehiculo</button>
       </div>
-      {isModalOpen && (
-        <AddVehicle
-          onClose={() => handleModalChange(false)}
-          isModalOpen={isModalOpen}
-        />
-      )}
+      <AddVehicle/>
     </Wrapper>
   )
 }
@@ -46,6 +34,11 @@ const Wrapper = styled.main`
   h2 {
     padding-top: 1rem;
     align-self: flex-start;
+  }
+
+  .empty {
+    text-align: center;
+    margin-top: 1rem; 
   }
 
   button {

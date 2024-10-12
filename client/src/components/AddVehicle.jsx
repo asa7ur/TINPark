@@ -3,6 +3,7 @@ import { useEffect, useRef, useCallback, useState } from 'react'
 import { FormRow, FormRowSelect } from '../components'
 import { VEHICLE_BRAND } from '../../../utils/constants'
 import { Form, useNavigation, redirect } from 'react-router-dom'
+import { useVehiclesContext } from '../pages/AllVehicles'
 import customFetch from '../utils/customFetch'
 
 export const action = async ({ request }) => {
@@ -11,49 +12,59 @@ export const action = async ({ request }) => {
   try {
     const response = await customFetch.post('/vehicles', data)
     console.log('API Response:', response)
-    return redirect('/dashboard/vehicles')
+    if (response.status === 201) {
+      return redirect('/dashboard/vehicles')
+    } else {
+      throw new Error('No ha sido posible añadir el vehículo')
+    }
   } catch (error) {
     console.error('Error:', error)
-    return error
+    return { error: error.message }
   }
 }
 
-const AddVehicle = ({ onClose, isModalOpen }) => {
+const AddVehicle = () => {
+  const { addVehicle, toggleAddVehicle } = useVehiclesContext()
+  const modalRef = useRef(null)
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const windowRef = useRef(null)
-
   const handleClickOutside = useCallback(
     (e) => {
-      if (windowRef.current && !windowRef.current.contains(e.target)) {
-        onClose()
+      if (modalRef.current && !modalRef.current.contains(e.target)) {
+        toggleAddVehicle()
       }
     },
-    [onClose]
+    [toggleAddVehicle]
   )
 
+  // Add event listener for clicks outside the modal
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
+    if (addVehicle) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [handleClickOutside])
+  }, [addVehicle, handleClickOutside])
 
+  // Control modal visibility
   useEffect(() => {
     if (!isSubmitting && isSubmitted) {
-      onClose()
+      toggleAddVehicle()
     }
-  }, [isSubmitting, isSubmitted, onClose])
+  }, [isSubmitting, isSubmitted])
 
   const handleSubmit = (e) => {
     setIsSubmitted(true)
   }
 
   return (
-    <Wrapper>
-      <div className='content' ref={windowRef}>
+    <Wrapper className={addVehicle ? 'show' : ''}>
+      <div className='content' ref={modalRef}>
         <Form method='post' className='form' onSubmit={handleSubmit}>
           <h3 className='form-title'>Añadir Vehículo</h3>
           <div className='form-center'>
@@ -101,7 +112,15 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease, z-index 0s linear 0.3s;
+
+  &.show {
+    opacity: 1;
+    z-index: 1000;
+    transition: opacity 0.3s ease, z-index 0s linear;
+  }
 
   .content {
     background: var(--backgroundColor);

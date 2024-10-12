@@ -1,7 +1,7 @@
 import { VehiclesContainer, NavbarTop, NavbarBottom } from '../components'
 import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
-import { useContext, createContext } from 'react'
+import { useState, useContext, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_1.jpg'
 
@@ -19,8 +19,15 @@ const VehiclesContext = createContext()
 const AllVehicles = () => {
   const { data } = useLoaderData()
 
+  const [addVehicle, setAddVehicle] = useState(false)
+
+  // Function to control modal state
+  const toggleAddVehicle = () => {
+    setAddVehicle(!addVehicle)
+  }
+
   return (
-    <VehiclesContext.Provider value={{ data }}>
+    <VehiclesContext.Provider value={{ data, addVehicle, toggleAddVehicle }}>
       <Wrapper>
         <Background />
         <NavbarTop />
