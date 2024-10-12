@@ -22,7 +22,7 @@ router.route('/').get(getAllVehicles).post(validateVehicleInput, createVehicle)
 router
   .route('/:id')
   .get(validateVehicleIdParam, getVehicle)
-  .patch(validateVehicleInput, validateVehicleIdParam, updateVehicle)
+  .patch(validateVehicleIdParam, updateVehicle)
   .delete(validateVehicleIdParam, deleteVehicle)
 
 export default router

@@ -15,6 +15,7 @@ import {
 import { action as registerAction } from './pages/Register'
 import { action as loginAction } from './pages/Login'
 import { action as addVehicleAction } from './components/AddVehicle'
+import { action as editVehicleAction } from './pages/EditVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
 import { loader as editVehicleLoader } from './pages/EditVehicle'
 import { loader as allVehiclesLoader } from './pages/AllVehicles'
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
             path: 'vehicles/:id',
             element: <EditVehicle />,
             loader: editVehicleLoader,
+            action: editVehicleAction,
           },
           {
             path: 'zones',

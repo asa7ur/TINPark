@@ -17,30 +17,59 @@ export const loader = async ({ params }) => {
   }
 }
 
+export const action = async ({ request, params }) => {
+  const formData = await request.formData()
+  const updatedZone = formData.get('vehicleState')
+
+  try {
+    console.log('Updating vehicle state to:', updatedZone)
+    await customFetch.patch(`/vehicles/${params.id}`, { parked: updatedZone })
+    return redirect(`/dashboard/vehicles/${params.id}`)
+  } catch (error) {
+    console.error('Error updating vehicle:', error)
+    return { error: error.message }
+  }
+}
+
 // Create a context for EditVehicle
 const EditVehicleContext = createContext()
 
 const EditVehicle = () => {
   const { vehicle } = useLoaderData()
 
+  const options = vehicle.parked ? inside : outside
+
   // Add state for managing modal visibility
   const [showVehicleState, setShowVehicleState] = useState(false)
+  const [selectZone, setSelectZone] = useState(
+    vehicle.parked ? vehicle.parked : 'Fuera'
+  )
+
+  const handleZoneChange = (e) => {
+    console.log("Selected Zone: ", e.target.value);
+    setSelectZone(e.target.value)
+  }
 
   // Function to control modal state
   const toggleVehicleState = () => {
     setShowVehicleState(!showVehicleState)
   }
 
-  const options = vehicle.parked ? inside : outside
-
   return (
     <EditVehicleContext.Provider
-      value={{ vehicle, showVehicleState, toggleVehicleState }}
+      value={{
+        vehicle,
+        showVehicleState,
+        toggleVehicleState,
+        selectZone,
+        handleZoneChange,
+        options,
+      }}
     >
       <Wrapper>
         <Background />
         <EditVehicleContainer />
-        <EditOptions options={options} />
+        <EditOptions />
         <VehicleState />
       </Wrapper>
     </EditVehicleContext.Provider>

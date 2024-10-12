@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
-const EditOptions = ({ options }) => {
-  const { toggleVehicleState } = useEditVehicleContext()
+const EditOptions = () => {
+  const { toggleVehicleState, options } = useEditVehicleContext()
 
   return (
     <Wrapper>

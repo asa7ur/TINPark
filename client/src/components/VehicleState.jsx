@@ -1,13 +1,18 @@
 import styled from 'styled-components'
-import { useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { useNavigation, Form } from 'react-router-dom'
 import { zones } from '../utils/constants'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const VehicleState = () => {
-  const { showVehicleState, toggleVehicleState } = useEditVehicleContext()
-  const modalRef = useRef(null)
+  const { showVehicleState, selectZone, handleZoneChange, toggleVehicleState } =
+    useEditVehicleContext()
 
-  // Close modal if clicked outside
+  const modalRef = useRef(null)
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'submitting'
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
   const handleClickOutside = useCallback(
     (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -28,30 +33,57 @@ const VehicleState = () => {
     }
   }, [showVehicleState, handleClickOutside])
 
-  // Only render the modal when `showVehicleState` is true
-  if (!showVehicleState) return null
+  // Control modal visibility
+  useEffect(() => {
+    if (!isSubmitting && isSubmitted) {
+      toggleVehicleState()
+    }
+  }, [isSubmitting, isSubmitted])
+
+  const handleSubmit = (e) => {
+    setIsSubmitted(true)
+  }
 
   return (
     <Wrapper className={showVehicleState ? 'show' : ''}>
       <div className='content' ref={modalRef}>
         <h4>Corregir el Estado</h4>
-        <ul className='zones'>
-          <li className='zone'>
-            <label>
-              <input type='radio' value='Fuera' name='vehicleState' />
-              Fuera
-            </label>
-          </li>
-          {zones.map((zone) => (
-            <li key={zone.id} className='zone'>
+        <Form method='post' onSubmit={handleSubmit}>
+          <ul className='zones'>
+            <li className='zone'>
               <label>
-                <input type='radio' value={zone.name} name='vehicleState' />
-                {zone.name}
+                <input
+                  type='radio'
+                  value='Fuera'
+                  name='vehicleState'
+                  checked={selectZone === 'Fuera'}
+                  onChange={handleZoneChange}
+                />
+                Fuera
               </label>
             </li>
-          ))}
-        </ul>
-        <button onClick={toggleVehicleState}>Cancelar</button>
+            {zones.map((zone) => (
+              <li key={zone.id} className='zone'>
+                <label>
+                  <input
+                    type='radio'
+                    value={zone.name}
+                    name='vehicleState'
+                    checked={selectZone === zone.name}
+                    onChange={handleZoneChange}
+                  />
+                  {zone.name}
+                </label>
+              </li>
+            ))}
+          </ul>
+          <button type='button' onClick={toggleVehicleState}>
+            Cancelar
+          </button>
+          <button type='submit' disabled={isSubmitting}>
+            {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </Form>
       </div>
     </Wrapper>
   )
