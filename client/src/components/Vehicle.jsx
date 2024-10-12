@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { VEHICLE_BRAND } from '../utils/constants'
+import { useVehiclesContext } from '../pages/AllVehicles'
 
 const Vehicle = ({ _id, name, plate, parked, brand, alt_name }) => {
+  const { zones } = useVehiclesContext()
   const navigate = useNavigate()
+  
+  const parkedZone = zones.find((zone) => zone._id === parked)
+  const parkedZoneName = parkedZone ? parkedZone.name : 'Fuera'
 
   const handleClick = () => {
     navigate(`/dashboard/vehicles/${_id}`)
@@ -21,7 +26,7 @@ const Vehicle = ({ _id, name, plate, parked, brand, alt_name }) => {
           <h5>Matrícula: {plate}</h5>
           <p>
             {parked ? 'En ' : 'Fuera'}
-            {parked && <span className='highlighted'>{parked}</span>}
+            {parked && <span className='highlighted'>{parkedZoneName}</span>}
           </p>
         </div>
         <div className='icon'>

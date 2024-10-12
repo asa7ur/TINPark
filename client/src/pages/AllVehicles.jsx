@@ -5,19 +5,29 @@ import { useState, useContext, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_1.jpg'
 
+// Loader to fetch vehicle data
 export const loader = async () => {
   try {
-    const { data } = await customFetch.get('/vehicles')
-    return { data }
+    // Fetch vehicle data
+    const vehicleResponse = await customFetch.get(`/vehicles/`)
+    const { vehicles: vehicleData } = vehicleResponse.data
+
+    // Fetch zone data
+    const zoneResponse = await customFetch.get('/zones')
+    const { zones: zoneData } = zoneResponse.data
+
+    // Return both pieces of data in an object
+    return { vehicles: vehicleData, zones: zoneData }
   } catch (error) {
-    return error
+    console.error('Error fetching data:', error)
+    return redirect('/dashboard/vehicles')
   }
 }
 
 const VehiclesContext = createContext()
 
 const AllVehicles = () => {
-  const { data } = useLoaderData()
+  const { vehicles, zones } = useLoaderData()
 
   const [addVehicle, setAddVehicle] = useState(false)
 
@@ -27,7 +37,7 @@ const AllVehicles = () => {
   }
 
   return (
-    <VehiclesContext.Provider value={{ data, addVehicle, toggleAddVehicle }}>
+    <VehiclesContext.Provider value={{ vehicles, zones, addVehicle, toggleAddVehicle }}>
       <Wrapper>
         <Background />
         <NavbarTop />

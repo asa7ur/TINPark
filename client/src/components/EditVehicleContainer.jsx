@@ -5,10 +5,13 @@ import { useEditVehicleContext } from '../pages/EditVehicle'
 import { VEHICLE_BRAND } from '../utils/constants'
 
 const EditVehicleContainer = () => {
-  const { vehicle } = useEditVehicleContext()
+  const { vehicle, zones } = useEditVehicleContext()
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
+  
+  const parkedZone = zones.find((zone) => zone._id === parked)
+  const parkedZoneName = parkedZone ? parkedZone.name : 'Fuera'
 
   const vehicleLogo =
     VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
@@ -27,7 +30,7 @@ const EditVehicleContainer = () => {
           </div>
           <h1>{name}</h1>
           <h3>Matrícula: {plate}</h3>
-          <h4>{parked ? `En ${parked}` : 'Fuera'}</h4>
+          <h4>{parked ? `En ${parkedZoneName}` : 'Fuera'}</h4>
         </div>
       </div>
     </Wrapper>

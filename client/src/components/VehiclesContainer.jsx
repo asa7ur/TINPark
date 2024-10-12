@@ -3,8 +3,7 @@ import { Vehicle, AddVehicle } from '../components'
 import { useVehiclesContext } from '../pages/AllVehicles'
 
 const VehiclesContainer = () => {
-  const { data, toggleAddVehicle } = useVehiclesContext()
-  const { vehicles } = data
+  const { vehicles, toggleAddVehicle } = useVehiclesContext()
 
   return (
     <Wrapper>

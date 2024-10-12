@@ -7,6 +7,8 @@ import {
   createZone,
   updateZone,
   deleteZone,
+  getZoneVehicles,
+  updateZoneVehicles,
 } from '../controllers/zoneController.js'
 
 import {
@@ -22,7 +24,12 @@ router.route('/').get(getAllZones).post(validateZoneInput, createZone)
 router
   .route('/:id')
   .get(validateZoneIdParam, getZone)
-  .patch(validateZoneInput, validateZoneIdParam, updateZone)
+  .patch(validateZoneIdParam, updateZone)
   .delete(validateZoneIdParam, deleteZone)
+
+router
+  .route('/:id/vehicles')
+  .get(validateZoneIdParam, getZoneVehicles)
+  .patch(validateZoneIdParam, updateZoneVehicles)
 
 export default router
