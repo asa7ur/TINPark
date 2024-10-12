@@ -11,19 +11,18 @@ export const action = async ({ request }) => {
   try {
     const response = await customFetch.post('/vehicles', data)
     console.log('API Response:', response)
-    return redirect('/dashboard/vehicles') // This will trigger the form submission success.
+    return redirect('/dashboard/vehicles')
   } catch (error) {
     console.error('Error:', error)
     return error
   }
 }
 
-const AddVehicle = ({ onClose }) => {
+const AddVehicle = ({ onClose, isModalOpen }) => {
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const [isSubmitted, setIsSubmitted] = useState(false) // Track form submission success.
-  
   const windowRef = useRef(null)
 
   const handleClickOutside = useCallback(
@@ -42,16 +41,14 @@ const AddVehicle = ({ onClose }) => {
     }
   }, [handleClickOutside])
 
-  // Close window when the form is successfully submitted
   useEffect(() => {
     if (!isSubmitting && isSubmitted) {
       onClose()
     }
   }, [isSubmitting, isSubmitted, onClose])
 
-  // Form submit handler to set submitted state
   const handleSubmit = (e) => {
-    setIsSubmitted(true) // Set submitted state when form is submitted.
+    setIsSubmitted(true)
   }
 
   return (

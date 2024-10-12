@@ -1,13 +1,17 @@
 import styled from 'styled-components'
 import { Vehicle, AddVehicle } from '../components'
 import { useVehiclesContext } from '../pages/AllVehicles'
-import { useEditVehicleContext } from '../pages/EditVehicle'
+import { useState } from 'react'
 
 const VehiclesContainer = () => {
   const { data } = useVehiclesContext()
-  const {vehicles} = data
+  const { vehicles } = data
 
-  // const { modalType, handleModalChange } = useEditVehicleContext()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleModalChange = (value) => {
+    setIsModalOpen(value)
+  }
 
   return (
     <Wrapper>
@@ -20,13 +24,14 @@ const VehiclesContainer = () => {
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        <button>
-          Añadir Vehiculo
-        </button>
+        <button onClick={() => handleModalChange(true)}>Añadir Vehiculo</button>
       </div>
-      {/* {modalType === 'addVehicle' && (
-        <AddVehicle onClose={() => handleModalChange(null)} />
-      )} */}
+      {isModalOpen && (
+        <AddVehicle
+          onClose={() => handleModalChange(false)}
+          isModalOpen={isModalOpen}
+        />
+      )}
     </Wrapper>
   )
 }
