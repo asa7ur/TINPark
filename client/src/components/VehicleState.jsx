@@ -1,63 +1,57 @@
 import styled from 'styled-components'
 import { useEffect, useRef, useCallback } from 'react'
 import { zones } from '../utils/constants'
-// import { useEditVehicleContext } from '../pages/EditVehicle'
+import { useEditVehicleContext } from '../pages/EditVehicle'
 
-const VehicleState = ({ onClose }) => {
-  // const { selectedZone, setSelectedZone } = useEditVehicleContext()
+const VehicleState = () => {
+  const { showVehicleState, toggleVehicleState } = useEditVehicleContext()
   const modalRef = useRef(null)
 
-  // const handleRadioChange = (e) => {
-  //   setSelectedZone(e.target.value)
-  // }
-
+  // Close modal if clicked outside
   const handleClickOutside = useCallback(
     (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
-        onClose()
+        toggleVehicleState()
       }
     },
-    [onClose]
+    [toggleVehicleState]
   )
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
+    if (showVehicleState) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [handleClickOutside])
+  }, [showVehicleState, handleClickOutside])
+
+  // Only render the modal when `showVehicleState` is true
+  if (!showVehicleState) return null
 
   return (
-    <Wrapper>
+    <Wrapper className={showVehicleState ? 'show' : ''}>
       <div className='content' ref={modalRef}>
         <h4>Corregir el Estado</h4>
         <ul className='zones'>
           <li className='zone'>
             <label>
-              <input
-                type='radio'
-                value='Fuera'
-                // checked={selectedZone === 'Fuera'}
-                // onChange={handleRadioChange}
-              />
+              <input type='radio' value='Fuera' name='vehicleState' />
               Fuera
             </label>
           </li>
           {zones.map((zone) => (
             <li key={zone.id} className='zone'>
               <label>
-                <input
-                  type='radio'
-                  value={zone.name}
-                  // checked={selectedZone === zone.name}
-                  // onChange={handleRadioChange}
-                />
+                <input type='radio' value={zone.name} name='vehicleState' />
                 {zone.name}
               </label>
             </li>
           ))}
         </ul>
-        <button onClick={onClose}>Cancelar</button>
+        <button onClick={toggleVehicleState}>Cancelar</button>
       </div>
     </Wrapper>
   )
@@ -72,11 +66,18 @@ const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.7);
-  color: var(--textColor);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.show {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1000;
+  }
 
   .content {
     background: var(--backgroundColor);

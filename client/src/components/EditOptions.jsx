@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const EditOptions = ({ options }) => {
-  const { handleModalChange } = useEditVehicleContext()
+  const { toggleVehicleState } = useEditVehicleContext()
 
   return (
     <Wrapper>
@@ -12,7 +12,7 @@ const EditOptions = ({ options }) => {
           className='option'
           onClick={
             option.text === 'Corregir el estado'
-              ? () => handleModalChange(true)
+              ? toggleVehicleState
               : undefined
           }
         >
