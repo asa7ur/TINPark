@@ -9,6 +9,7 @@ const EditVehicleContainer = () => {
   const navigate = useNavigate()
 
   const { name, plate, brand, parked } = vehicle
+
   const vehicleLogo =
     VEHICLE_BRAND[brand.replace(/\s+/g, '_').toUpperCase()]?.icon ||
     VEHICLE_BRAND.POR_DEFECTO.icon

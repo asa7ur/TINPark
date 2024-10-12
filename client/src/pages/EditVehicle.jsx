@@ -9,10 +9,18 @@ import background from '../assets/Background_3.jpg'
 // Loader to fetch vehicle data
 export const loader = async ({ params }) => {
   try {
-    const { data } = await customFetch.get(`/vehicles/${params.id}`)
-    return data
+    // Fetch vehicle data
+    const vehicleResponse = await customFetch.get(`/vehicles/${params.id}`)    
+    const {vehicle: vehicleData} = vehicleResponse.data
+
+    // Fetch zone data
+    const zoneResponse = await customFetch.get('/zones')
+    const {zones: zoneData} = zoneResponse.data
+
+    // Return both pieces of data in an object
+    return { vehicle: vehicleData, zones: zoneData }
   } catch (error) {
-    console.error('Error fetching vehicle:', error)
+    console.error('Error fetching data:', error)
     return redirect('/dashboard/vehicles')
   }
 }
@@ -22,11 +30,9 @@ export const action = async ({ request, params }) => {
   const updatedZone = formData.get('vehicleState')
 
   try {
-    console.log('Updating vehicle state to:', updatedZone)
     await customFetch.patch(`/vehicles/${params.id}`, { parked: updatedZone })
     return redirect(`/dashboard/vehicles/${params.id}`)
   } catch (error) {
-    console.error('Error updating vehicle:', error)
     return { error: error.message }
   }
 }
@@ -35,18 +41,18 @@ export const action = async ({ request, params }) => {
 const EditVehicleContext = createContext()
 
 const EditVehicle = () => {
-  const { vehicle } = useLoaderData()
+  const { vehicle, zones } = useLoaderData()
 
   const options = vehicle.parked ? inside : outside
 
   // Add state for managing modal visibility
   const [showVehicleState, setShowVehicleState] = useState(false)
   const [selectZone, setSelectZone] = useState(
-    vehicle.parked ? vehicle.parked : 'Fuera'
+    vehicle.parked ? vehicle.parked : ''
   )
 
   const handleZoneChange = (e) => {
-    console.log("Selected Zone: ", e.target.value);
+    console.log('Selected Zone: ', e.target.value)
     setSelectZone(e.target.value)
   }
 
@@ -59,6 +65,7 @@ const EditVehicle = () => {
     <EditVehicleContext.Provider
       value={{
         vehicle,
+        zones,
         showVehicleState,
         toggleVehicleState,
         selectZone,

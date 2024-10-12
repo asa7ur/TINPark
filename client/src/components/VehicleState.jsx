@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useNavigation, Form } from 'react-router-dom'
-import { zones } from '../utils/constants'
 import { useEditVehicleContext } from '../pages/EditVehicle'
 
 const VehicleState = () => {
-  const { showVehicleState, selectZone, handleZoneChange, toggleVehicleState } =
-    useEditVehicleContext()
+  const {
+    showVehicleState,
+    selectZone,
+    handleZoneChange,
+    toggleVehicleState,
+    zones,
+  } = useEditVehicleContext()
 
   const modalRef = useRef(null)
   const navigation = useNavigation()
