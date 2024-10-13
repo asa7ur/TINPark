@@ -4,7 +4,7 @@ import Button from './Button'
 import { NavLink } from 'react-router-dom'
 
 const NavbarBottom = () => {
-  const navbarLinks = links.filter((link) => link.id > 1)
+  const navbarLinks = links.filter((link) => link.id > 1 && link.id < 5)
 
   return (
     <Wrapper>

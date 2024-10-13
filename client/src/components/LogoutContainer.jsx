@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { FaUserCircle, FaCaretDown } from 'react-icons/fa'
+import { BiLogOutCircle } from 'react-icons/bi'
 import { useState } from 'react'
 import { useDashboardContext } from '../pages/DashboardLayout'
 
@@ -10,7 +11,7 @@ const LogoutContainer = () => {
   return (
     <Wrapper>
       <button className='logout-btn' onClick={() => setShowLogout(!showLogout)}>
-        <FaUserCircle className='user-avatar' />
+        <FaUserCircle className='avatar' />
         <h5>{user.name}</h5>
         <FaCaretDown />
       </button>
@@ -19,6 +20,7 @@ const LogoutContainer = () => {
         className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}
         onClick={logoutUser}
       >
+        <BiLogOutCircle className='avatar' />
         <h5>salir</h5>
       </button>
     </Wrapper>
@@ -43,7 +45,7 @@ const Wrapper = styled.div`
     width: 100%;
   }
 
-  .user-avatar {
+  .avatar {
     font-size: 1.2rem;
   }
 
@@ -58,6 +60,10 @@ const Wrapper = styled.div`
     width: 100%;
     background: var(--backgroundColorAlt);
     color: var(--textColorAlt);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
     padding: 0.5rem 0.75rem;
     border: var(--border);
     border-radius: 50px;
