@@ -8,7 +8,7 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData)
   try {
     await customFetch.post('/auth/login', data)
-    return redirect('/dashboard/vehicles')
+    return redirect('/dashboard/homepage')
   } catch (error) {
     return error
   }

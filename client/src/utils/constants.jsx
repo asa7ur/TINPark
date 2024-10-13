@@ -27,6 +27,8 @@ import Skoda from '../assets/Skoda.png'
 import Tesla from '../assets/Tesla.png'
 import Toyota from '../assets/Toyota.png'
 import Volkswagen from '../assets/Volkswagen.png'
+import Home_1 from '../assets/Home_1.png'
+import Home_2 from '../assets/Home_2.png'
 
 export const VEHICLE_BRAND = {
   POR_DEFECTO: { name: 'Por Defecto', icon: Default },
@@ -55,6 +57,12 @@ export const VEHICLE_BRAND = {
   TESLA: { name: 'Tesla', icon: Tesla },
   TOYOTA: { name: 'Toyota', icon: Toyota },
   VOLKSWAGEN: { name: 'Volkswagen', icon: Volkswagen },
+}
+
+export const HomeVehicles = {
+  Home_1: { name: 'Home_1', icon: Home_1 },
+  Home_2: { name: 'Home_2', icon: Home_2 },
+  Home_3: { name: 'Home_3', icon: Home_1 },
 }
 
 export const links = [

@@ -10,6 +10,7 @@ import {
   Login,
   Register,
   DashboardLayout,
+  HomePage
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -18,6 +19,7 @@ import { action as addVehicleAction } from './components/AddVehicle'
 import { action as editVehicleAction } from './pages/EditVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
 import { loader as editVehicleLoader } from './pages/EditVehicle'
+import { loader as HomePageLoader } from './pages/HomePage'
 import { loader as allVehiclesLoader } from './pages/AllVehicles'
 import { loader as allZonesLoader } from './pages/AllZones'
 
@@ -46,6 +48,11 @@ const router = createBrowserRouter([
         element: <DashboardLayout />,
         loader: dashboardLoader,
         children: [
+          {
+            path: 'homepage',
+            element: <HomePage />,
+            loader: HomePageLoader,
+          },
           {
             path: 'vehicles',
             element: <AllVehicles />,

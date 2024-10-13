@@ -13,23 +13,6 @@ const NavbarTop = () => {
           <FaBars />
         </button>
         <LogoutContainer/>
-        {/* <div className='user'>
-          <div className='image'>
-            {userLink && (
-              <NavLink
-                to={userLink.url}
-                className='nav-button user-btn'
-                key={userLink.id}
-                end
-              >
-                <Button url={userLink.url} icon={userLink.icon} />
-              </NavLink>
-            )}
-          </div>
-          <div className='text'>
-            <h5>{user.name}</h5>
-          </div>
-        </div> */}
       </div>
     </Wrapper>
   )
