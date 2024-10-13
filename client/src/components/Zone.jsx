@@ -12,9 +12,9 @@ const Zone = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
   }, {})
 
   // Map parked vehicle IDs to their corresponding names
-  const parkedVehicleNames = parkedVehicles.map(
-    (vehicleId) => vehicleMap[vehicleId]
-  )
+  const parkedVehicleNames = parkedVehicles
+    .map((vehicleId) => vehicleMap[vehicleId])
+    .filter(Boolean)
 
   return (
     <Wrapper>

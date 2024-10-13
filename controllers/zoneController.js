@@ -44,7 +44,13 @@ export const getZoneVehicles = async (req, res) => {
     if (!zone) {
       return res.status(StatusCodes.NOT_FOUND).json({ msg: 'Zone not found' })
     }
-    res.status(StatusCodes.OK).json({ vehicles: zone.parkedVehicles })
+
+    // Filter the vehicles that belong to the current user
+    const userVehicles = zone.parkedVehicles.filter(
+      (vehicle) => vehicle.createdBy.toString() === req.user.userId
+    )
+
+    res.status(StatusCodes.OK).json({ vehicles: userVehicles })
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: error.message })
   }
