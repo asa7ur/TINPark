@@ -3,7 +3,7 @@ import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
 import { useContext, createContext } from 'react'
 import styled from 'styled-components'
-import background from '../assets/Background_2.jpg'
+import background from '../assets/Background_3.jpg'
 
 export const loader = async () => {
   try {

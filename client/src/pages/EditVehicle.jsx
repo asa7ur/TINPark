@@ -4,7 +4,7 @@ import { useState, createContext, useContext } from 'react'
 import { EditOptions, EditVehicleContainer, VehicleState } from '../components'
 import { inside, outside } from '../utils/constants'
 import customFetch from '../utils/customFetch'
-import background from '../assets/Background_3.jpg'
+import background from '../assets/Background_4.jpg'
 
 // Loader to fetch vehicle data
 export const loader = async ({ params }) => {

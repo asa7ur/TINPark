@@ -3,7 +3,7 @@ import customFetch from '../utils/customFetch'
 import { useLoaderData } from 'react-router-dom'
 import { useState, useContext, createContext } from 'react'
 import styled from 'styled-components'
-import background from '../assets/Background_1.jpg'
+import background from '../assets/Background_2.jpg'
 
 // Loader to fetch vehicle and zone data
 export const loader = async () => {
