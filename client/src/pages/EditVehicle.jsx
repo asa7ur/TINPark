@@ -28,39 +28,16 @@ export const loader = async ({ params }) => {
 export const action = async ({ request, params }) => {
   const formData = await request.formData()
   const updatedZone = formData.get('vehicleState')
-
   try {
-    // Fetch the current vehicle data to identify its previous zone
-    const vehicleResponse = await customFetch.get(`/vehicles/${params.id}`)
-    const { vehicle: vehicleData } = vehicleResponse.data
-
-    const previousZone = vehicleData.parked // Store the previous zone
-
     // Update the vehicle's parked state
     await customFetch.patch(`/vehicles/${params.id}`, { parked: updatedZone })
-
-    // Add the vehicle ID to the new zone's vehicles array
-    if (updatedZone) {
-      await customFetch.patch(`/zones/${updatedZone}/vehicles`, {
-        vehicleId: params.id,
-        action: 'add',
-      })
-    }
-
-    // If the vehicle had a previous zone, remove it from that zone's vehicles array
-    if (previousZone && previousZone !== updatedZone) {
-      await customFetch.patch(`/zones/${previousZone}/vehicles`, {
-        vehicleId: params.id,
-        action: 'remove',
-      })
-    }
-
     return redirect(`/dashboard/vehicles/${params.id}`)
   } catch (error) {
     console.error('Error updating vehicle:', error)
     return { error: error.message }
   }
 }
+
 
 // Create a context for EditVehicle
 const EditVehicleContext = createContext()

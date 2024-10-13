@@ -68,14 +68,12 @@ const VehicleState = () => {
             </li>
             {zones.map((zone) => (
               <li key={zone._id} className='zone'>
-                {' '}
-                {/* Use zone._id here */}
                 <label>
                   <input
                     type='radio'
-                    value={zone._id} // Use zone._id instead of zone.name
+                    value={zone._id}
                     name='vehicleState'
-                    checked={selectZone === zone._id} // Compare with zone._id
+                    checked={selectZone === zone._id}
                     onChange={handleZoneChange}
                   />
                   {zone.name}

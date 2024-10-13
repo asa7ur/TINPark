@@ -8,7 +8,6 @@ import {
   updateZone,
   deleteZone,
   getZoneVehicles,
-  updateZoneVehicles,
 } from '../controllers/zoneController.js'
 
 import {
@@ -30,6 +29,5 @@ router
 router
   .route('/:id/vehicles')
   .get(validateZoneIdParam, getZoneVehicles)
-  .patch(validateZoneIdParam, updateZoneVehicles)
 
 export default router
