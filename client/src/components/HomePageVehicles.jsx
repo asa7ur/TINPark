@@ -18,10 +18,10 @@ const HomePageVehicles = ({ _id, name, plate, parked, icon }) => {
       <div key={_id} className='info' onClick={handleClick}>
         <div className='text'>
           <h5>{name}</h5>
-          <h4>
+          <h3>
             {parked ? 'En ' : 'Fuera'}
             {parked && <span className='highlighted'>{parkedZoneName}</span>}
-          </h4>
+          </h3>
         </div>
         <div className='image'>
           <img src={icon} className='img' alt={name} />
@@ -35,7 +35,7 @@ export default HomePageVehicles
 
 const Wrapper = styled.div`
   .info {
-    width: 80vw;
+    width: 70vw;
     margin-top: 1.5rem;
     background: var(--backgroundColor);
     color: var(--textColor);
