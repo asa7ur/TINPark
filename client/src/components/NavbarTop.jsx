@@ -7,7 +7,7 @@ import { useDashboardContext } from '../pages/DashboardLayout'
 
 const NavbarTop = () => {
   const userLink = links.find((link) => link.id === 1)
-  const { toggleSidebar } = useDashboardContext()
+  const { user, toggleSidebar } = useDashboardContext()
 
   return (
     <Wrapper>
@@ -29,7 +29,7 @@ const NavbarTop = () => {
             )}
           </div>
           <div className='text'>
-            <h5>Garik</h5>
+            <h5>{user.name}</h5>
           </div>
         </div>
       </div>
