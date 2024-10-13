@@ -54,7 +54,6 @@ const EditVehicle = () => {
   )
 
   const handleZoneChange = (e) => {
-    console.log('Selected Zone: ', e.target.value)
     setSelectZone(e.target.value)
   }
 
