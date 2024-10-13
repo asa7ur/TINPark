@@ -5,7 +5,7 @@ import { useState, useContext, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_1.jpg'
 
-// Loader to fetch vehicle data
+// Loader to fetch vehicle and zone data
 export const loader = async () => {
   try {
     // Fetch vehicle data

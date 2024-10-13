@@ -7,20 +7,29 @@ import background from '../assets/Background_2.jpg'
 
 export const loader = async () => {
   try {
-    const { data } = await customFetch.get('/zones')
-    return { data }
+    // Fetch vehicle data
+    const vehicleResponse = await customFetch.get(`/vehicles/`)
+    const { vehicles: vehicleData } = vehicleResponse.data
+
+    // Fetch zone data
+    const zoneResponse = await customFetch.get('/zones')
+    const { zones: zoneData } = zoneResponse.data
+
+    // Return both pieces of data in an object
+    return { vehicles: vehicleData, zones: zoneData }
   } catch (error) {
-    return error
+    console.error('Error fetching data:', error)
+    return redirect('/dashboard/vehicles')
   }
 }
 
 const AllZonesContext = createContext()
 
 const AllZones = () => {
-  const { data } = useLoaderData()
+  const { vehicles, zones } = useLoaderData()
 
   return (
-    <AllZonesContext.Provider value={{ data }}>
+    <AllZonesContext.Provider value={{ vehicles, zones }}>
       <Wrapper>
         <Background />
         <NavbarTop />

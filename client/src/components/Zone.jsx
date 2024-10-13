@@ -1,19 +1,39 @@
 import styled from 'styled-components'
+import { useAllZonesContext } from '../pages/AllZones'
 
-const Zone = ({ _id, name, freeSpaces, map }) => {
+const Zone = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
+  // Access vehicles from context
+  const { vehicles } = useAllZonesContext()
+
+  // Create a map of vehicle IDs to vehicle names
+  const vehicleMap = vehicles.reduce((acc, vehicle) => {
+    acc[vehicle._id] = vehicle.name
+    return acc
+  }, {})
+
+  // Map parked vehicle IDs to their corresponding names
+  const parkedVehicleNames = parkedVehicles.map(
+    (vehicleId) => vehicleMap[vehicleId]
+  )
+
   return (
     <Wrapper>
       <div className='info' key={_id}>
         <div className='text'>
           <h4>{name}</h4>
-          {/* <h5>
-            <span className={car ? 'highlighted' : ''}>
-              {car ? car : 'Ningún vehículo'}
-            </span>{' '}
+          <h5>
+            {parkedVehicleNames.length > 0 ? (
+              <span className='highlighted'>
+                {parkedVehicleNames.join(', ')}
+              </span>
+            ) : (
+              'Ningún vehículo'
+            )}{' '}
             está aparcado aquí
-          </h5> */}
+          </h5>
           <p>
-            Hay <span className='highlighted'>{freeSpaces}</span> sitios libres
+            Hay <span className='highlighted'>{freeSpaces}</span> espacios
+            libres
           </p>
         </div>
         <div className='map'>

@@ -3,8 +3,7 @@ import { Zone } from '../components'
 import { useAllZonesContext } from '../pages/AllZones'
 
 const ZonesContainer = () => {
-  const { data } = useAllZonesContext()
-  const { zones } = data
+  const { zones } = useAllZonesContext()
 
   return (
     <Wrapper>
