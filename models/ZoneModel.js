@@ -21,7 +21,7 @@ const ZoneSchema = new mongoose.Schema(
     map: {
       type: String,
     },
-    vehicles: [
+    parkedVehicles: [
       {
         type: mongoose.Types.ObjectId,
         ref: 'Vehicle',

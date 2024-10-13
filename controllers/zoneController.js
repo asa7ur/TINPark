@@ -40,11 +40,11 @@ export const deleteZone = async (req, res) => {
 export const getZoneVehicles = async (req, res) => {
   const zoneId = req.params.id
   try {
-    const zone = await Zone.findById(zoneId).populate('vehicles')
+    const zone = await Zone.findById(zoneId).populate('parkedVehicles')
     if (!zone) {
       return res.status(StatusCodes.NOT_FOUND).json({ msg: 'Zone not found' })
     }
-    res.status(StatusCodes.OK).json({ vehicles: zone.vehicles })
+    res.status(StatusCodes.OK).json({ vehicles: zone.parkedVehicles })
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: error.message })
   }

@@ -40,7 +40,7 @@ export const updateVehicle = async (req, res) => {
       if (previousZone) {
         const prevZone = await Zone.findById(previousZone)
         if (prevZone) {
-          prevZone.vehicles.pull(vehicle._id) // Remove vehicle from previous zone
+          prevZone.parkedVehicles.pull(vehicle._id) // Remove vehicle from previous zone
           prevZone.occupiedSpaces -= 1 // Decrease occupied spaces
           await prevZone.save()
         }
@@ -54,7 +54,7 @@ export const updateVehicle = async (req, res) => {
             .status(StatusCodes.NOT_FOUND)
             .json({ msg: 'New zone not found' })
         }
-        newZone.vehicles.push(vehicle._id) // Add vehicle to new zone
+        newZone.parkedVehicles.push(vehicle._id) // Add vehicle to new zone
         newZone.occupiedSpaces += 1 // Increase occupied spaces
         await newZone.save()
       }
