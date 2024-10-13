@@ -1,13 +1,10 @@
 import styled from 'styled-components'
-import { links } from '../utils/constants'
-import Button from './Button'
-import { NavLink } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
+import { LogoutContainer } from '.'
 import { useDashboardContext } from '../pages/DashboardLayout'
 
 const NavbarTop = () => {
-  const userLink = links.find((link) => link.id === 1)
-  const { user, toggleSidebar } = useDashboardContext()
+  const { toggleSidebar } = useDashboardContext()
 
   return (
     <Wrapper>
@@ -15,7 +12,8 @@ const NavbarTop = () => {
         <button type='button' className='toggle-btn' onClick={toggleSidebar}>
           <FaBars />
         </button>
-        <div className='user'>
+        <LogoutContainer/>
+        {/* <div className='user'>
           <div className='image'>
             {userLink && (
               <NavLink
@@ -31,7 +29,7 @@ const NavbarTop = () => {
           <div className='text'>
             <h5>{user.name}</h5>
           </div>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   )
@@ -65,7 +63,16 @@ const Wrapper = styled.nav`
     font-size: 1.5rem;
   }
 
-  .styled-circle {
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: var(--textColor);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* .styled-circle {
     width: 50px;
     height: 50px;
   }
@@ -84,13 +91,6 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-  }
-  .toggle-btn {
-    background: none;
-    border: none;
-    color: var(--textColor);
-    cursor: pointer;
-    padding: 0;
-    font-size: 1.5rem;
-  }
+  } */
+  
 `

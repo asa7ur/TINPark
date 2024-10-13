@@ -1,4 +1,4 @@
-import { Outlet, redirect, useLoaderData } from 'react-router-dom'
+import { Outlet, redirect, useLoaderData, useNavigate} from 'react-router-dom'
 import { useState, useContext, createContext } from 'react'
 import { Sidebar } from '../components'
 
@@ -16,6 +16,7 @@ export const loader = async () => {
 const DashboardContext = createContext()
 
 const DashboardLayout = () => {
+  const navigate = useNavigate()
   const { user } = useLoaderData()
   const [showSidebar, setShowSidebar] = useState(false)
 
@@ -23,8 +24,13 @@ const DashboardLayout = () => {
     setShowSidebar(!showSidebar)
   }
 
+  const logoutUser = async () => {
+    navigate('/')
+    await customFetch.get('/auth/logout')
+  }
+
   return (
-    <DashboardContext.Provider value={{ user, showSidebar, toggleSidebar }}>
+    <DashboardContext.Provider value={{ user, showSidebar, toggleSidebar, logoutUser }}>
       <Sidebar />
       <Outlet context={{ user }} />
     </DashboardContext.Provider>
