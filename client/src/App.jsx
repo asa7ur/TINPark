@@ -51,7 +51,7 @@ const router = createBrowserRouter([
           {
             path: 'homepage',
             element: <HomePage />,
-            loader: HomePageLoader,
+            loader: HomePageLoader
           },
           {
             path: 'vehicles',

@@ -134,7 +134,7 @@ const Wrapper = styled.main`
     }
   }
 
-  .zones{
+  .zones {
     margin-top: 1rem;
   }
 
