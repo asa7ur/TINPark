@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { useAllZonesContext } from '../pages/AllZones'
+import { useHomePageContext } from '../pages/HomePage'
 
-const Zone = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
+const HomePageZones = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
   // Access vehicles from context
-  const { vehicles } = useAllZonesContext()
+  const { vehicles } = useHomePageContext()
 
   // Create a map of vehicle IDs to vehicle names
   const vehicleMap = vehicles.reduce((acc, vehicle) => {
@@ -51,7 +51,7 @@ const Zone = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
   )
 }
 
-export default Zone
+export default HomePageZones
 
 const Wrapper = styled.div`
   position: relative;
@@ -127,3 +127,4 @@ const Wrapper = styled.div`
     border: none;
   }
 `
+

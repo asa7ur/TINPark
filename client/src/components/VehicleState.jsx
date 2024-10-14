@@ -81,11 +81,11 @@ const VehicleState = () => {
               </li>
             ))}
           </ul>
-          <button type='button' onClick={toggleVehicleState}>
+          <button className='action-btn' type='button' onClick={toggleVehicleState}>
             Cancelar
           </button>
-          <button type='submit' disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Submit'}
+          <button className='action-btn' type='submit' disabled={isSubmitting}>
+            {isSubmitting ? 'Cambiando...' : 'Cambiar'}
           </button>
         </Form>
       </div>

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { useHomePageContext } from '../pages/HomePage'
 
-const HomePageVehicles = ({ _id, name, plate, parked, icon }) => {
+const HomePageVehicles = ({ _id, name, parked, icon }) => {
   const { zones } = useHomePageContext()
   const navigate = useNavigate()
 
@@ -34,9 +34,11 @@ const HomePageVehicles = ({ _id, name, plate, parked, icon }) => {
 export default HomePageVehicles
 
 const Wrapper = styled.div`
+  /* Targeting the vehicle items within the .vehicle-list */
   .info {
-    width: 70vw;
-    margin-top: 1.5rem;
+    position: relative;
+    width: 80vw;
+    margin-top: 1rem;
     background: var(--backgroundColor);
     color: var(--textColor);
     box-shadow: var(--shadow-4);
@@ -48,7 +50,10 @@ const Wrapper = styled.div`
   }
 
   h3 {
-    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 
   h5 {
@@ -56,50 +61,10 @@ const Wrapper = styled.div`
     font-weight: 400;
   }
 
-  p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-
   .img {
     width: 200px;
     max-width: 100%;
     max-height: 100%;
   }
-
-  &:nth-child(even) .info {
-    margin-right: auto;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-  }
-
-  &:nth-child(even) .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  &:nth-child(even) .image {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  &:nth-child(odd) .info {
-    margin-left: auto;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-  }
-
-  &:nth-child(odd) .text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  &:nth-child(odd) .image {
-    display: flex;
-    justify-content: flex-end;
-  }
 `
+

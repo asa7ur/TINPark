@@ -26,8 +26,8 @@
     --grey-950: #030712;
     /* rest of vars */
     /* --backgroundColor: var(--primary-950); */
-    --backgroundColor: linear-gradient(180deg, var(--primary-900) 0%, var(--primary-950) 100%);
-    --backgroundColorAltAlt: linear-gradient(180deg, var(--primary-100) 0%, var(--primary-900) 100%);
+    --backgroundColor: linear-gradient(to bottom, var(--primary-800) 0%, var(--primary-950) 100%);
+    --backgroundColorAltAlt: linear-gradient(to bottom, var(--primary-100) 0%, var(--primary-900) 100%);
     --backgroundColorAlt: var(--grey-200);
     --textColor: var(--grey-200);
     --textColorAlt: var(--grey-900);
@@ -126,7 +126,11 @@ hr {
     border-top: 1px solid var(--grey-800);
 }
 
-button {
+button{
+    cursor: pointer;
+}
+
+.action-btn {
     font-family: inherit;
     color: var(--textColor);
     background: var(--primary-700);
@@ -135,7 +139,7 @@ button {
     transition: var(--transition);
 }
 
-button:hover {
+.action-btn:hover {
     background: var(--primary-900);
 }
 

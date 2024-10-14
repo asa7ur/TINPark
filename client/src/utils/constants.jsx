@@ -61,8 +61,7 @@ export const VEHICLE_BRAND = {
 
 export const HomeVehicles = {
   Home_1: { name: 'Home_1', icon: Home_1 },
-  Home_2: { name: 'Home_2', icon: Home_2 },
-  Home_3: { name: 'Home_3', icon: Home_1 },
+  Home_2: { name: 'Home_2', icon: Home_2 }
 }
 
 export const links = [

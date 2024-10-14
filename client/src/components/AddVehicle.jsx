@@ -88,7 +88,7 @@ const AddVehicle = () => {
             />
             <button
               type='submit'
-              className='btn btn-block form-btn'
+              className='action-btn form-btn'
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Añadiendo' : 'Añadir'}

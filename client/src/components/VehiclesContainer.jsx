@@ -16,7 +16,7 @@ const VehiclesContainer = () => {
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        <button onClick={toggleAddVehicle}>Añadir Vehiculo</button>
+        <button className='action-btn' onClick={toggleAddVehicle}>Añadir Vehiculo</button>
       </div>
       <AddVehicle/>
     </Wrapper>
