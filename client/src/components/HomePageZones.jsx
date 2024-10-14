@@ -22,18 +22,17 @@ const HomePageZones = ({ _id, name, freeSpaces, map, parkedVehicles }) => {
         <div className='text'>
           <h4>{name}</h4>
           <h5>
+            Vehículos aquí:{' '}
             {parkedVehicleNames.length > 0 ? (
               <span className='highlighted'>
                 {parkedVehicleNames.join(', ')}
               </span>
             ) : (
-              'Ningún vehículo'
-            )}{' '}
-            está aparcado aquí
+              'Ninguno'
+            )}
           </h5>
           <p>
-            Hay <span className='highlighted'>{freeSpaces}</span> espacios
-            libres
+            Espacios libres: <span className='highlighted'>{freeSpaces}</span>
           </p>
         </div>
         <div className='map'>
