@@ -1,6 +1,6 @@
 import { Form, redirect, useNavigation, Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { FormRow } from '../components'
+import { FormRow, PageTransition } from '../components'
 import customFetch from '../utils/customFetch'
 
 export const action = async ({ request }) => {
@@ -20,38 +20,28 @@ const Register = () => {
 
   return (
     <Wrapper>
-      <Form method='post' className='form'>
-        <h3>Registrarse</h3>
-        <FormRow
-          type='text'
-          name='name'
-          labelText='nombre'
-        />
-        <FormRow
-          type='text'
-          name='lastName'
-          labelText='Apellidos'
-        />
-        <FormRow
-          type='email'
-          name='email'
-          labelText='correo electrónico'
-        />
-        <FormRow
-          type='password'
-          name='password'
-          labelText='contraseña'
-        />
-        <button type='submit' className='btn btn-block' disabled={isSubmitting}>
-          {isSubmitting ? 'Registrando' : 'registrarse'}
-        </button>
-        <p>
-          ¿Ya eres miembro?
-          <Link to='/login' className='member-btn'>
-            Entrar
-          </Link>
-        </p>
-      </Form>
+      <PageTransition>
+        <Form method='post' className='form'>
+          <h3>Registrarse</h3>
+          <FormRow type='text' name='name' labelText='nombre' />
+          <FormRow type='text' name='lastName' labelText='Apellidos' />
+          <FormRow type='email' name='email' labelText='correo electrónico' />
+          <FormRow type='password' name='password' labelText='contraseña' />
+          <button
+            type='submit'
+            className='btn btn-block'
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Registrando' : 'registrarse'}
+          </button>
+          <p>
+            ¿Ya eres miembro?
+            <Link to='/login' className='member-btn'>
+              Entrar
+            </Link>
+          </p>
+        </Form>
+      </PageTransition>
     </Wrapper>
   )
 }

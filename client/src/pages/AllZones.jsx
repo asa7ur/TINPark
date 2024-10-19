@@ -1,4 +1,4 @@
-import { ZonesContainer, NavbarTop, Loading } from '../components'
+import { ZonesContainer, NavbarTop, Loading, PageTransition } from '../components'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import { useContext, createContext } from 'react'
 import styled from 'styled-components'
@@ -7,7 +7,7 @@ import background from '../assets/Background_3.jpg'
 const AllZonesContext = createContext()
 
 const AllZones = () => {
-  const { vehicles, zones } = useLoaderData() // Access data from the centralized loader
+  const { vehicles, zones } = useLoaderData()
   const navigation = useNavigation()
   const isLoading = navigation.state === 'loading'
 
@@ -16,7 +16,10 @@ const AllZones = () => {
       <Wrapper>
         <Background />
         <NavbarTop />
-        {isLoading ? <Loading /> : <ZonesContainer />}
+        <PageTransition isLoading={isLoading}>
+          <ZonesContainer />
+        </PageTransition>
+        {isLoading && <Loading />}
       </Wrapper>
     </AllZonesContext.Provider>
   )

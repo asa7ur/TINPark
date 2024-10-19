@@ -14,7 +14,6 @@ const Error = () => {
           <button className='button'>Volver</button>
         </Link>
       </div>
-      <NavbarBottom />
     </Wrapper>
   )
 }

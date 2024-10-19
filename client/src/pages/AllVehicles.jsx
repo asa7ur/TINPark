@@ -1,7 +1,6 @@
-import { VehiclesContainer, NavbarTop } from '../components'
+import { VehiclesContainer, NavbarTop, Loading, PageTransition } from '../components'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import { useState, useContext, createContext } from 'react'
-import { Loading } from '../components'
 import styled from 'styled-components'
 import background from '../assets/Background_2.jpg'
 
@@ -25,7 +24,10 @@ const AllVehicles = () => {
       <Wrapper>
         <Background />
         <NavbarTop />
-        {isLoading ? <Loading /> : <VehiclesContainer />}
+        <PageTransition isLoading={isLoading}>
+          <VehiclesContainer />
+        </PageTransition>
+        {isLoading && <Loading />}
       </Wrapper>
     </VehiclesContext.Provider>
   )

@@ -1,7 +1,13 @@
 import styled from 'styled-components'
-import { useLoaderData, redirect } from 'react-router-dom'
+import { useLoaderData, redirect, useNavigation } from 'react-router-dom'
 import { useState, createContext, useContext } from 'react'
-import { EditOptions, EditVehicleContainer, VehicleState } from '../components'
+import {
+  EditOptions,
+  EditVehicleContainer,
+  VehicleState,
+  Loading,
+  PageTransition,
+} from '../components'
 import { inside, outside } from '../utils/constants'
 import customFetch from '../utils/customFetch'
 import background from '../assets/Background_4.jpg'
@@ -38,12 +44,13 @@ export const action = async ({ request, params }) => {
   }
 }
 
-
 // Create a context for EditVehicle
 const EditVehicleContext = createContext()
 
 const EditVehicle = () => {
   const { vehicle, zones } = useLoaderData()
+  const navigation = useNavigation()
+  const isLoading = navigation.state === 'loading'
 
   const options = vehicle.parked ? inside : outside
 
@@ -76,8 +83,11 @@ const EditVehicle = () => {
     >
       <Wrapper>
         <Background />
-        <EditVehicleContainer />
-        <EditOptions />
+        <PageTransition isLoading={isLoading}>
+          <EditVehicleContainer />
+          <EditOptions />
+        </PageTransition>
+        {isLoading && <Loading />}
         <VehicleState />
       </Wrapper>
     </EditVehicleContext.Provider>

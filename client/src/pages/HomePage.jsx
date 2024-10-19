@@ -1,4 +1,4 @@
-import { HomePageContainer, NavbarTop, Loading } from '../components'
+import { HomePageContainer, NavbarTop, Loading, PageTransition } from '../components'
 import { useLoaderData, useNavigation } from 'react-router-dom'
 import { useContext, createContext } from 'react'
 import styled from 'styled-components'
@@ -17,7 +17,10 @@ const HomePage = () => {
       <Wrapper>
         <Background />
         <NavbarTop />
-        {isLoading ? <Loading /> : <HomePageContainer />}
+        <PageTransition isLoading={isLoading}>
+          <HomePageContainer />
+        </PageTransition>
+        {isLoading && <Loading />}
       </Wrapper>
     </HomePageContext.Provider>
   )

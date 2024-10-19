@@ -1,28 +1,31 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { PageTransition } from '../components'
 import logo from '../assets/Logo.png'
 
 const Landing = () => {
   return (
     <Wrapper>
-      <div className='content'>
-        <img src={logo} className='logo' alt='TINPark Logo' />
-        <div className='info'>
-          <h1>TINPark</h1>
-          <h4>
-            Control de acceso y ocupación de parking por identificación de
-            matrículas
-          </h4>
-          <div className='buttons'>
-            <Link to='/register'>
-              <button className='button'>Registrarse</button>
-            </Link>
-            <Link to='/login'>
-              <button className='button'>Entrar</button>
-            </Link>
+      <PageTransition isLoading={false}>
+        <div className='content'>
+          <img src={logo} className='logo' alt='TINPark Logo' />
+          <div className='info'>
+            <h1>TINPark</h1>
+            <h4>
+              Control de acceso y ocupación de parking por identificación de
+              matrículas
+            </h4>
+            <div className='buttons'>
+              <Link to='/register'>
+                <button className='button'>Registrarse</button>
+              </Link>
+              <Link to='/login'>
+                <button className='button'>Entrar</button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </PageTransition>
     </Wrapper>
   )
 }

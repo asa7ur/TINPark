@@ -1,6 +1,6 @@
 import { Link, Form, redirect, useNavigation } from 'react-router-dom'
 import styled from 'styled-components'
-import { FormRow } from '../components'
+import { FormRow, PageTransition } from '../components'
 import customFetch from '../utils/customFetch'
 
 export const action = async ({ request }) => {
@@ -19,28 +19,26 @@ const Login = () => {
   const isSubmitting = navigation.state === 'Entrando'
   return (
     <Wrapper>
-      <Form method='post' className='form'>
-        <h3>Login</h3>
-        <FormRow
-          type='email'
-          name='email'
-          labelText='correo electrónico'
-        />
-        <FormRow
-          type='password'
-          name='password'
-          labelText='contraseña'
-        />
-        <button type='submit' className='btn btn-block' disabled={isSubmitting}>
-          {isSubmitting ? 'Entrando' : 'Entrar'}
-        </button>
-        <p>
-          ¿Aún no eres miembro?
-          <Link to='/register' className='member-btn'>
-            Registrarse
-          </Link>
-        </p>
-      </Form>
+      <PageTransition>
+        <Form method='post' className='form'>
+          <h3>Login</h3>
+          <FormRow type='email' name='email' labelText='correo electrónico' />
+          <FormRow type='password' name='password' labelText='contraseña' />
+          <button
+            type='submit'
+            className='btn btn-block'
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Entrando' : 'Entrar'}
+          </button>
+          <p>
+            ¿Aún no eres miembro?
+            <Link to='/register' className='member-btn'>
+              Registrarse
+            </Link>
+          </p>
+        </Form>
+      </PageTransition>
     </Wrapper>
   )
 }
