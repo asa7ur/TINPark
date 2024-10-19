@@ -26,25 +26,21 @@ const Register = () => {
           type='text'
           name='name'
           labelText='nombre'
-          defaultValue='Garik'
         />
         <FormRow
           type='text'
           name='lastName'
           labelText='Apellidos'
-          defaultValue='Asatryan'
         />
         <FormRow
           type='email'
           name='email'
           labelText='correo electrónico'
-          defaultValue='asa7ur@proton.me'
         />
         <FormRow
           type='password'
           name='password'
           labelText='contraseña'
-          defaultValue='secret123'
         />
         <button type='submit' className='btn btn-block' disabled={isSubmitting}>
           {isSubmitting ? 'Registrando' : 'registrarse'}

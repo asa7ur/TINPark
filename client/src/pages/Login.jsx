@@ -25,9 +25,12 @@ const Login = () => {
           type='email'
           name='email'
           labelText='correo electrónico'
-          defaultValue='asa7ur@proton.me'
         />
-        <FormRow type='password' name='password' labelText='contraseña' defaultValue='secret123' />
+        <FormRow
+          type='password'
+          name='password'
+          labelText='contraseña'
+        />
         <button type='submit' className='btn btn-block' disabled={isSubmitting}>
           {isSubmitting ? 'Entrando' : 'Entrar'}
         </button>
