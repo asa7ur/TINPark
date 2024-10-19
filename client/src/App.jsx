@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import {
   HomeLayout,
   Landing,
@@ -9,7 +10,7 @@ import {
   Login,
   Register,
   DashboardLayout,
-  HomePage,
+  HomePage
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
           {
             path: 'homepage',
             element: <HomePage />,
-            loader: HomePageLoader,
+            loader: HomePageLoader
           },
           {
             path: 'vehicles',
@@ -76,7 +77,27 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-  return <RouterProvider router={router} />
+  // Viewport height state
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  return (
+    <div style={{ height: viewportHeight }}>
+      <RouterProvider router={router} />
+    </div>
+  )
 }
 
 export default App

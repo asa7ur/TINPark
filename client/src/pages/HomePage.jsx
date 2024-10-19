@@ -32,6 +32,7 @@ const HomePage = () => {
   return (
     <HomePageContext.Provider value={{ vehicles, zones }}>
       <Wrapper>
+        <Background />
         <NavbarTop />
         <HomePageContainer />
         <NavbarBottom />
@@ -48,9 +49,17 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`
+
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url(${background});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  z-index: -1;
 `
