@@ -27,6 +27,7 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding-bottom: 3rem;
 
   h2 {
     padding-top: 1rem;

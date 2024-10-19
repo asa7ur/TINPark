@@ -23,12 +23,7 @@ const Wrapper = styled.nav`
   position: sticky;
   top: 0;
   z-index: 99;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.5) 70%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: black;
   color: var(--textColor);
 
   .navbar-top {
