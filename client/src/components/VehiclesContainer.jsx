@@ -16,9 +16,11 @@ const VehiclesContainer = () => {
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
           ))
         )}
-        <button className='action-btn' onClick={toggleAddVehicle}>Añadir Vehiculo</button>
+        <button className='action-btn' onClick={toggleAddVehicle}>
+          Añadir Vehiculo
+        </button>
       </div>
-      <AddVehicle/>
+      <AddVehicle />
     </Wrapper>
   )
 }
@@ -26,7 +28,6 @@ const VehiclesContainer = () => {
 export default VehiclesContainer
 
 const Wrapper = styled.main`
-position: ;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -38,7 +39,7 @@ position: ;
 
   .empty {
     text-align: center;
-    margin-top: 1rem; 
+    margin-top: 1rem;
   }
 
   button {

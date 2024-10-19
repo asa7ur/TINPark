@@ -1,6 +1,6 @@
 import { HomePageContainer, NavbarTop, Loading } from '../components'
-import { useLoaderData } from 'react-router-dom'
-import { useState, useEffect, useContext, createContext } from 'react'
+import { useLoaderData, useNavigation } from 'react-router-dom'
+import { useContext, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_1.jpg'
 
@@ -9,14 +9,8 @@ const HomePageContext = createContext()
 const HomePage = () => {
   // Access data from the centralized loader
   const { vehicles, zones } = useLoaderData()
-  const [isLoading, setIsLoading] = useState(true) // State to track loading
-
-  useEffect(() => {
-    // Set loading to false after the component mounts
-    if (vehicles && zones) {
-      setIsLoading(false)
-    }
-  }, [vehicles, zones])
+  const navigation = useNavigation()
+  const isLoading = navigation.state === 'loading'
 
   return (
     <HomePageContext.Provider value={{ vehicles, zones }}>
