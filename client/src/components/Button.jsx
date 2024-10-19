@@ -19,6 +19,6 @@ const Wrapper = styled.div`
   align-items: center;
 
   .icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 `

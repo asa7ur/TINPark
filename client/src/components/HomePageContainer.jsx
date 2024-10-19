@@ -94,6 +94,18 @@ const Wrapper = styled.main`
 
   .vehicle-list > div {
     &:nth-child(odd) {
+      svg {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.5);
+        top: 1rem;
+        right: 1rem;
+        font-size: 2.5rem;
+        padding: 5px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 25%;
+        cursor: pointer;
+      }
+
       .info {
         margin-right: auto;
         border-top-right-radius: 25px;
@@ -115,6 +127,18 @@ const Wrapper = styled.main`
 
   .vehicle-list > div {
     &:nth-child(even) {
+      svg {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 2.5rem;
+        padding: 5px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 25%;
+        cursor: pointer;
+      }
+
       .info {
         margin-left: auto;
         border-top-left-radius: 25px;

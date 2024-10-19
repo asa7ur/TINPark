@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { useHomePageContext } from '../pages/HomePage'
+import { CiEdit } from 'react-icons/ci'
 
 const HomePageVehicles = ({ _id, name, parked, icon }) => {
   const { zones } = useHomePageContext()
@@ -15,7 +16,8 @@ const HomePageVehicles = ({ _id, name, parked, icon }) => {
 
   return (
     <Wrapper>
-      <div key={_id} className='info' onClick={handleClick}>
+      <div key={_id} className='info'>
+        <CiEdit onClick={handleClick} />
         <div className='text'>
           <h5>{name}</h5>
           <h3>
@@ -34,7 +36,6 @@ const HomePageVehicles = ({ _id, name, parked, icon }) => {
 export default HomePageVehicles
 
 const Wrapper = styled.div`
-  /* Targeting the vehicle items within the .vehicle-list */
   .info {
     position: relative;
     width: 80vw;
@@ -67,4 +68,3 @@ const Wrapper = styled.div`
     max-height: 100%;
   }
 `
-
