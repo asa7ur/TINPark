@@ -6,17 +6,19 @@ import { inside, outside } from '../utils/constants'
 import customFetch from '../utils/customFetch'
 import background from '../assets/Background_4.jpg'
 
-// This loader only fetches the specific vehicle using params.id
+// Loader to fetch vehicle and zone data
 export const loader = async ({ params }) => {
   try {
-    // Fetch specific vehicle data
+    // Fetch vehicle data
     const vehicleResponse = await customFetch.get(`/vehicles/${params.id}`)
     const { vehicle: vehicleData } = vehicleResponse.data
 
-    // Fetch zones data through the centralized loader (already done globally)
-    const { zones } = await fetchVehiclesAndZones() // Or just access `useLoaderData` directly
+    // Fetch zone data
+    const zoneResponse = await customFetch.get('/zones')
+    const { zones: zoneData } = zoneResponse.data
 
-    return { vehicle: vehicleData, zones }
+    // Return both pieces of data in an object
+    return { vehicle: vehicleData, zones: zoneData }
   } catch (error) {
     console.error('Error fetching data:', error)
     return redirect('/dashboard/vehicles')
@@ -36,7 +38,8 @@ export const action = async ({ request, params }) => {
   }
 }
 
-// Context for EditVehicle
+
+// Create a context for EditVehicle
 const EditVehicleContext = createContext()
 
 const EditVehicle = () => {
