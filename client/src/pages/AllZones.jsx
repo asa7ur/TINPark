@@ -34,7 +34,7 @@ const AllZones = () => {
         <Background />
         <NavbarTop />
         <ZonesContainer />
-        <NavbarBottom />
+        {/* <NavbarBottom /> */}
       </Wrapper>
     </AllZonesContext.Provider>
   )
@@ -57,7 +57,7 @@ const Background = styled.div`
   right: 0;
   bottom: 0;
   background-image: url(${background});
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;

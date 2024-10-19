@@ -56,7 +56,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 90vw;
   max-width: var(--max-width);
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   border-radius: 25px;
   overflow: hidden;
   box-shadow: var(--shadow-4);
