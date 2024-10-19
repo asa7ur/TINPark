@@ -1,15 +1,23 @@
 import { VehiclesContainer, NavbarTop } from '../components'
 import { useLoaderData } from 'react-router-dom'
-import { useState, useContext, createContext } from 'react'
+import { useState, useEffect, useContext, createContext } from 'react'
+import { Loading } from '../components'
 import styled from 'styled-components'
 import background from '../assets/Background_2.jpg'
 
 const VehiclesContext = createContext()
 
 const AllVehicles = () => {
-  const { vehicles, zones } = useLoaderData() // No need to define a loader anymore
-
+  const { vehicles, zones } = useLoaderData()
+  const [isLoading, setIsLoading] = useState(true) // State to track loading
   const [addVehicle, setAddVehicle] = useState(false)
+
+  useEffect(() => {
+    // Set loading to false after the component mounts
+    if (vehicles && zones) {
+      setIsLoading(false)
+    }
+  }, [vehicles, zones])
 
   // Function to control modal state
   const toggleAddVehicle = () => {
@@ -23,8 +31,7 @@ const AllVehicles = () => {
       <Wrapper>
         <Background />
         <NavbarTop />
-        <VehiclesContainer />
-        {/* <NavbarBottom /> */}
+        {isLoading ? <Loading /> : <VehiclesContainer />}
       </Wrapper>
     </VehiclesContext.Provider>
   )

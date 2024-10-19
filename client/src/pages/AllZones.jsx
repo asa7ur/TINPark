@@ -1,6 +1,6 @@
-import { ZonesContainer, NavbarTop } from '../components'
+import { ZonesContainer, NavbarTop, Loading } from '../components'
 import { useLoaderData } from 'react-router-dom'
-import { useContext, createContext } from 'react'
+import { useState, useContext, useEffect, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_3.jpg'
 
@@ -8,14 +8,21 @@ const AllZonesContext = createContext()
 
 const AllZones = () => {
   const { vehicles, zones } = useLoaderData() // Access data from the centralized loader
+  const [isLoading, setIsLoading] = useState(true) // State to track loading
+
+  useEffect(() => {
+    // Set loading to false after the component mounts
+    if (vehicles && zones) {
+      setIsLoading(false)
+    }
+  }, [vehicles, zones])
 
   return (
     <AllZonesContext.Provider value={{ vehicles, zones }}>
       <Wrapper>
         <Background />
         <NavbarTop />
-        <ZonesContainer />
-        {/* <NavbarBottom /> */}
+        {isLoading ? <Loading /> : <ZonesContainer />}
       </Wrapper>
     </AllZonesContext.Provider>
   )

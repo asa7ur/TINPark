@@ -1,6 +1,6 @@
 import { Outlet, redirect, useLoaderData, useNavigate} from 'react-router-dom'
-import { useState, useEffect, useContext, createContext } from 'react'
-import { Sidebar, Loading } from '../components'
+import { useState, useContext, createContext } from 'react'
+import { Sidebar } from '../components'
 
 import customFetch from '../utils/customFetch'
 
@@ -19,13 +19,6 @@ const DashboardLayout = () => {
   const navigate = useNavigate()
   const { user } = useLoaderData()
   const [showSidebar, setShowSidebar] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    if (user) {
-      setIsLoading(false)
-    }
-  }, [user])
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar)
@@ -37,11 +30,9 @@ const DashboardLayout = () => {
   }
 
   return (
-    <DashboardContext.Provider
-      value={{ user, showSidebar, toggleSidebar, logoutUser }}
-    >
+    <DashboardContext.Provider value={{ user, showSidebar, toggleSidebar, logoutUser }}>
       <Sidebar />
-      {isLoading ? <Loading /> : <Outlet context={{ user }} />}
+      <Outlet context={{ user }} />
     </DashboardContext.Provider>
   )
 }
