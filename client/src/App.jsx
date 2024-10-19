@@ -77,26 +77,8 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-  // Viewport height state
-  const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportHeight(window.innerHeight)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    // Cleanup listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
   return (
-    <div style={{ height: viewportHeight }}>
       <RouterProvider router={router} />
-    </div>
   )
 }
 
