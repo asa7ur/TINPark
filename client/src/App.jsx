@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import {
   HomeLayout,
   Landing,
@@ -18,10 +17,7 @@ import { action as loginAction } from './pages/Login'
 import { action as addVehicleAction } from './components/AddVehicle'
 import { action as editVehicleAction } from './pages/EditVehicle'
 import { loader as dashboardLoader } from './pages/DashboardLayout'
-import { loader as editVehicleLoader } from './pages/EditVehicle'
-import { loader as HomePageLoader } from './pages/HomePage'
-import { loader as allVehiclesLoader } from './pages/AllVehicles'
-import { loader as allZonesLoader } from './pages/AllZones'
+import { loader as vehiclesAndZonesLoader } from './utils/fetchVehiclesAndZones'
 
 const router = createBrowserRouter([
   {
@@ -51,24 +47,24 @@ const router = createBrowserRouter([
           {
             path: 'homepage',
             element: <HomePage />,
-            loader: HomePageLoader
+            loader: vehiclesAndZonesLoader,
           },
           {
             path: 'vehicles',
             element: <AllVehicles />,
-            loader: allVehiclesLoader,
+            loader: vehiclesAndZonesLoader,
             action: addVehicleAction,
           },
           {
             path: 'vehicles/:id',
             element: <EditVehicle />,
-            loader: editVehicleLoader,
+            loader: vehiclesAndZonesLoader,
             action: editVehicleAction,
           },
           {
             path: 'zones',
             element: <AllZones />,
-            loader: allZonesLoader,
+            loader: vehiclesAndZonesLoader,
           },
         ],
       },

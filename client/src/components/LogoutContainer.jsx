@@ -1,12 +1,31 @@
 import styled from 'styled-components'
 import { FaUserCircle, FaCaretDown } from 'react-icons/fa'
 import { BiLogOutCircle } from 'react-icons/bi'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useDashboardContext } from '../pages/DashboardLayout'
 
 const LogoutContainer = () => {
   const [showLogout, setShowLogout] = useState(false)
   const { user, logoutUser } = useDashboardContext()
+
+  const logoutRef = useRef(null)
+
+  const handleClickOutside = (event) => {
+    if (logoutRef.current && !logoutRef.current.contains(event.target)) {
+      setShowLogout(false) // close dropdown when clicking outside
+    }
+  }
+
+  useEffect(() => {
+    if (showLogout) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showLogout])
 
   return (
     <Wrapper>
@@ -17,11 +36,12 @@ const LogoutContainer = () => {
       </button>
 
       <button
+        ref={logoutRef}
         className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}
         onClick={logoutUser}
       >
         <BiLogOutCircle className='avatar' />
-        <h5>salir</h5>
+        <h5>Salir</h5>
       </button>
     </Wrapper>
   )

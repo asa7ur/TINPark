@@ -1,33 +1,13 @@
-import { VehiclesContainer, NavbarTop, NavbarBottom } from '../components'
-import customFetch from '../utils/customFetch'
+import { VehiclesContainer, NavbarTop } from '../components'
 import { useLoaderData } from 'react-router-dom'
 import { useState, useContext, createContext } from 'react'
 import styled from 'styled-components'
 import background from '../assets/Background_2.jpg'
 
-// Loader to fetch vehicle and zone data
-export const loader = async () => {
-  try {
-    // Fetch vehicle data
-    const vehicleResponse = await customFetch.get(`/vehicles/`)
-    const { vehicles: vehicleData } = vehicleResponse.data
-
-    // Fetch zone data
-    const zoneResponse = await customFetch.get('/zones')
-    const { zones: zoneData } = zoneResponse.data
-
-    // Return both pieces of data in an object
-    return { vehicles: vehicleData, zones: zoneData }
-  } catch (error) {
-    console.error('Error fetching data:', error)
-    return redirect('/dashboard/vehicles')
-  }
-}
-
 const VehiclesContext = createContext()
 
 const AllVehicles = () => {
-  const { vehicles, zones } = useLoaderData()
+  const { vehicles, zones } = useLoaderData() // No need to define a loader anymore
 
   const [addVehicle, setAddVehicle] = useState(false)
 
@@ -37,7 +17,9 @@ const AllVehicles = () => {
   }
 
   return (
-    <VehiclesContext.Provider value={{ vehicles, zones, addVehicle, toggleAddVehicle }}>
+    <VehiclesContext.Provider
+      value={{ vehicles, zones, addVehicle, toggleAddVehicle }}
+    >
       <Wrapper>
         <Background />
         <NavbarTop />

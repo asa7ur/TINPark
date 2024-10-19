@@ -20,10 +20,10 @@ const HomePageVehicles = ({ _id, name, parked, icon }) => {
         <CiEdit onClick={handleClick} />
         <div className='text'>
           <h5>{name}</h5>
-          <h3>
+          <h4>
             {parked ? 'En ' : 'Fuera'}
             {parked && <span className='highlighted'>{parkedZoneName}</span>}
-          </h3>
+          </h4>
         </div>
         <div className='image'>
           <img src={icon} className='img' alt={name} />
@@ -50,7 +50,7 @@ const Wrapper = styled.div`
     padding: 1rem;
   }
 
-  h3 {
+  h4 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
