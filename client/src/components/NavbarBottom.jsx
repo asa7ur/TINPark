@@ -26,20 +26,40 @@ const NavbarBottom = () => {
 export default NavbarBottom
 
 const Wrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  width: 100%; 
-  background: black;
+  position: sticky;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   
   .navbar {
-    width: 100%;
+    position: sticky;
+    width: auto; 
+    background: var(--backgroundColor);
     color: var(--textColor);
     padding: 0.75rem 1.5rem;
+    border: var(--border);
+    border-radius: 25px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
     z-index: 99;
+  }
+
+  .overlay {
+    position: fixed; 
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    height: 5rem;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    z-index: 98; 
   }
 `

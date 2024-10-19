@@ -26,10 +26,10 @@ const VehiclesContainer = () => {
 export default VehiclesContainer
 
 const Wrapper = styled.main`
+position: ;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-bottom: 3rem;
 
   h2 {
     padding-top: 1rem;

@@ -69,7 +69,6 @@ const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-bottom: 4rem;
 
   h2 {
     width: 90vw;
