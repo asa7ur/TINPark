@@ -1,20 +1,25 @@
 import styled from 'styled-components'
 import { Zone } from '../components'
+import { useNavigate } from 'react-router-dom'
 import { useAllZonesContext } from '../pages/AllZones'
+import { FaLongArrowAltLeft } from 'react-icons/fa'
 
 const ZonesContainer = () => {
   const { zones } = useAllZonesContext()
+  const navigate = useNavigate()
 
   return (
     <Wrapper>
       <div className='section-center'>
+        <div className='return-btn' onClick={() => navigate('/dashboard/homepage')}>
+          <FaLongArrowAltLeft />
+          <p>Volver</p>
+        </div>
         <h2>Zonas Disponibles</h2>
         {zones.length === 0 ? (
           <p>No tiene zonas disponibles</p>
         ) : (
-          zones.map((zone) => (
-            <Zone key={zone._id} {...zone}/>
-          ))
+          zones.map((zone) => <Zone key={zone._id} {...zone} />)
         )}
       </div>
     </Wrapper>

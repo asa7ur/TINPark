@@ -1,16 +1,23 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { Vehicle, AddVehicle } from '../components'
 import { useVehiclesContext } from '../pages/AllVehicles'
 
 const VehiclesContainer = () => {
   const { vehicles, toggleAddVehicle } = useVehiclesContext()
+  const navigate = useNavigate()
 
   return (
     <Wrapper>
       <div className='section-center'>
+        <div className='return-btn' onClick={() => navigate('/dashboard/homepage')}>
+          <FaLongArrowAltLeft />
+          <p>Volver</p>
+        </div>
         <h2>Tus Vehículos</h2>
         {vehicles.length === 0 ? (
-          <h3 className='empty'>No tiene vehículos registrados</h3>
+          <h3 className='empty'>No tienes vehículos registrados</h3>
         ) : (
           vehicles.map((vehicle) => (
             <Vehicle key={vehicle._id} {...vehicle} brand={vehicle.brand} />
@@ -39,6 +46,6 @@ const Wrapper = styled.main`
 
   .empty {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 60%;
   }
 `

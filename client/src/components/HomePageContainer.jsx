@@ -1,14 +1,11 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { useDashboardContext } from '../pages/DashboardLayout'
 import { useHomePageContext } from '../pages/HomePage'
-import { HomePageVehicles } from '.'
-import { HomePageZones } from '.'
+import { HomePageVehicles, HomePageZones, Greeting } from '.'
 import { HomeVehicles } from '../utils/constants'
 
 const HomePageContainer = () => {
-  const { vehicles, zones } = useHomePageContext()
-  const { user } = useDashboardContext()
+  const { vehicles, zones, toggleAddVehicle } = useHomePageContext()
 
   const vehicleIcons = Object.values(HomeVehicles)
 
@@ -25,31 +22,40 @@ const HomePageContainer = () => {
 
   return (
     <Wrapper>
-      <h2>Bienvenido, {user.name}!</h2>
+      <Greeting />
+      <hr />
       <section className='vehicles'>
         <div className='title'>
           <h4>Tus Vehículos</h4>
-          <NavLink to='/dashboard/vehicles'>
-            <button className='nav-btn'>Ver todos</button>
-          </NavLink>
+          {vehicles.length > 0 && (
+            <NavLink to='/dashboard/vehicles'>
+              <button className='nav-btn'>Ver todos</button>
+            </NavLink>
+          )}
         </div>
 
-        <div className='vehicle-list'>
-          {selectedVehicles.map((vehicle, index) => (
-            <HomePageVehicles
-              key={vehicle._id}
-              {...vehicle}
-              icon={vehicleIcons[index]?.icon}
-            />
-          ))}
-        </div>
+        {vehicles.length === 0 ? (
+          <div className='no-vehicles'>
+            <h3>No tienes vehículos registrados</h3>
+          </div>
+        ) : (
+          <div className='vehicle-list'>
+            {selectedVehicles.map((vehicle, index) => (
+              <HomePageVehicles
+                key={vehicle._id}
+                {...vehicle}
+                icon={vehicleIcons[index]?.icon}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       <section className='zones'>
         <div className='title'>
           <h4>Tus Zonas</h4>
           <NavLink to='/dashboard/zones'>
-            <button className='nav-btn'>Ver todos</button>
+            <button className='nav-btn'>Ver todas</button>
           </NavLink>
         </div>
 
@@ -70,7 +76,7 @@ const Wrapper = styled.main`
   flex-direction: column;
   flex-grow: 1;
 
-  h2 {
+  h3 {
     width: 90vw;
     margin: 0 auto;
     padding: 0.5rem 0;
@@ -90,6 +96,11 @@ const Wrapper = styled.main`
     background: none;
     border: none;
     color: var(--textColorHighlighted);
+  }
+
+  .no-vehicles {
+    text-align: center;
+    margin-top: 1rem;
   }
 
   .vehicle-list > div {
