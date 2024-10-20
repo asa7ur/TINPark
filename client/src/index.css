@@ -127,20 +127,30 @@ hr {
 }
 
 button{
+    margin-top: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
 .action-btn {
     font-family: inherit;
-    color: var(--textColor);
-    background: var(--primary-700);
-    border: var(--border);
-    cursor: pointer;
+    color: var(--textColorAlt);
+    background: var(--primary-100);
     transition: var(--transition);
 }
 
 .action-btn:hover {
-    background: var(--primary-900);
+    color: var(--textColor);
+    background: var(--primary-700);
 }
 
 .button {
@@ -220,8 +230,7 @@ button{
 }
 
 .form-input,
-.form-select,
-.form-btn {
+.form-select{
     height: 35px;
 }
 

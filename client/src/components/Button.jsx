@@ -5,7 +5,7 @@ const Button = ({ icon: Icon, showLabel, label }) => {
   return (
     <Wrapper>
       <Icon className='icon' />
-      {showLabel && <span className='btn'>{label}</span>}
+      {showLabel && {label}}
     </Wrapper>
   )
 }

@@ -55,7 +55,7 @@ const Wrapper = styled.aside`
   box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
 
   .sidebar-container {
-    background: var(--backgroundColorAlt);
+    background: var(--primary-950);
     min-height: 100vh;
     width: 200px;
     margin-left: -200px;
@@ -105,7 +105,7 @@ const Wrapper = styled.aside`
   .nav-link {
     display: flex;
     align-items: center;
-    color: var(--textColorAlt);
+    color: var(--textColor);
     padding: 1rem 0;
     padding-left: 1.5rem;
     text-transform: capitalize;

@@ -81,12 +81,22 @@ const VehicleState = () => {
               </li>
             ))}
           </ul>
-          <button className='action-btn' type='button' onClick={toggleVehicleState}>
-            Cancelar
-          </button>
-          <button className='action-btn' type='submit' disabled={isSubmitting}>
-            {isSubmitting ? 'Cambiando...' : 'Cambiar'}
-          </button>
+          <div className='buttons'>
+            <button
+              className='action-btn'
+              type='submit'
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Cambiando...' : 'Cambiar'}
+            </button>
+            <button
+              className='action-btn'
+              type='button'
+              onClick={toggleVehicleState}
+            >
+              Cancelar
+            </button>
+          </div>
         </Form>
       </div>
     </Wrapper>
@@ -127,20 +137,17 @@ const Wrapper = styled.div`
 
   h4 {
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .zone {
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   input[type='radio'] {
     margin-right: 0.5rem;
   }
 
-  button {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-  }
+  
 `

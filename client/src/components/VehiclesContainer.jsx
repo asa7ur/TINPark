@@ -41,11 +41,4 @@ const Wrapper = styled.main`
     text-align: center;
     margin-top: 1rem;
   }
-
-  button {
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1rem;
-    margin-top: 1rem;
-  }
 `

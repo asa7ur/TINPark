@@ -53,27 +53,5 @@ const Wrapper = styled.nav`
     cursor: pointer;
     padding: 0;
     font-size: 1.5rem;
-  }
-  
-  /* .styled-circle {
-    width: 50px;
-    height: 50px;
-  }
-
-  h5 {
-    text-transform: uppercase;
-  }
-
-  .user {
-    background: var(--backgroundColorAlt);
-    color: var(--textColorAlt);
-    padding: 0.75rem 1rem;
-    border: var(--border);
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  } */
-  
+  }  
 `

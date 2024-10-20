@@ -86,13 +86,22 @@ const AddVehicle = () => {
               defaultValue={VEHICLE_BRAND.POR_DEFECTO}
               list={Object.values(VEHICLE_BRAND)}
             />
-            <button
-              type='submit'
-              className='action-btn form-btn'
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Añadiendo' : 'Añadir'}
-            </button>
+            <div className='buttons'>
+              <button
+                className='action-btn'
+                type='submit'
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Añadiendo...' : 'Añadir'}
+              </button>
+              <button
+                className='action-btn'
+                type='button'
+                onClick={toggleAddVehicle}
+              >
+                Cancelar
+              </button>
+            </div>
           </div>
         </Form>
       </div>
@@ -134,6 +143,7 @@ const Wrapper = styled.div`
 
   .form-title {
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .form {
@@ -152,14 +162,6 @@ const Wrapper = styled.div`
   .form-center {
     display: grid;
     row-gap: 1rem;
-  }
-
-  .form-btn {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
   }
 
   .form-label {
