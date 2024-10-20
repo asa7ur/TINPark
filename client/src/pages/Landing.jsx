@@ -17,10 +17,10 @@ const Landing = () => {
             </h4>
             <div className='buttons'>
               <Link to='/register'>
-                <button className='button'>Registrarse</button>
+                <button className='btn start-btn'>Registrarse</button>
               </Link>
               <Link to='/login'>
-                <button className='button'>Entrar</button>
+                <button className='btn start-btn'>Entrar</button>
               </Link>
             </div>
           </div>
@@ -66,29 +66,5 @@ const Wrapper = styled.div`
 
   h4 {
     font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .button {
-    font-size: 1rem;
-    width: 100%;
-    padding: var(--padding);
-    border-radius: var(--radius);
-    background: var(--primary-600);
-    color: var(--grey-50);
-    border: none;
-    cursor: pointer;
-    transition: var(--transition);
-  }
-
-  .button:hover {
-    background: var(--primary-400);
-    box-shadow: var(--shadow-2);
   }
 `

@@ -88,14 +88,14 @@ const AddVehicle = () => {
             />
             <div className='buttons'>
               <button
-                className='action-btn'
+                className='btn action-btn'
                 type='submit'
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Añadiendo...' : 'Añadir'}
               </button>
               <button
-                className='action-btn'
+                className='btn action-btn'
                 type='button'
                 onClick={toggleAddVehicle}
               >

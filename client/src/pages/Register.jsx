@@ -29,7 +29,7 @@ const Register = () => {
           <FormRow type='password' name='password' labelText='contraseña' />
           <button
             type='submit'
-            className='btn btn-block'
+            className='btn start-btn'
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Registrando...' : 'Registrarse'}
@@ -63,30 +63,5 @@ const Wrapper = styled.div`
     margin-top: 1rem;
     text-align: center;
     line-height: 1.5;
-  }
-
-  .btn {
-    cursor: pointer;
-    color: var(--white);
-    background: var(--primary-500);
-    border: transparent;
-    border-radius: 5px;
-    letter-spacing: var(--letter-spacing);
-    padding: 0.375rem 0.75rem;
-    box-shadow: var(--shadow-1);
-    transition: var(--transition);
-    text-transform: capitalize;
-    display: inline-block;
-  }
-
-  .btn:hover {
-    background: var(--primary-700);
-    box-shadow: var(--shadow-3);
-  }
-
-  .member-btn {
-    color: var(--primary-500);
-    letter-spacing: var(--letter-spacing);
-    margin-left: 0.25rem;
   }
 `

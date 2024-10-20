@@ -83,14 +83,14 @@ const VehicleState = () => {
           </ul>
           <div className='buttons'>
             <button
-              className='action-btn'
+              className='btn action-btn'
               type='submit'
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Cambiando...' : 'Cambiar'}
             </button>
             <button
-              className='action-btn'
+              className='btn action-btn'
               type='button'
               onClick={toggleVehicleState}
             >

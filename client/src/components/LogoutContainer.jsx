@@ -8,11 +8,11 @@ const LogoutContainer = () => {
   const [showLogout, setShowLogout] = useState(false)
   const { user, logoutUser } = useDashboardContext()
 
-  const logoutRef = useRef(null)
+  const containerRef = useRef(null)
 
   const handleClickOutside = (event) => {
-    if (logoutRef.current && !logoutRef.current.contains(event.target)) {
-      setShowLogout(false) // close dropdown when clicking outside
+    if (containerRef.current && !containerRef.current.contains(event.target)) {
+      setShowLogout(false)
     }
   }
 
@@ -28,7 +28,7 @@ const LogoutContainer = () => {
   }, [showLogout])
 
   return (
-    <Wrapper>
+    <Wrapper ref={containerRef}>
       <button className='logout-btn' onClick={() => setShowLogout(!showLogout)}>
         <FaUserCircle className='avatar' />
         <h5>{user.name}</h5>
@@ -36,7 +36,6 @@ const LogoutContainer = () => {
       </button>
 
       <button
-        ref={logoutRef}
         className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}
         onClick={logoutUser}
       >
