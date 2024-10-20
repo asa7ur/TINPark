@@ -16,7 +16,7 @@ export const action = async ({ request }) => {
 
 const Register = () => {
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === 'Registrando'
+  const isSubmitting = navigation.state === 'submitting'
 
   return (
     <Wrapper>
@@ -32,7 +32,7 @@ const Register = () => {
             className='btn btn-block'
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Registrando' : 'registrarse'}
+            {isSubmitting ? 'Registrando...' : 'Registrarse'}
           </button>
           <p>
             ¿Ya eres miembro?

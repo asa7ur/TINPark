@@ -20,7 +20,7 @@ const EditVehicleContainer = () => {
   return (
     <Wrapper>
       <div className='section-center'>
-        <div className='return' onClick={() => navigate('/dashboard/vehicles')}>
+        <div className='return' onClick={() => navigate(-1)}>
           <FaLongArrowAltLeft />
           <p>Volver</p>
         </div>

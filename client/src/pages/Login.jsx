@@ -16,7 +16,7 @@ export const action = async ({ request }) => {
 
 const Login = () => {
   const navigation = useNavigation()
-  const isSubmitting = navigation.state === 'Entrando'
+  const isSubmitting = navigation.state === 'submitting'
   return (
     <Wrapper>
       <PageTransition>
@@ -29,7 +29,7 @@ const Login = () => {
             className='btn btn-block'
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Entrando' : 'Entrar'}
+            {isSubmitting ? 'Entrando...' : 'Entrar'}
           </button>
           <p>
             ¿Aún no eres miembro?
