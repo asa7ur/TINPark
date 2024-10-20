@@ -183,8 +183,12 @@ const Wrapper = styled.div`
   }
 
   option {
-    background: var(--grey-100);
+    background: var(--grey-50);
     color: var(--textColorAlt);
     border: var(--border);
+  }
+
+  .btn.action-btn:first-of-type {
+    margin-top: 0.5rem;
   }
 `
