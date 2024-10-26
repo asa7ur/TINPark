@@ -1,23 +1,25 @@
 import styled from 'styled-components'
 import NavLinks from './NavLinks'
-import Logo from './Logo'
+import User from '../assets/User.png'
 import { useDashboardContext } from '../pages/DashboardLayout'
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Sidebar = () => {
   const { showSidebar, toggleSidebar } = useDashboardContext()
   const sidebarRef = useRef(null)
+  const navigate = useNavigate()
 
   const handleClickOutside = (event) => {
-    if(sidebarRef.current && !sidebarRef.current.contains(event.target)){
+    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
       toggleSidebar()
     }
   }
 
   useEffect(() => {
-    if(showSidebar) {
+    if (showSidebar) {
       document.addEventListener('mousedown', handleClickOutside)
-    } else{
+    } else {
       document.removeEventListener('mousedown', handleClickOutside)
     }
     return () => {
@@ -30,10 +32,23 @@ const Sidebar = () => {
       <div
         className={
           showSidebar ? 'sidebar-container show-sidebar' : 'sidebar-container'
-        } ref= {sidebarRef}
+        }
+        ref={sidebarRef}
       >
         <div className='content'>
-          <header>{/* <Logo /> */}</header>
+          <div className='user-section'>
+            <img src={User} alt='user' className='user-image' />
+            <button
+              className='edit-button'
+              onClick={() => {
+                toggleSidebar()
+                navigate('/dashboard/user')
+              }}
+            >
+              Editar
+            </button>
+            <div className='separator' />
+          </div>
           <NavLinks isSidebar onLinkClick={toggleSidebar} />
         </div>
       </div>
@@ -73,6 +88,36 @@ const Wrapper = styled.aside`
     top: 0;
   }
 
+  .user-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+
+  .user-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+
+  .edit-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .separator {
+    width: 80%;
+    height: 1px;
+    background-color: var(--primary-500);
+    margin: 1rem 0;
+  }
+
   .overlay {
     position: fixed;
     top: 0;
@@ -87,13 +132,6 @@ const Wrapper = styled.aside`
 
   .overlay.show {
     visibility: visible;
-  }
-
-  header {
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    padding-left: 2.5rem;
   }
 
   .nav-links {
@@ -118,7 +156,7 @@ const Wrapper = styled.aside`
     transition: var(--transition);
   }
 
-  .label{
+  .label {
     font-size: 1.2rem;
   }
 

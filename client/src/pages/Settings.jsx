@@ -1,9 +1,14 @@
 import styled from 'styled-components'
-import { NavbarTop, UserContainer, Loading, PageTransition } from '../components'
+import {
+  NavbarTop,
+  SettingsContainer,
+  Loading,
+  PageTransition,
+} from '../components'
 import { useNavigation } from 'react-router-dom'
 import background from '../assets/Background_4.jpg'
 
-const User = () => {
+const Settings = () => {
   const navigation = useNavigation()
   const isLoading = navigation.state === 'loading'
 
@@ -12,13 +17,13 @@ const User = () => {
       <Background />
       <NavbarTop />
       <PageTransition isLoading={isLoading}>
-        <UserContainer />
+        <SettingsContainer />
       </PageTransition>
       {isLoading && <Loading />}
     </Wrapper>
   )
 }
-export default User
+export default Settings
 
 const Wrapper = styled.div``
 

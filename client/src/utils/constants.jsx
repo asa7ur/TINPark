@@ -67,30 +67,24 @@ export const HomeVehicles = {
 export const links = [
   {
     id: 1,
-    label: 'Usuario',
-    url: '/dashboard/user',
-    icon: FaUserCircle,
-  },
-  {
-    id: 2,
     label: 'Inicio',
     url: '/dashboard/homepage',
     icon: FaHome,
   },
   {
-    id: 3,
+    id: 2,
     label: 'Vehículos',
     url: '/dashboard/vehicles',
     icon: FaCar,
   },
   {
-    id: 4,
+    id: 3,
     label: 'Zonas',
     url: '/dashboard/zones',
     icon: FaMapMarkedAlt,
   },
   {
-    id: 5,
+    id: 4,
     label: 'Ajustes',
     url: '/dashboard/settings',
     icon: FaGear,

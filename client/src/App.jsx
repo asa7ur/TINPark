@@ -9,7 +9,9 @@ import {
   Login,
   Register,
   DashboardLayout,
-  HomePage
+  HomePage,
+  User,
+  Settings,
 } from './pages'
 
 import { action as registerAction } from './pages/Register'
@@ -51,6 +53,10 @@ const router = createBrowserRouter([
             loader: vehiclesAndZonesLoader,
           },
           {
+            path: 'user',
+            element: <User />,
+          },
+          {
             path: 'vehicles',
             element: <AllVehicles />,
             loader: vehiclesAndZonesLoader,
@@ -67,6 +73,10 @@ const router = createBrowserRouter([
             element: <AllZones />,
             loader: vehiclesAndZonesLoader,
           },
+          {
+            path: 'settings',
+            element: <Settings />,
+          },
         ],
       },
     ],
@@ -74,9 +84,7 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-  return (
-      <RouterProvider router={router} />
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
