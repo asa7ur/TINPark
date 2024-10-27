@@ -1,7 +1,6 @@
 import { FaCar, FaRegEdit, FaMapMarkedAlt, FaHome } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
-import { IoMdKey } from 'react-icons/io'
 import Audi from '../assets/Audi.png'
 import BMW from '../assets/BMW.png'
 import Citroen from '../assets/Citroen.png'
@@ -94,8 +93,8 @@ export const links = [
 export const inside = [
   {
     id: 1,
-    icon: FaRegEdit,
-    text: 'Editar los datos',
+    icon: RxExit,
+    text: 'Salir por Principal',
   },
   {
     id: 2,
@@ -104,16 +103,16 @@ export const inside = [
   },
   {
     id: 3,
-    icon: RxExit,
-    text: 'Salir por Principal',
+    icon: FaRegEdit,
+    text: 'Editar los datos',
   },
 ]
 
 export const outside = [
   {
     id: 1,
-    icon: FaRegEdit,
-    text: 'Editar los datos',
+    icon: RxEnter,
+    text: 'Entrar por Principal',
   },
   {
     id: 2,
@@ -122,7 +121,7 @@ export const outside = [
   },
   {
     id: 3,
-    icon: RxEnter,
-    text: 'Entrar por Principal',
+    icon: FaRegEdit,
+    text: 'Editar los datos',
   },
 ]
