@@ -1,4 +1,4 @@
-import { FaUserCircle, FaCar, FaMapMarkedAlt, FaHome } from 'react-icons/fa'
+import { FaCar, FaRegEdit, FaMapMarkedAlt, FaHome } from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
 import { IoMdKey } from 'react-icons/io'
@@ -94,35 +94,35 @@ export const links = [
 export const inside = [
   {
     id: 1,
+    icon: FaRegEdit,
+    text: 'Editar los datos',
+  },
+  {
+    id: 2,
     icon: RxGear,
     text: 'Corregir el estado',
   },
   {
-    id: 2,
-    icon: RxExit,
-    text: 'Salir por Principal',
-  },
-  {
     id: 3,
     icon: RxExit,
-    text: 'Salir por Callejón',
+    text: 'Salir por Principal',
   },
 ]
 
 export const outside = [
   {
     id: 1,
+    icon: FaRegEdit,
+    text: 'Editar los datos',
+  },
+  {
+    id: 2,
     icon: RxGear,
     text: 'Corregir el estado',
   },
   {
-    id: 2,
+    id: 3,
     icon: RxEnter,
     text: 'Entrar por Principal',
-  },
-  {
-    id: 3,
-    icon: IoMdKey,
-    text: 'Autorizar otra matrícula',
   },
 ]
