@@ -1,4 +1,10 @@
-import { FaCar, FaRegEdit, FaMapMarkedAlt, FaHome } from 'react-icons/fa'
+import {
+  FaCar,
+  FaRegEdit,
+  FaMapMarkedAlt,
+  FaHome,
+  FaRegTrashAlt,
+} from 'react-icons/fa'
 import { FaGear } from 'react-icons/fa6'
 import { RxGear, RxExit, RxEnter } from 'react-icons/rx'
 import Audi from '../assets/Audi.png'
@@ -106,6 +112,11 @@ export const inside = [
     icon: FaRegEdit,
     text: 'Editar los datos',
   },
+  {
+    id: 4,
+    icon: FaRegTrashAlt,
+    text: 'Borrar el vehículo',
+  },
 ]
 
 export const outside = [
@@ -123,5 +134,10 @@ export const outside = [
     id: 3,
     icon: FaRegEdit,
     text: 'Editar los datos',
+  },
+  {
+    id: 4,
+    icon: FaRegTrashAlt,
+    text: 'Borrar el vehículo',
   },
 ]
