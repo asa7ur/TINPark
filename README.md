@@ -14,19 +14,16 @@ TINPark es una aplicación diseñada para gestionar el acceso vehicular a urbani
 
 ## Requisitos del Sistema
 
-- **Front-End**: Desarrollado con [React.js/Vue.js/Angular] (indicar cuál estás usando).
-- **Back-End**: API REST basada en [Node.js/Express/Python/Django] (indicar el framework).
-- **Base de Datos**: [MySQL/PostgreSQL/MongoDB] para almacenar registros de vehículos, matrículas y permisos.
-- **Cámaras de Vigilancia**: Compatible con cámaras IP con transmisión en tiempo real.
-- **Servidor**: Se recomienda un servidor en la nube (AWS, Google Cloud, Azure) o en instalaciones locales según el tamaño de la urbanización.
+- **Front-End**: Desarrollado con React.js.
+- **Back-End**: API REST basada en Node.js/Express.
+- **Base de Datos**: MongoDB para almacenar registros de vehículos, matrículas y permisos.
 
 ## Instalación
 
 ### Requisitos Previos
 
 - Node.js (v14 o superior)
-- Base de datos MySQL/PostgreSQL/MongoDB
-- Acceso a una red de cámaras IP compatibles
+- Base de datos MongoDB
 
 ### Pasos para Instalar
 
@@ -79,46 +76,3 @@ TINPark es una aplicación diseñada para gestionar el acceso vehicular a urbani
     ```
     http://localhost:3000
     ```
-
-## Uso
-
-### Añadir Nuevos Vehículos
-
-1. Accede a la sección de "Gestión de Acceso" desde el panel de administración.
-2. Introduce la matrícula del vehículo, el nombre del residente asociado y selecciona los permisos de acceso.
-3. Guarda los cambios.
-
-### Monitorización en Tiempo Real
-
-- Ve las transmisiones en vivo de las cámaras de acceso y el estado de los vehículos que intentan entrar.
-- Filtra los registros por fecha o número de matrícula para revisiones.
-
-### Notificaciones
-
-- Activa las notificaciones automáticas para recibir alertas cuando un vehículo no autorizado intente ingresar.
-- Personaliza las alertas para administradores o residentes.
-
-## Precios
-
-### Modelo de Licencia
-
-- **Licencia única**: Pago único por la instalación y configuración del sistema en una urbanización.
-- **Suscripción mensual/anual**: Incluye mantenimiento, soporte técnico y actualizaciones automáticas del software.
-
-| Tamaño de la Urbanización  | Pago Único  | Suscripción Mensual |
-|----------------------------|-------------|---------------------|
-| Pequeña (1-2 accesos)       | $2,000      | $200                |
-| Mediana (3-5 accesos)       | $5,000      | $500                |
-| Grande (6+ accesos)         | $10,000     | $1,000              |
-
-## Contacto y Soporte
-
-Para más información sobre la instalación, integración o precios personalizados, contáctanos en:
-
-- **Email**: soporte@tinpark.com
-- **Teléfono**: +1 800 123 4567
-- **Página Web**: [tinpark.com](http://www.tinpark.com)
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Para más detalles, revisa el archivo [LICENSE](LICENSE).
